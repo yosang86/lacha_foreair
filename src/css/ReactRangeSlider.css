@@ -1,0 +1,16 @@
+.rc-slider-rail {
+    background-color: #c0c6cf!important;
+}
+.rc-slider-track {
+    background-color: #466cc2!important;
+}
+
+.rc-slider-handle {
+    width: 1em;
+    height: 1em;
+    border: 1px solid #466cc2!important;
+    opacity: 1;
+}
+.rc-slider-handle:active {
+    box-shadow: none!important;
+}

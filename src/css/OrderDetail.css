@@ -1,0 +1,49 @@
+.tab02 .tab li a:after {
+    background: #4a6cb3;
+}
+
+.tabArea ul.tab li.current {
+    background-color: #4a6cb3;
+}
+
+.stepBox .stepList li>div.on {
+    background-color: #4a6cb3;
+}
+
+.quickTab .tab li a:after {
+    background: #4a6cb3;
+}
+
+.s-tabArea .tab li.current a {
+    background: #466cc2;
+}
+
+.wayArea a::after {
+    content: "";
+}
+
+.textWrap {
+    position: relative;
+}
+
+.textWrap textarea {
+    width: 100%;
+    resize: none;
+    min-height: 4.5em;
+    line-height: 1.6em;
+    max-height: 9em;
+}
+
+.textWrap span {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.counterClass {
+    top: 130px;
+    color: #C0C6CF;
+    border-radius: 0.5em;
+    padding: 0 .5em 0 .5em;
+    font-size: 0.75em;
+}

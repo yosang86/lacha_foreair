@@ -1,0 +1,10 @@
+.tab02 .tab li a:after {background: #466cc2;}
+.tabArea ul.tab li.current{background-color: #466cc2;}
+.stepBox .stepList li>div.on {background-color: #466cc2;}
+.quickTab .tab li a:after {background: #466cc2; }
+.s-tabArea .tab li.current a {background: #466cc2;}
+.trnStationArea .half {float: left;width: 50%;}
+.trnStationArea ul {overflow: hidden;}
+.trnStationArea li {float: left;padding:20px 10px;}
+.quick-array {display: block; padding: 17px 3px 0px 0px;color:#7a818a;}
+.notUseQuick {display: none;}

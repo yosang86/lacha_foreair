@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+}
+
+/*#header {*/
+/*    position: sticky;*/
+/*}*/
+
+.myinfo {
+    padding: 20px 15px 0;
+}
+
+#content {
+    margin-top: 106px;
+    z-index: 10;
+}
+
+.sub #content {
+    margin-top: 50px;
+    min-height: 450px;
+}

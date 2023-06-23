@@ -1,0 +1,11 @@
+.tab02 .tab li a:after {background: #466cc2;}
+.tabArea ul.tab li.current{background-color: #466cc2;}
+.stepBox .stepList li>div.on {background-color: #466cc2;}
+.quickTab .tab li a:after {background: #466cc2; }
+.s-tabArea .tab li.current a {background: #466cc2;}
+.questionForm dl.cate dd a.select,
+.questionForm dl.cate dd a:hover,
+.faqCate a.select,
+.faqCate a:hover {background: #466cc2;}
+.faqCate a.nonselect{background: #f0f2f6;color:#111!important;}
+.questionForm dd .fileAdd>div:first-child label {background: #466cc2;}

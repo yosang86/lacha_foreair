@@ -1,0 +1,895 @@
+/*@charset "utf-8";*/
+/*:root {*/
+/*  --font-color-base:#666;*/
+/*  --font-color-heading:#000;*/
+/*  --font-color-primary:#466cc2;*/
+/*  --font-color-secondary:#ee5a5c;*/
+/*  --font-color-white:#fff;*/
+/*  --font-color-forward:#d5e4f7;*/
+/*  --font-color-reverse:#e3ddf9;*/
+/*}*/
+/*ul.dots li {*/
+/*  position: relative;*/
+/*  line-height: 1.5em;*/
+/*  padding: 3px 0 3px 8px;*/
+/*  word-break: keep-all;*/
+/*  font-size: 13px;*/
+/*}*/
+/*ul.dots li:before {*/
+/*  display: block;*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 10px;*/
+/*  width: 2px;*/
+/*  height: 2px;*/
+/*  background: #666666;*/
+/*  content: "";*/
+/*}*/
+/*ul.tabs {*/
+/*  display: flex;*/
+/*  border-bottom: 1px solid #e1e1e1;*/
+/*  margin-top: 1.3rem;*/
+/*  overflow-x: auto;*/
+/*}*/
+/*ul.tabs li {*/
+/*  margin: 0 1px;*/
+/*  padding: 0;*/
+/*  !*	overflow: hidden;*/
+/*      position: relative; *!*/
+/*  text-align: center;*/
+/*}*/
+/*ul.tabs li a {*/
+/*  color: #999999;*/
+/*  display: block;*/
+/*  padding: 0.7rem 1.3rem;*/
+/*  background: #f0f2f6;*/
+/*  font-weight: 400;*/
+/*  font-size: 15px;*/
+/*  border-top-left-radius: 0.5rem;*/
+/*  border-top-right-radius: 0.5rem;*/
+/*}*/
+/*ul.tabs li.active a {*/
+/*  color: var(--font-color-white);*/
+/*  background: var(--font-color-primary);*/
+/*}*/
+/*.tab-container {*/
+/*  clear: both;*/
+/*  width: 100%;*/
+/*  margin: 0;*/
+/*}*/
+/*.tab-container:after {*/
+/*  content: " ";*/
+/*  display: block;*/
+/*  clear: both;*/
+/*}*/
+/*.tab-content {*/
+/*  padding: 0;*/
+/*  line-height: 1.5em;*/
+/*}*/
+/*.tab-content:after {*/
+/*  content: " ";*/
+/*  display: block;*/
+/*  clear: both;*/
+/*}*/
+/*.tab-content img {*/
+/*  max-width: 100%;*/
+/*}*/
+/*.sub #content.reservvation {*/
+/*  margin-top: 0;*/
+/*}*/
+
+/*@media (max-width: 800px) {*/
+/*  ul.dots li:before {*/
+/*    top: 16px;*/
+/*  }*/
+/*}*/
+
+/*@media (max-width: 640px) {*/
+/*  ul.dots li {*/
+/*    padding: 3px 0 3px 6px;*/
+/*  }*/
+/*  ul.dots li:before {*/
+/*    top: 11px;*/
+/*  }*/
+/*}*/
+/*!***** 예약 ******!*/
+/*.reservation-pop-wrap {*/
+/*  padding: 15px;*/
+/*}*/
+/*.reservation-wrap {*/
+/*  margin-top: 0.7rem;*/
+/*}*/
+/*.reservation-wrap .reservation-info {*/
+/*  color: #555;*/
+/*  font-size: 13px;*/
+/*  letter-spacing: -0.5px;*/
+/*}*/
+/*.reservation-wrap .reservation-info strong {*/
+/*  color: var(--font-color-secondary);*/
+/*  font-weight: 400;*/
+/*}*/
+/*.reservation-wrap .reservation-info span {*/
+/*  color: var(--font-color-primary);*/
+/*}*/
+/*.reservation-wrap .seat-state {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  font-size: 0.78em;*/
+/*  margin: 1rem 0;*/
+/*}*/
+/*.reservation-wrap .seat-state p {*/
+/*  margin: 0 10px;*/
+/*  color: #777777;*/
+/*}*/
+/*.reservation-wrap .seat-state p span {*/
+/*  width: 13px;*/
+/*  height: 13px;*/
+/*  border-radius: 50%;*/
+/*  display: inline-block;*/
+/*  margin-right: 5px;*/
+/*  vertical-align: middle;*/
+/*}*/
+/*.reservation-wrap .seat-state p span.seat-forward {*/
+/*  background: var(--font-color-forward);*/
+/*}*/
+/*.reservation-wrap .seat-state p span.seat-reverse {*/
+/*  background: var(--font-color-reverse);*/
+/*}*/
+/*.reservation-wrap .seat-state p span.seat-disable {*/
+/*  background: #e0e0e0;*/
+/*}*/
+/*.reservation-wrap .seat-state p span.seat-select {*/
+/*  background: var(--font-color-primary);*/
+/*}*/
+/*.seat-wrap {*/
+/*  width: 100%;*/
+/*  !*background: url(../images/sub/seat_arrow.png) repeat-y center 0;*!*/
+/*  margin: 0 auto;*/
+/*  padding: 0;*/
+/*  position: relative;*/
+/*  background-size: 15px auto;*/
+/*}*/
+/*.seat-wrap:before {*/
+/*  display: inline-block;*/
+/*  content: attr(data-start);*/
+/*  position: absolute;*/
+/*  left: 50%;*/
+/*  top: 0;*/
+/*  transform: translateX(-50%);*/
+/*  text-align: center;*/
+/*  z-index: 1;*/
+/*  padding: 3px;*/
+/*  background: var(--font-color-white);*/
+/*  font-size: 0.8em;*/
+/*}*/
+/*.seat-wrap:after {*/
+/*  display: inline-block;*/
+/*  content: attr(data-end);*/
+/*  position: absolute;*/
+/*  left: 50%;*/
+/*  bottom: 0;*/
+/*  transform: translateX(-50%);*/
+/*  text-align: center;*/
+/*  z-index: 1;*/
+/*  padding: 3px;*/
+/*  background: var(--font-color-white);*/
+/*  font-size: 0.8em;*/
+/*}*/
+/*.seat-wrap .scroll-in {*/
+/*  display: flex;*/
+/*  max-width: 340px;*/
+/*  justify-content: space-between;*/
+/*  padding: 0 30px;*/
+/*  margin: 0 auto;*/
+/*}*/
+/*.seat-wrap-top {*/
+/*}*/
+/*.seat-wrap-bottom {*/
+/*}*/
+/*.reservation-wrap .seat-box {*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*}*/
+/*.reservation-wrap .seat-box p {*/
+/*  width: 47px;*/
+/*  height: 51px;*/
+/*  margin: 0 2px 5px 2px;*/
+/*}*/
+/*.reservation-wrap .select-seat {*/
+/*  margin: 1rem 0 0.8rem 0;*/
+/*  font-weight: 500;*/
+/*  color: #555555;*/
+/*  font-size: 15px;*/
+/*  text-align: center;*/
+/*}*/
+/*.reservation-wrap .select-seat strong {*/
+/*  color: var(--font-color-secondary);*/
+/*}*/
+/*.reservation-wrap .reservation-btn-wrap {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
+/*.reservation-wrap .reservation-btn-wrap button {*/
+/*  background: #f0f2f6;*/
+/*  border: 0;*/
+/*  border-radius: 10px;*/
+/*  margin: 5px;*/
+/*  padding: 0.8rem 2rem;*/
+/*  color: #333;*/
+/*  font-size: 14px;*/
+/*  width: 32%;*/
+/*}*/
+/*.reservation-wrap .reservation-btn-wrap button.direct-reservation {*/
+/*  background: var(--font-color-primary);*/
+/*  color: var(--font-color-white);*/
+/*}*/
+/*.reservation-wrap .table_cover {*/
+/*  display: block;*/
+/*  cursor: pointer;*/
+/*  position: absolute;*/
+/*  top: 0px;*/
+/*  left: 0px;*/
+/*  right: 0px;*/
+/*  bottom: 0px;*/
+/*  z-index: 100;*/
+/*  background-color: rgba(0,0,0,0.5);*/
+/*}*/
+/*.reservation-wrap .table_cover .detail_cover_text {*/
+/*  width: 100%;*/
+/*  position: absolute;*/
+/*  top: 50%;*/
+/*  left: 50%;*/
+/*  transform: translateY(-50%);*/
+/*  transform: translateX(-50%);*/
+/*  text-align: center;*/
+/*  color: #fff;*/
+/*  font-size: 0.9em;*/
+/*  letter-spacing: -0.5px;*/
+/*  display: block;*/
+/*}*/
+/*.reservation-wrap .table_cover .detail_cover_text p {*/
+/*  color: #fff;*/
+/*}*/
+/*input[type="checkbox"].seat {*/
+/*  display: none;*/
+/*}*/
+/*input[type="checkbox"].seat + label {*/
+/*  color: #555555;*/
+/*  margin: 0px;*/
+/*  line-height: 101px;*/
+/*  font-size: 0.9em;*/
+/*  font-weight: 300;*/
+/*  position: relative;*/
+/*  display: block;*/
+/*  padding-left: 0;*/
+/*}*/
+/*input[type="checkbox"].seat + label:before {*/
+/*  display: none;*/
+/*}*/
+/*input[type="checkbox"].seat + label span {*/
+/*  display: block;*/
+/*  width: 47px;*/
+/*  height: 51px;*/
+/*  margin: 0;*/
+/*  vertical-align: middle;*/
+/*  cursor: pointer;*/
+/*  position: absolute;*/
+/*  border-radius: 0;*/
+/*  background-color: rgba(255,255,255,0);*/
+/*}*/
+/*input[type="checkbox"].seat:checked + label span {*/
+/*  background-color: rgba(255,255,255,0);*/
+/*}*/
+/*input[type="checkbox"].seat:checked + label em {*/
+/*  color: var(--font-color-white);*/
+/*}*/
+/*input[type="checkbox"].seat:checked + label span:after {*/
+/*  display: none;*/
+/*}*/
+/*input[type="checkbox"].seat + label em {*/
+/*  position: relative;*/
+/*  font-weight: 300;*/
+/*  font-size: 0.75em;*/
+/*  line-height: 51px;*/
+/*  padding: 0 7px;*/
+/*  color: #555555;*/
+/*  display: block;*/
+/*  width: 47px;*/
+/*  text-align: center;*/
+/*}*/
+/*!*input[type="checkbox"].forward-normal + label span {*!*/
+/*!*  background: url(../images/sub/seat_forward_normal.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*!*input[type="checkbox"].reverse-normal + label span {*!*/
+/*!*  background: url(../images/sub/seat_reverse_normal.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*!*input[type="checkbox"].forward-normal:checked + label span {*!*/
+/*!*  background: url(../images/sub/seat_forward_select.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*!*input[type="checkbox"].reverse-normal:checked + label span {*!*/
+/*!*  background: url(../images/sub/seat_reverse_select.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*!*input[type="checkbox"].seat:disabled.forward-normal + label span {*!*/
+/*!*  background: url(../images/sub/seat_forward_disabled.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*!*input[type="checkbox"].seat:disabled.reverse-normal + label span {*!*/
+/*!*  background: url(../images/sub/seat_reverse_disabled.png);*!*/
+/*!*  background-size: 47px auto;*!*/
+/*!*}*!*/
+/*input[type="checkbox"].seat:disabled.forward-normal + label em, input[type="checkbox"].seat:disabled.reverse-normal + label em {*/
+/*  color: #bdbdbd;*/
+/*}*/
+/*.rserve-help {*/
+/*  !*background: url(../images/sub/ico_help.png) no-repeat 0 0;*!*/
+/*  background-size: 16px auto;*/
+/*  padding: 1px 0 1px 20px;*/
+/*  color: #444444;*/
+/*  font-size: 0.74em;*/
+/*  font-weight: 500;*/
+/*  margin: 15px;*/
+/*}*/
+/*.rserve-help strong {*/
+/*  color: #466cc2;*/
+/*  font-weight: 500;*/
+/*}*/
+/*.rserve-help span, .rserve-help span em {*/
+/*  position: relative;*/
+/*}*/
+/*.rserve-help span em {*/
+/*  z-index: 10;*/
+/*  font-weight: 500;*/
+/*}*/
+/*.rserve-help span:after {*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 5px;*/
+/*  z-index: 1;*/
+/*  background: #fff998;*/
+/*  display: block;*/
+/*  content: "";*/
+/*}*/
+/*.m-rserve-tab > ul {*/
+/*  display: flex;*/
+/*  border-top: 1px solid #e0e3e6;*/
+/*  overflow: hidden;*/
+/*}*/
+/*.m-rserve-tab > ul > li {*/
+/*  flex: 0 0 33.3333%;*/
+/*}*/
+/*.m-rserve-tab a {*/
+/*  display: block;*/
+/*  text-align: center;*/
+/*  height: 70px;*/
+/*  border: 1px solid transparent;*/
+/*  border-bottom: 1px solid #e0e3e6;*/
+/*  position: relative;*/
+/*  padding-top: 40px;*/
+/*  color: #7a818a;*/
+/*  font-size: 12px;*/
+/*  transition: all .3s ease;*/
+/*  background: #f7f8f9;*/
+/*}*/
+/*.m-rserve-tab li.active a {*/
+/*  border-left-color: #e0e3e6;*/
+/*  border-bottom-color: transparent;*/
+/*  border-right-color: #e0e3e6;*/
+/*  color: #111;*/
+/*  font-weight: 600;*/
+/*  background: #fff;*/
+/*}*/
+/*.m-rserve-tab li.active:first-child a {*/
+/*  border-left-color: transparent;*/
+/*}*/
+/*.m-rserve-tab li.active:last-child a {*/
+/*  border-right-color: transparent;*/
+/*}*/
+/*.m-rserve-tab li a::before {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  top: 13px;*/
+/*  left: 50%;*/
+/*  margin-left: -10px;*/
+/*  width: 25px;*/
+/*  height: 26px;*/
+/*  !*background: url(../images/sub/bg_reserv_tab.png) no-repeat 0 0;*!*/
+/*  background-size: 25px 156px;*/
+/*}*/
+/*.m-rserve-tab li.item01 a::before {*/
+/*  background-position-y: 0;*/
+/*}*/
+/*.m-rserve-tab li.item02 a::before {*/
+/*  background-position-y: -52px;*/
+/*}*/
+/*.m-rserve-tab li.item03 a::before {*/
+/*  background-position-y: -104px;*/
+/*}*/
+/*.m-rserve-tab li.active.item01 a::before {*/
+/*  background-position-y: -26px;*/
+/*}*/
+/*.m-rserve-tab li.active.item02 a::before {*/
+/*  background-position-y: -78px;*/
+/*}*/
+/*.m-rserve-tab li.active.item03 a::before {*/
+/*  background-position-y: -130px;*/
+/*}*/
+/*.m-rserve-tabcont .tabcont {*/
+/*  display: none;*/
+/*  padding-top: 5px;*/
+/*}*/
+/*.m-rserve-tabcont .tabcont.active {*/
+/*  display: block;*/
+/*}*/
+/*.roomsWrap.reserve .swiper-container {*/
+/*  border-radius: 0px;*/
+/*}*/
+/*.searchCont.reserve {*/
+/*  border: 1px solid #466cc2;*/
+/*  background: #fafafa;*/
+/*  border-radius: 15px;*/
+/*  margin: 15px;*/
+/*}*/
+/*.searchCont.reserve .searchWrap {*/
+/*  padding: 5px 15px 20px;*/
+/*}*/
+/*.searchCont.reserve .searchForm {*/
+/*  background: #fff;*/
+/*}*/
+/*.roomResev-Input dl.inputArea.dt150 dt {*/
+/*  width: 130px;*/
+/*}*/
+/*.roomResev-Input dl.inputArea.dt150 dd {*/
+/*  width: calc(100% - 130px);*/
+/*  display: block;*/
+/*}*/
+/*.roomResev-Input dl.inputArea.dt150 dd .priceDe {*/
+/*  font-size: 10.1px;*/
+/*  color: #7a818a;*/
+/*}*/
+/*.new_line {*/
+/*  border : 0px;*/
+/*  display: block;*/
+/*  border-top : 1px solid #f1f2f4;*/
+/*  margin: 20px 0;*/
+/*}*/
+/*.roomResev-pay {*/
+/*  border-top: 10px solid #f0f2f6;*/
+/*}*/
+/*.roomResev-pay section:after {*/
+/*  content: '';*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  height: 10px;*/
+/*  background: #f0f2f6;*/
+/*}*/
+/*.roomResev-pay section:last-child:after {*/
+/*  display: none!important;*/
+/*}*/
+/*.roomResev-pay:after {*/
+/*  display: none!important;*/
+/*}*/
+/*.couponWrap {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  padding: 15px;*/
+/*}*/
+/*.couponWrap .coupon-item {*/
+/*  !*background: url(../images/sub/bg_coupon_normal.png) center bottom;*!*/
+/*  width: calc(50% - 2.5px);*/
+/*  height: 135px;*/
+/*  text-align: center;*/
+/*  cursor: pointer;*/
+/*  margin: 0 5px 5px 0;*/
+/*  background-size: auto 135px;*/
+/*  border: 3px solid #dfdfdf;*/
+/*  padding-bottom: 20px;*/
+/*}*/
+/*.couponWrap .coupon-item:nth-child(2), .couponWrap .coupon-item:last-child {*/
+/*  margin: 0 0px 5px 0;*/
+/*;*/
+/*}*/
+/*.couponWrap .coupon-item.current {*/
+/*  !*background: url(../images/sub/bg_coupon_active.png) center bottom;*!*/
+/*  background-size: auto 135px;*/
+/*  border: 3px solid #ee5a5c;*/
+/*}*/
+/*.couponWrap .coupon-item .coupon-icon {*/
+/*  !*background: url(../images/sub/bg_coupon_1.png);*!*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: 44px 68px;*/
+/*  height: 34px;*/
+/*  width: 44px;*/
+/*  margin: 10px auto 10px;*/
+/*}*/
+/*.couponWrap .coupon-item .coupon-icon1 {*/
+/*  !*background: url(../images/sub/bg_coupon_2.png);*!*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: 44px 57px;*/
+/*  height: 28px;*/
+/*  width: 44px;*/
+/*  margin: 10px auto 5px;*/
+/*}*/
+/*.couponWrap .coupon-item .coupon-icon2 {*/
+/*  !*background: url(../images/sub/bg_coupon_3.png);*!*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: 49px 71px;*/
+/*  height: 35px;*/
+/*  width: 49px;*/
+/*  margin: 10px auto 10px;*/
+/*}*/
+/*.couponWrap .coupon-item .coupon-icon3 {*/
+/*  !*background: url(../images/sub/bg_coupon_4.png);*!*/
+/*  background-repeat: no-repeat;*/
+/*  background-size: 36px 71px;*/
+/*  height: 35px;*/
+/*  width: 36px;*/
+/*  margin: 10px auto 10px;*/
+/*}*/
+/*.couponWrap .coupon-item.current .coupon-icon.icon {*/
+/*  background-position: 0 -34px;*/
+/*}*/
+/*.couponWrap .coupon-item.current .coupon-icon1.icon {*/
+/*  background-position: 0 -28px;*/
+/*}*/
+/*.couponWrap .coupon-item.current .coupon-icon2.icon {*/
+/*  background-position: 0 -35px;*/
+/*}*/
+/*.couponWrap .coupon-item.current .coupon-icon3.icon {*/
+/*  background-position: 0 -35px;*/
+/*}*/
+/*.couponWrap .coupon-item p {*/
+/*  font-size: 13px;*/
+/*  font-weight: 500;*/
+/*  color: #444444;*/
+/*}*/
+/*.couponWrap .coupon-item p span {*/
+/*  display: block;*/
+/*  font-size: 12px;*/
+/*  color: #466cc2;*/
+/*}*/
+/*.couponWrap .coupon-item p.price {*/
+/*  margin-top: 5px;*/
+/*}*/
+/*.couponWrap .coupon-item p.price strong {*/
+/*  font-weight: 600;*/
+/*  font-size: 15px;*/
+/*}*/
+/*.couponWrap .coupon-item p.price strong.txt {*/
+/*  font-size: 13px;*/
+/*}*/
+/*.popup-box.safety-pop .coupon-pop-cont {*/
+/*  line-height: 1.4em;*/
+/*  text-align: center;*/
+/*  font-size: 15px;*/
+/*  !*background: url(../images/sub/coupon_popup_icon.png) no-repeat center 15px;*!*/
+/*  background-size: 40px auto;*/
+/*  padding-top: 70px;*/
+/*  word-break: keep-all;*/
+/*  font-weight: 500;*/
+/*  letter-spacing: -1px;*/
+/*}*/
+/*.popup-box.safety-pop .coupon-pop-cont span {*/
+/*  color: #466cc2;*/
+/*}*/
+/*.popup-box.safety-pop .coupon-pop-cont strong {*/
+/*  font-weight: 500;*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*}*/
+/*.popup-box.safety-pop .coupon-pop-cont strong em {*/
+/*  font-weight: 500;*/
+/*  position: relative;*/
+/*  z-index: 10;*/
+/*}*/
+/*.popup-box.safety-pop .coupon-pop-cont strong:after {*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  width: 100%;*/
+/*  height: 10px;*/
+/*  z-index: 1;*/
+/*  background: #fff998;*/
+/*  display: block;*/
+/*  content: "";*/
+/*}*/
+/*.point-wrap {*/
+/*  border: 1px solid #4469bd;*/
+/*  border-radius: 10px;*/
+/*  padding: 10px;*/
+/*  justify-content: center;*/
+/*  margin: 15px;*/
+/*}*/
+/*.point-count {*/
+/*  width: 100%;*/
+/*  text-align: right;*/
+/*  font-weight: 500;*/
+/*  height: 40px;*/
+/*  font-size: 13px;*/
+/*  margin-bottom: 10px;*/
+/*  display: flex;*/
+/*  justify-content: space-between;*/
+/*  align-items: center*/
+/*}*/
+/*.point-price_wrap {*/
+/*  display: flex;*/
+/*}*/
+/*.point-price_wrap p {*/
+/*  margin: 0 2px;*/
+/*  background: #e3e3e3;*/
+/*  background: -moz-linear-gradient(top, #e3e3e3 0%, #ffffff 50%, #e3e3e3 51%, #eaeaea 100%);*/
+/*  background: -webkit-linear-gradient(top, #e3e3e3 0%, #ffffff 50%, #e3e3e3 51%, #eaeaea 100%);*/
+/*  background: linear-gradient(to bottom, #e3e3e3 0%, #ffffff 50%, #e3e3e3 51%, #eaeaea 100%);*/
+/*  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e3e3e3', endColorstr='#eaeaea', GradientType=0 );*/
+/*  border-radius: 5px;*/
+/*  padding: 0 6px;*/
+/*  line-height: 40px;*/
+/*  font-weight: 800;*/
+/*  font-size: 18px;*/
+/*  color: #222222;*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
+/*}*/
+/*.goods-cart-item-new {*/
+/*  position: relative;*/
+/*}*/
+/*.goods-cart-item-new:after {*/
+/*  content: '';*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  height: 10px;*/
+/*  background: #f0f2f6;*/
+/*}*/
+/*.goods-cart-item-new li {*/
+/*  position: relative;*/
+/*  padding-left: 30px;*/
+/*}*/
+/*.goods-cart-item-new .cart-chk {*/
+/*  position: absolute;*/
+/*  left: 15px;*/
+/*  top: 50%;*/
+/*  transform: translateY(-50%);*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box {*/
+/*  background: #f0f0f0;*/
+/*  position: relative;*/
+/*  padding: 0 5px;*/
+/*  margin: 15px;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box:before {*/
+/*  display: block;*/
+/*  !*background: url(../images/sub/bg_cart_ticket_top.png) repeat-x;*!*/
+/*  height: 7px;*/
+/*  width: 100%;*/
+/*  content: "";*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box:after {*/
+/*  display: block;*/
+/*  !*background: url(../images/sub/bg_cart_ticket_bottom.png) repeat-x;*!*/
+/*  height: 7px;*/
+/*  width: 100%;*/
+/*  content: "";*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .ticket-info {*/
+/*  background: none;*/
+/*  padding: 0;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .inner {*/
+/*  padding: 10px;*/
+/*  box-shadow: none;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .roomResev-Input {*/
+/*  font-size: 13px;*/
+/*  padding: 5px 0;*/
+/*  border-radius: 10px;*/
+/*  background: #fff;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .roomResev-Input:after {*/
+/*  display: none;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .roomResev-Input dl {*/
+/*  margin: 0;*/
+/*  padding: 5px 10px;*/
+/*  font-size: 13px;*/
+/*}*/
+/*.goods-cart-item-new .ticket-info-box .inner1 {*/
+/*  padding: 0;*/
+/*}*/
+/*.goods-cart-item-new .point-count {*/
+/*  margin-bottom: 0px;*/
+/*}*/
+/*.goods-cart-item-new .point-wrap {*/
+/*  border: none;*/
+/*  border-radius: 10px;*/
+/*  background: #fff;*/
+/*  padding: 10px;*/
+/*  justify-content: center;*/
+/*  margin: 0px;*/
+/*}*/
+/*.goods-cart-item-new .coupon-wrap {*/
+/*  background: #fff;*/
+/*  border-radius: 10px;*/
+/*  padding: 10px;*/
+/*  display: flex;*/
+/*  justify-content: flex-end;*/
+/*}*/
+/*.goods-cart-item-new .coupon-wrap .coupon-title {*/
+/*  font-weight: 500;*/
+/*  margin-right: 10px;*/
+/*  padding-left: 50px;*/
+/*  line-height: 30px;*/
+/*  font-size: 13px;*/
+/*}*/
+/*!*.goods-cart-item-new .coupon-wrap .coupon-title.coupon1 {*!*/
+/*!*  background: url(../images/sub/ico_cart_1.png) no-repeat 0 center;*!*/
+/*!*  background-size: 40px auto;*!*/
+/*!*}*!*/
+/*!*.goods-cart-item-new .coupon-wrap .coupon-title.coupon2 {*!*/
+/*!*  background: url(../images/sub/ico_cart_2.png) no-repeat 0 center;*!*/
+/*!*  background-size: 40px auto;*!*/
+/*!*}*!*/
+/*!*.goods-cart-item-new .coupon-wrap .coupon-title.coupon3 {*!*/
+/*!*  background: url(../images/sub/ico_cart_3.png) no-repeat 0 center;*!*/
+/*!*  background-size: 40px auto;*!*/
+/*!*}*!*/
+/*!*.goods-cart-item-new .coupon-wrap .coupon-title.coupon4 {*!*/
+/*!*  background: url(../images/sub/ico_cart_4.png) no-repeat 0 center;*!*/
+/*!*  background-size: 40px auto;*!*/
+/*!*}*!*/
+/*.goods-cart-item-new .coupon-wrap .coupon-price_wrap {*/
+/*  font-weight: 800;*/
+/*  line-height: 30px;*/
+/*}*/
+/*.goods-cart-item-new .coupon-wrap .coupon-price_wrap strong {*/
+/*  font-weight: 800;*/
+/*  font-size: 18px;*/
+/*  color: #222222;*/
+/*  font-family: Arial, Helvetica, sans-serif;*/
+/*}*/
+/*.goods-cart-list .cart-new-print {*/
+/*  text-align: center;*/
+/*  font-weight: 500;*/
+/*  font-size: 15px;*/
+/*  padding: 20px 10px 30px 10px;*/
+/*  position: relative;*/
+/*}*/
+/*.goods-cart-list .cart-new-print:after {*/
+/*  content: '';*/
+/*  display: block;*/
+/*  width: 100%;*/
+/*  height: 10px;*/
+/*  background: #f0f2f6;*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*}*/
+/*.goods-cart-list .cart-new-print strong {*/
+/*  color: #4469bd;*/
+/*  font-weight: 500;*/
+/*}*/
+/*.order-price-detail em {*/
+/*  color: #4469bd;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-head {*/
+/*  background-color: #4469bd;*/
+/*  color: #fff;*/
+/*  border-bottom: 0;*/
+/*  padding: 15px 5px 10px;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-head .reserv-date > span {*/
+/*  color: #fff;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-body {*/
+/*  background-color: #4469bd;*/
+/*  position: relative;*/
+/*}*/
+/*.ticket-checking-new .ticket-info {*/
+/*  padding: 0;*/
+/*  background: none;*/
+/*}*/
+/*.ticket-checking-new .ticket-info .inner .define {*/
+/*  position: relative;*/
+/*}*/
+/*.ticket-checking-new .ticket-info .inner .define .train-type {*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*  top: 0px;*/
+/*}*/
+/*.ticket-checking-new .ticket-info .inner .define p {*/
+/*  text-align: right;*/
+/*  font-weight: bold;*/
+/*}*/
+/*.ticket-checking-new .ticket-info .inner .define p strong {*/
+/*  font-size: 17px;*/
+/*  color: #ee5a5c;*/
+/*}*/
+/*.ticket-checking-new .ticket-info .inner .define p span {*/
+/*  font-weight: 400;*/
+/*  font-size: 12px;*/
+/*  display: inline-block;*/
+/*  margin-left: 10px;*/
+/*  color: #777777;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-bottom:before {*/
+/*  display: block;*/
+/*  !*background: url(../images/sub/bg_print_ticket_bottom.png) repeat-x;*!*/
+/*  height: 3px;*/
+/*  width: 100%;*/
+/*  content: "";*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-bottom .reserv-notice {*/
+/*  border-top: none;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-bottom .reserv-notice .warning {*/
+/*  color: #4469bd;*/
+/*  font-weight: 500;*/
+/*}*/
+/*.ticket-checking-new .ticket-checking-bottom .reserv-notice .warning.ico::before {*/
+/*  !*background: url(../images/sub/ico_help.png) no-repeat 0 0;*!*/
+/*  background-size: 13px 13px;*/
+/*}*/
+
+/*@media (max-width: 640px) {*/
+/*  .reservation-wrap .seat-state p {*/
+/*    margin: 0 5px;*/
+/*    letter-spacing: -1px;*/
+/*  }*/
+/*  .reservation-wrap .seat-box p {*/
+/*    width: 47px;*/
+/*    height: 51px;*/
+/*    margin: 0 2px 5px 2px;*/
+/*  }*/
+/*  input[type="checkbox"].seat + label span {*/
+/*    width: 47px;*/
+/*    height: 51px;*/
+/*  }*/
+/*  input[type="checkbox"].seat + label em {*/
+/*    line-height: 51px;*/
+/*    font-size: 13px;*/
+/*    width: 47px;*/
+/*  }*/
+/*  input[type="checkbox"].forward-normal + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  input[type="checkbox"].reverse-normal + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  input[type="checkbox"].forward-normal:checked + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  input[type="checkbox"].reverse-normal:checked + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  input[type="checkbox"].seat:disabled.forward-normal + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  input[type="checkbox"].seat:disabled.reverse-normal + label span {*/
+/*    background-size: 47px auto;*/
+/*  }*/
+/*  .reservation-wrap .reservation-btn-wrap {*/
+/*    justify-content: space-between;*/
+/*  }*/
+/*  .reservation-wrap .reservation-btn-wrap button {*/
+/*    padding: 0.6rem 0.6rem;*/
+/*    margin: 0px;*/
+/*    border-radius: 7px;*/
+/*  }*/
+/*  .reservation-wrap .seat-state {*/
+/*    font-size: 12px;*/
+/*  }*/
+/*  .reservation-wrap .seat-state p span {*/
+/*    width: 8px;*/
+/*    height: 8px;*/
+/*    margin-right: 3px;*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 767px) and (max-width: 1025px) and (orientation: landscape) {*/
+/*}*/
+
+/*@media (min-width: 768px) and (max-width: 1023px) and (orientation: landscape) {*/
+/*}*/
