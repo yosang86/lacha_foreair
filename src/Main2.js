@@ -254,6 +254,28 @@ function App() {
         }
     };
 
+    function swapArea() {
+        // var depCity = $("#depCity").val();
+        // var arrCity = $("#arrCity").val();
+        // var depCityTit = $("#AIR_whereDepCity1").html();
+        // var arrCityTit = $("#AIR_whereArrCity1").html();
+        var depCity = $("#departCity").val();
+        var arrCity = $("#arrivelCity").val();
+        var depCityTit = $("#AIR_whereDepartCity").html();
+        var arrCityTit = $("#AIR_whereArrivelCity").html();
+
+        if(depCity != "" && arrCity != "") {
+            // $("#depCity").val(arrCity);
+            // $("#arrCity").val(depCity);
+            // $("#AIR_whereDepCity1").html(arrCityTit);
+            // $("#AIR_whereArrCity1").html(depCityTit);
+            $("#departCity").val(arrCity);
+            $("#arrivelCity").val(depCity);
+            $("#AIR_whereDepartCity").html(arrCityTit);
+            $("#AIR_whereArrivelCity").html(depCityTit);
+        }
+    }
+
     // const [startDate, setStartDate] = useState(null);
     // const [endDate, setEndDate] = useState(null);
     const [singleDate, setSingleDate] = useState({
@@ -1324,7 +1346,8 @@ function App() {
     }
 
 
-    const controller = {};
+    // const controller = {};
+    const controller = common.controller;
 
     // const cmnAlertLayer = (targetId, msg, callback) => {
     //     // var $open_btn = $("#" + targetId);
@@ -1513,7 +1536,151 @@ function App() {
         }
     }
 
-return (
+    var cscoNo = '<c:out value="${sessionUtil:getUserProfile().cscoNo}"/>';
+
+    function applyCallBack() {
+        insertAlgncombrAgr();
+        // if (mthdNmElement == 'ktxSubmit') {
+        //     ktxSubmit();
+        // } else if (mthdNmElement == 'srtSubmit') {
+        //     srtSubmit();
+        // } else if (mthdNmElement == 'airSubmit') {
+        airSubmit();
+        // }
+        //     else if (mthdNmElement == 'trnSubmit') {
+        //     trnSubmit();
+        // } else if (mthdNmElement == 'hotelSubmit') {
+        //     hotelSubmit();
+        // }
+    };
+
+    function insertAlgncombrAgr() {
+        $.ajax({
+            url : '/etc/s_InsertAlgncombrAgr.do',
+            dataType : 'json',
+            type : 'post',
+            data : {
+                "algncoScrtkey" : "32b9859741c620860e3b5376a0af78e71647b9c9c0695ad5bb6e0baa0e165542"
+            },
+            success:function(jsonObj) {
+
+            }
+            , error:function(data) {
+
+            }
+        });
+    };
+
+    function airSubmit() {
+        if (cscoNo == 1002) {
+            common.cmnAlertLayer("airStationSearch", "리뉴얼 중입니다. 새로운 모습으로 찾아뵙겠습니다.");
+            return;
+        }
+
+        if (airValidate()) {
+            var inrVal = "false";
+
+            if ($("#AIR_TAB").hasClass("current")) {
+                inrVal = "true";
+            }
+            // 기본값 세팅
+            if ($("#AIR_whereDepDate").text() == '날짜 선택') {
+                var d_date = new Date();
+                d_date.setDate(d_date.getDate() + 4);
+
+                var d_y_data = d_date.getFullYear();
+                var d_m_data = d_date.getMonth()+1;
+                var d_d_data = d_date.getDate();
+
+                $("#AIR_whereDepDate").text(d_y_data + "." + d_m_data + "." + d_d_data);
+                $("#AIR_whereDepDate").addClass("select");
+
+                if ($("#AIR_TAB").hasClass("current") && $("#AIR_whereArrDate").text() == '날짜 선택') {
+                    var a_date = new Date();
+                    a_date.setDate(a_date.getDate() + 6);
+
+                    var a_y_data = a_date.getFullYear();
+                    var a_m_data = a_date.getMonth()+1;
+                    var a_d_data = a_date.getDate();
+
+                    $("#AIR_whereArrDate").text(a_y_data + "." + a_m_data + "." + a_d_data);
+                    $("#AIR_whereArrDate").addClass("select");
+                }
+            }
+            if ($("#AIR_TAB").hasClass("current") && $("#AIR_whereArrDate").text() == '날짜 선택') {
+                var d_text = $("#AIR_whereDepDate").text().split(".");
+
+                var a_date = new Date(d_text[0], d_text[1]-1, d_text[2]);
+                a_date.setDate(a_date.getDate() + 2);
+
+                var a_y_data = a_date.getFullYear();
+                var a_m_data = a_date.getMonth()+1;
+                var a_d_data = a_date.getDate();
+
+                $("#AIR_whereArrDate").text(a_y_data + "." + a_m_data + "." + a_d_data);
+                $("#AIR_whereArrDate").addClass("select");
+            }
+
+            var cabinClass = 'Normal';
+            if ($("#AIR_question").text() == '비지니스석') {
+                cabinClass = 'Business';
+            } else if($("#AIR_question").text() == '전체') {
+                cabinClass = 'All';
+            }
+
+            var obj = {
+                "isRound" : inrVal
+                , "depDate" : $("#AIR_whereDepDate").text().replaceAll(".", "-")
+                , "arrDate" : $("#AIR_whereArrDate").text().replaceAll(".", "-")
+                , "depCity" : $("#depCity").val()
+                , "arrCity" : $("#arrCity").val()
+                , "adultCnt" : $("#AIR_C_1").val()
+                , "childCnt" : $("#AIR_C_2").val()
+                , "infantCnt" : $("#AIR_C_3").val()
+                , "reverse" : "false"
+                , "carriers" : ""
+                , "cabinClass" : cabinClass
+                , "searchYN" : "Y"
+                , "depCityNm" : $("#AIR_whereDepCity1").text()
+                , "arrCityNm" : $("#AIR_whereArrCity1").text()
+            }
+            var fmOption = {
+                "method" : "post",
+                "target" : "_self",
+                "action" : "/goods/air/s_AirList.do"
+            };
+
+            controller.createForm(fmOption);
+            controller.setSerializedFormData(obj);
+            controller.formSubmit();
+            // common.createForm(fmOption);
+            // common.setSerializedFormData(obj);
+            // common.formSubmit();
+        }
+    };
+
+    function airValidate() {
+        if ($("#AIR_whereDepCity1").text() == '출발') {
+            common.cmnAlertLayer("", "출발지를 선택하세요.");
+            return false;
+        }
+        if ($("#AIR_whereArrCity1").text() == '도착') {
+            common.cmnAlertLayer("", "도착지를 선택하세요.");
+            return false;
+        }
+// 			if ($("#AIR_whereDepDate").text() == '날짜 선택') {
+// 				cmnAlertLayer("", "가는날을 선택하세요.");
+// 				return false;
+// 			}
+// 			if ($("#AIR_TAB").hasClass("current") && $("#AIR_whereArrDate").text() == '날짜 선택') {
+// 				cmnAlertLayer("", "오는날을 선택하세요.");
+// 				return false;
+// 			}
+
+        return true;
+    };
+
+    return (
     <div style={{width: "100%", height: "100vh", overflow: "scroll",}}
         onScroll={(e) => onScroll(e)}>
 
@@ -2007,7 +2174,9 @@ return (
                                                        id="AIR_whereDepartCity">출발</a>
                                                     <input type="hidden" name="depCity" id="departCity"/>
                                                     <a href="javascript:void(0);" className="change"
-                                                       onClick="swapArea();"></a>
+                                                       // onClick="swapArea();"
+                                                       onClick={() => swapArea()}
+                                                    ></a>
                                                     <a href="javascript:void(0);" className="arrive"
                                                        // onClick="foreOpenAirStation(this, '도착지');"
                                                        onClick={(e) => foreOpenAirStation(e.currentTarget, '도착지')}
@@ -2067,7 +2236,7 @@ return (
                                                         </dl>
                                                     </div>
                                                 </div>
-                                                <div id="multi_cell_1" className="placeSel">
+                                                <div id="multi_cell_1" className="placeSel">₩
                                                     <div id="multi_travel_1" className="multiSel">
                                                         <a href="#" className="start"
                                                            // onClick="foreOpenAirStation(this, '출발지');"
@@ -2695,6 +2864,89 @@ return (
             </div>
 
         </div>
+
+        <div id="alliancePOP" className="full-layer">
+            <div className="popWrap">
+                <div className="pop-header">
+                    <div className="pop-tit">
+                        <h1>제휴서비스 이용 동의</h1>
+                        <a href="#" className="btnClose full-pop-close">닫기</a>
+                    </div>
+                </div>
+                <div className="pop-cont">
+                    <div className="boxCont a-service">
+                        <h2><span>안전한 제휴서비스<br/> 이용을 위한</span> <br/>개인정보 동의 안내</h2>
+                        <p className="mgt_25 mgb_15 gray">제휴사명 은 수준 높은 서비스 제공 및 본인확인을 위해 다음과 같이
+                            회원님의 동의 하에 개인정보를 제공하고 있습니다.
+                            회원님의 개인정보를 중요시 여기며, 정보통신망 이용촉진 및 정보
+                            보호에 관한 법률을 준수합니다.
+                        </p>
+                        <p className="mgb_30">아래 ㈜라쿠카라차 에서 제공되는 정보를 확인하시고, 동의 절차를 진행해 주시기 바랍니다.</p>
+                        <table>
+                            <caption>제휴사에 제공되는 정보</caption>
+                            <tbody>
+                            <tr>
+                                <th>서비스명</th>
+                                <td>
+                                    {/*<c:choose>*/}
+                                    {/*    <c:when test="${sessionUtil:getCscoSessionMap().skYn eq 'Y'}">*/}
+                                            라차
+                                        {/*</c:when>*/}
+                                        {/*<c:when test="${sessionUtil:getCscoSessionMap().cscoNo eq 2001}">*/}
+                                        {/*    라차*/}
+                                        {/*</c:when>*/}
+                                        {/*<c:otherwise>*/}
+                                    {/*        HCC*/}
+                                    {/*    </c:otherwise>*/}
+                                    {/*</c:choose>*/}
+                                    (기차, 기차여행, 항공, 숙박예약)
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>제공대상(업체명)</th>
+                                <td>한국철도공사, (주)플러스앤, (주)갤럭시아머니트리, (주)케이포스트, (주)플래닛비, (주)선민항공, (주)온다</td>
+                            </tr>
+                            <tr>
+                                <th>제공하는 개인정보 항목</th>
+                                <td>이름, 로그인 ID</td>
+                            </tr>
+                            <tr>
+                                <th>개인정보 이용 목적</th>
+                                <td>서비스 이용 및 주문 · 배송 등의 구매내역 관리</td>
+                            </tr>
+                            <tr>
+                                <th>개인정보의 보유 및 이용기간</th>
+                                <td>동의 시점부터 서비스 제공기간 만료일 및 탈퇴일까지</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <p className="mgt_30 mgb_20 f14 fw500">위의 개인정보를 제3자에 제공하는 것에 동의하시겠습니까?</p>
+                        <div className="flexWrap mgt_20">
+                            <a href="javascript:void(0);" className="lbtn filled-g btn-large"
+                               onClick={() => common.closeConfirmLayer()}
+                            >동의안함</a>
+                            <a href="javascript:void(0);" className="lbtn filled btn-large"
+                               style={{
+                                   background: "#466cc2",
+                                   border: "1px solid #466cc2",
+                               }}
+                               // style="background: <c:out value=" ${sessionUtil:getCscoSessionMap().btnClr}"/>;
+                               //     border:1px solid <c:out value=" ${sessionUtil:getCscoSessionMap().btnClr}"/>"
+                               // onClick="applyCallBack();"
+                               onClick={() => applyCallBack()}
+                            >동의</a>
+                        </div>
+                        <div className="mgt_30 mgb_40"><span className="rafer-red">정보 공유에 동의하지 않으시는 경우 해당 서비스를 이용하실 수 없습니다.</span>
+                        </div>
+                        <p className="gray">
+                            본 서비스는 ㈜라쿠카라차가 제휴를 통해 제공하며, 상품의 주문, 결제, 배송, 교환, 환불 등
+                            제공된 상품 및 서비스 등과 관련된 일체의 책임은 상품 및 서비스의 제공사에게 있습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         {/*<div id="footer">*/}
         {/*    <div className="footerBtm">*/}

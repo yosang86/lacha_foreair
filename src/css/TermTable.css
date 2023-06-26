@@ -1,6 +1,0 @@
-table, td {
-  border: 1pt solid #333333;
-}
-table tr:first-child > td {background: #E8E8E8; border: 1pt solid #333333;}
-td {text-align: center; word-break: keep-all;}
-table tr:not(:first-child) > td {font-size: 10.0pt;}

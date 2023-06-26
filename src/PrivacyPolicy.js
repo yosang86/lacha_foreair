@@ -1,6 +1,7 @@
 import {useEffect, useRef} from "react";
 import $ from 'jquery';
 import * as common from "./js/find";
+import style from "./css/TermTable.module.css";
 import Footer from "./Footer";
 
 function App() {
@@ -88,7 +89,9 @@ function App() {
                             <p><span>&nbsp;</span></p>
                             <p><span>&nbsp;</span></p>
                             <div style={{overflowX: "scroll",}}>
-                                <table width="100%"
+                                <table
+                                    className={`${style.table}`}
+                                    width="100%"
                                        border="1"
                                        // cellspacing="0" cellpadding="0"
                                     // border="1pt solid #333333"
@@ -208,7 +211,9 @@ function App() {
                             <p><span><b>나<span>. </span>관련법령에 의한 정보보유 사유</b></span><span>&nbsp;</span></p>
                             <p><span>&nbsp;</span></p>
                             <p><span>상법<span>, </span>전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다<span>. <br/></span>이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다</span><span>&nbsp;</span></p>
-                            <table>
+                            <table
+                                className={`${style.table}`}
+                            >
                                 <tbody>
                                     <tr>
                                         <td><p><b>정보</b></p></td>
@@ -280,7 +285,9 @@ function App() {
                             <p><span>회사는 서비스 향상을 위해서 이용자의 개인정보를 위탁 처리할 경우 반드시 사전에 위탁처리 업체명과 위탁 처리되는 개인정보의 범위<span>, </span>위탁업무 내용 등에 대해 상세하게 고지합니다</span><span>&nbsp;</span></p>
                             <p><span>&nbsp;</span></p>
                             <div>
-                                <table>
+                                <table
+                                    className={`${style.table}`}
+                                >
                                     <tbody>
                                         <tr>
                                             <td><p><b>개인정보 위탁을 받는 자</b></p></td>

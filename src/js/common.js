@@ -165,6 +165,11 @@ export const cmnConfirmLayer = (msg, func) => {
     });
 };
 
+export const closeConfirmLayer = () => {
+    $("#dimmd-layer").remove();
+    $("#alliancePOP").fadeOut().removeAttr("tabindex");
+}
+
 export const pagingHtmlTag = ($pageObj, pageInfoVO, fNm) => {
     //페이징 처리
     var firstPageNo = pageInfoVO.firstPageNo;
@@ -1072,3 +1077,580 @@ export const setSerializedFormData = (param) => {
     return resultStr;
 };
 
+export var isUrlToSubmitPost = false;
+export var isCommonEvent = false;
+
+export const controller = $.extend({
+    CommonObj : function() {
+        var that = this;
+        var $form = null;
+        var $body = null;
+        // var $body= $('body');
+
+        this.isOverLapClick = false;
+        this.ajaxCount = 0;
+
+        this.createForm = function(cfg) {
+            if (!that.$form) {
+                that.$form = $('<form></form>');
+            }
+            that.$form.empty();
+
+            if (cfg.id != undefined) {
+                that.$form.attr('id', cfg.id);
+            }
+            if (cfg.name != undefined) {
+                that.$form.attr('name', cfg.name);
+            }
+            that.$form.attr('method', cfg.method || 'post');
+            that.$form.attr('action', cfg.action || '');
+            that.$form.attr('target', cfg.target || '_self');
+            that.$body.append(that.$form);
+
+            return that.$form;
+        };
+
+        this.attachHiddenElement = function(name, value) {
+            if (!that.$form) {
+                alert('createForm() must be called');
+                return;
+            }
+
+            var $hdnEl = $('<input type="hidden"></input>');
+            $hdnEl.attr('name', name);
+            $hdnEl.attr('value', value);
+            that.$form.append($hdnEl);
+        };
+
+        this.formSerialize = function() {
+            if (that.$form) {
+                return that.$form.serialize();
+            }
+        };
+
+        this.formSubmit = function() {
+            if (that.$form) {
+                that.$form.submit();
+            }
+        };
+
+        this.setSerializedFormData = function(param) {
+            var resultStr = '';
+            if (Object.prototype.toString.call(param) === '[object Object]') {
+                var encodedParam = '';
+                for ( var p in param) {
+                    if (param.hasOwnProperty(p)) {
+                        encodedParam = param[p];
+                        if (typeof encodedParam == 'string') {
+//							encodedParam = encodedParam.replace(/\%/gm,'%25').replace(/\&/gm, '%26').replace(/\+/gm, '%2B');
+//							encodedParam = encodedParam.replace(/\&/gm, '%26').replace(/\+/gm, '%2B');
+                            //encodedParam = encodeURI(encodedParam);
+                        }
+                        var $hdnEl = $('<input type="hidden"></input>');
+                        $hdnEl.attr('name', p);
+                        $hdnEl.attr('value', encodedParam);
+                        that.$form.append($hdnEl);
+                    }
+                }
+            }
+            return resultStr;
+        };
+
+        this.getSerializedData = function(param) {
+            var resultStr = '';
+            if (Object.prototype.toString.call(param) === '[object Object]') {
+                var arr = [];
+                var encodedParam = '';
+                for ( var p in param) {
+                    if (param.hasOwnProperty(p)) {
+                        encodedParam = param[p];
+                        if (typeof encodedParam == 'string') {
+//							encodedParam = encodedParam.replace(/\%/gm,'%25').replace(/\&/gm, '%26').replace(/\+/gm, '%2B').replace(/\?/gm, '%3F');
+                            encodedParam = encodedParam.replace(/\&/gm, '%26').replace(/\+/gm, '%2B').replace(/\?/gm, '%3F').replace(/%/gm, '%25');
+                            //encodedParam = encodeURI(encodedParam); //문자열 전체를 encode 하도록 수정 - By. ijbae [2016/11/17]
+                        }
+                        arr.push(p + '=' + encodedParam);
+                    }
+                }
+
+                resultStr = arr.join('&');
+            } else if ($.isArray(param)) {
+                resultStr = param.join('&');
+            }
+            return resultStr;
+        };
+
+        this.getSerializedFormData = function($formObj) {
+            var resultStr = '';
+            var arr = [];
+            if ($formObj != null && $formObj != "") {
+                $($formObj).find("input").each(function() {
+                    if ($(this).attr("name") != null) {
+                        arr.push($(this).attr("name") + '=' + $(this).val());
+                    }
+                });
+            }
+            resultStr = arr.join('&');
+            return resultStr;
+        };
+
+
+        this.getUrlToSubmitPost = function(url, target) {
+            if (url == null) {
+                return;
+            }
+
+            var param = "";
+            if (url.indexOf("?") > -1) {
+                param = url.substring(url.indexOf("?")+1, url.length);
+                url = url.substring(0, url.indexOf("?"));
+
+                if (target == null) {
+                    target = "_self";
+                }
+
+                $.loadBlock(null, "처리중입니다.");
+                isUrlToSubmitPost = true;
+
+                var fmOption = {
+                    "id" : "postSbumit",
+                    "name" : "postSbumit",
+                    "target" : target,
+                    "action" : url
+                }
+                that.createForm(fmOption);
+
+                var paramList = param.split("&");
+
+                for (var i=0; i < paramList.length; i++) {
+                    var paramObj = paramList[i].split("=");
+                    var paramNm = paramObj[0];
+                    var paramValue = "";
+                    if (paramObj.length == 2) {
+                        paramValue = paramObj[1];
+                    }
+                    // 암호화된 get Url인코딩 되어있는거 푼다.
+                    if (typeof paramValue == 'string') {
+                        paramValue = paramValue.replace(/\&/gm, '%26').replace(/\+/gm, '%2B').replace(/\?/gm, '%3F').replace(/%/gm, '%25');
+                    }
+                    that.attachHiddenElement(paramNm, decodeURIComponent(paramValue));
+
+                }
+                that.formSubmit();
+            } else {
+                window.location.href = url;
+            }
+
+        };
+
+        this.ajaxSend = function(cfg) {
+
+            if (cfg.isOverLap == undefined) {
+                cfg.isOverLap = true;
+            }
+
+            if (cfg.isBlock == undefined) {
+                cfg.isBlock = true;
+            }
+
+            if (cfg.isBlock) {
+                $.loadBlock(cfg.isBlockTarget, cfg.blockText);
+            }
+
+            if (that.isOverLapClick) {
+                alert("잠시만 기다려주세요.");
+                $.loadUnBlock();
+                return;
+            }
+
+            if (cfg.isOverLap == false) {
+                that.isOverLapClick = true;
+            }
+            that.ajaxCount++;
+
+            $.ajax({
+                url : cfg.url,
+                data : cfg.data,
+                type : (cfg.method == undefined) ? 'post': cfg.method,
+                contentType : (cfg.contentType == undefined) ? 'application/x-www-form-urlencoded;charset=UTF-8' : cfg.contentType,
+                cache : false,
+                dataType : cfg.dataType,
+                async : (cfg.async == undefined) ? true : cfg.async,
+                timeout : (cfg.timeout == undefined) ? 60000 : cfg.timeout,
+                isBlock : (cfg.isBlock == undefined) ? true : cfg.isBlock,
+                isBlockTarget : (cfg.isBlockTarget == undefined) ? null : cfg.isBlockTarget,
+                errorCall : (cfg.errorCall == undefined) ? function() { } : cfg.errorCall,
+                error : function(e, status, exception) {
+
+                    that.ajaxCount--;
+                    that.isOverLapClick = false;
+
+                    if (this.isBlockTarget != null) {
+                        $.loadUnBlock(this.isBlockTarget);
+                    }
+                    $.loadUnBlock();
+
+                    var data = e.responseJSON;
+                    if (data != null) {
+                        if (data.RES.returnCode == "02" ) {		//02 실패
+                            var msg = data.RES.returnMsg;
+                            var rUrl = data.RES.returnUrl;
+                            alert(msg.replace(/\\n/g, "\n"));
+
+                            if (rUrl != "null" && $.trim(rUrl).length > 0) {
+
+                                if (rUrl == 'HISTORYBACK') {
+                                    window.history.go(-1);
+                                    return;
+                                }else if(rUrl == 'SELFCLOSE'){
+                                    window.parent.lyPop.close();
+                                    return;
+                                }
+                                window.top.location.href = rUrl;
+                            }
+                            if (cfg.errorCall != undefined) {
+                                cfg.errorCall(data);
+                            }
+                            return;
+                        }else if (data.RES.returnCode == "06")  { // 06 에러공지
+                            var msg = data.RES.returnMsg;
+                            $.layerError(cfg.isBlockTarget , msg) ;
+                            return;
+                        }else if (data.RES.returnCode == "08")  { // 08 접근권한
+                            var msg = data.RES.returnMsg;
+                            $.layerAlert(cfg.isBlockTarget , msg) ;
+                            return;
+
+                        }
+                    }
+
+                    if (cfg.errorCall != undefined) {
+                        cfg.errorCall(e);
+                        return;
+                    }
+
+                    // error code : 0 ==> timeout
+                    // error code : 500 ==> internal server
+                    // error
+                    var errorMsg = '';
+                    if (e.status == '0') {
+                        errorMsg = '네트워크 에러입니다. 통신연결 상태를 확인하세요';
+                    } else {
+                        errorMsg = '서버 에러입니다. 관리자에게 문의해 주시기 바랍니다.';
+                    }
+                    alert(errorMsg);
+
+                }, success : function(data) {
+
+                    that.ajaxCount--;
+                    that.isOverLapClick = false;
+
+                    if (this.isBlockTarget != null) {
+                        $.loadUnBlock(this.isBlockTarget);
+                    }
+
+                    if (that.ajaxCount == 0) {
+                        $.loadUnBlock();
+                    }
+                    if (this.dataType == 'html') {
+                        cfg.successCall(data);
+                        return;
+                    }
+
+                    if (typeof data.RES == "undefined") {
+                        alert("알수없는 오류가 발생 하였습니다.관리자 에게 문의 해주세요");
+                        return;
+                    }
+
+                    if (data != null) {
+                        if (data.RES.returnCode == "02" ) {		//02 실패
+                            var msg = data.RES.returnMsg;
+                            var rUrl = data.RES.returnUrl;
+
+                            alert(msg.replace(/\\n/g, "\n"));
+
+                            if (rUrl != "null" && $.trim(rUrl).length > 0) {
+
+                                if (rUrl == 'HISTORYBACK') {
+                                    window.history.go(-1);
+                                    return;
+                                }else if(rUrl == 'SELFCLOSE'){
+                                    window.parent.lyPop.close();
+                                    return;
+                                }
+                                window.top.location.href = rUrl;
+                            }
+                            if (cfg.errorCall != undefined) {
+                                cfg.errorCall(data);
+                            }
+                            return;
+                        }else if (data.RES.returnCode == "06" ){  //06 에러공지
+                            var msg = data.RES.returnMsg;
+                            $.layerError(cfg.isBlockTarget , msg) ;
+                            return;
+                        }else if (data.RES.returnCode == "08"){  // 08 접근권한
+                            var msg = data.RES.returnMsg;
+                            $.layerAlert(cfg.isBlockTarget , msg) ;
+                            return;
+                        }
+                    }
+
+
+
+                    cfg.successCall(data);
+
+                }
+            });
+        };
+
+        this.onCreate = function() {
+        };
+
+        this.eventInit = function() {
+        };
+
+        this.enterToBr = function(str) {
+            var strReturn = "";
+            strReturn = str.replace(/\n/g, "<br>").replace(/\\n/g, "<br>");
+            return strReturn;
+        };
+
+        // null check
+        this.nvl = function(s, s2) {
+            var retStr = "";
+            s = $.trim(s);
+            if (s != null && s !== "") {
+                retStr = s;
+            } else {
+                retStr = s2;
+            }
+
+            return retStr;
+        };
+
+        //이메일 유효성 체크
+        this.emailValidate = function(str) {
+            var regExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+            if(!regExp.test(str)){
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        //휴대폰 번호 유효성 체크
+        this.cellNoValidate = function(str) {
+            var regExp = /^01([0|1|6|7|8|9]?)-?([0-9]{3,4})-?([0-9]{4})$/;
+
+            if(!regExp.test(str)){
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        //숫자 유효성 체크
+        this.numberValidate = function(str) {
+            var regExp = /^[0-9]+$/;
+            if(!regExp.test(str)){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // null 체크
+        this.isNull = function(str) {
+            if (str != "" && str != undefined && str != null && str != 'null') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+        // 날짜 형식인지 체크
+        this.isValidDate = function(str) {
+            // Checks for the following valid date formats:
+            // Also separates date into month, day, and year variables
+            var datePat = /^(\d{2}|\d{4})(\/|-)(\d{1,2})\2(\d{1,2})$/;
+
+            var matchArray = str.match(datePat); // is the format ok?
+            if (matchArray == null) {
+                return false;
+            }
+            let year = matchArray[1];
+            let month = matchArray[3]; // parse date into variables
+            let day = matchArray[4];
+
+            if (month < 1 || month > 12) { // check month range
+                return false;
+            }
+            if (day < 1 || day > 31) {
+                return false;
+            }
+            if ((month == 4 || month == 6 || month == 9 || month == 11) && day == 31) {
+                return false;
+            }
+            if (month == 2) { // check for february 29th
+                var isleap = (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+
+                if (day > 29 || (day == 29 && !isleap)) {
+                    return false;
+                }
+            }
+            return true; // date is valid
+        };
+
+        this.init = function() {
+            that.$body = $('body');
+            this.eventInit();
+            this.onCreate();
+            if (isCommonEvent == false) {
+                this.commonEvent();
+            }
+
+            //$("#returnUrl").val(location.pathname);
+
+        };
+
+        this.maxLengthCheck = function(object) {
+            if (object.value.length > object.maxLength) {
+                object.value = object.value.slice(0, object.maxLength);
+            }
+        };
+
+        // 날짜 반환
+        this.converDateString = function(dt,h){
+            return dt.getFullYear() + h + this.addZero(eval(dt.getMonth()+1)) + h + this.addZero(dt.getDate());
+        };
+
+        this.addZero = function(i){
+            var rtn = i+100;
+            return rtn.toString().substring(1,3);
+        };
+
+        // 공통 이벤트 바인딩
+        this.commonEvent = function () {
+            isCommonEvent = true;
+
+            // 숫자만 입력가능 (ex: <input type="text" class="onlyNum" />)
+            $(document).on("blur", ".onlyNum", function() {
+                $(this).val($(this).val().replace(/[^0-9]/gi, ""));
+            });
+
+            $(document).on("keypress, keyup", ".onlyNum", function(e) {
+                $(this).val($(this).val().replace(/[^0-9]/gi, ""));
+            });
+
+            // 영어, 숫자
+            $(document).on("keypress, keyup, blur", ".onlyNumEng", function(event) {
+                var pattern = /[^\sa-zA-Z0-9\.]/g;
+                $(this).val($(this).val().replace(pattern, ""));
+            });
+
+            // 완성형 한글, 영어 (ex: <input type="text" class="nameRegular"
+            $(document).on("keypress, keyup",".nameRegular",function(){
+                var pattern = /[^\s가-힝a-zA-Z]/g;
+                if (pattern.test($(this).val())) {
+                    $(this).val($(this).val().replace(pattern, ""));
+                    $(this).focus();
+                }
+            });
+            $(document).on("blur",".nameRegular",function(){
+                var pattern = /[^\s가-힝a-zA-Z]/g;
+                if (pattern.test($(this).val())) {
+                    $(this).val($(this).val().replace(pattern, ""));
+                    $(this).focus();
+                }
+            });
+
+
+            //Disable browser refresh key [F5, Ctrl + F5, Ctrl + R, Shift + Ctrl + R]
+            $(document).on("keydown", function(e) {
+                /*var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+                var event = window.event || e;
+                if(event.keyCode == 116 || event.ctrlKey && event.keyCode == 82) {
+                    event.keyCode = 0; // ie7,8
+                    if(!isFirefox) alert("현재 화면에서는 새로고침을 하실 수 없습니다.");
+                    return false;
+                }*/
+            });
+
+
+
+        };
+
+        // 우편번호에 하이픈추가
+        this.addHyphenZip = function(zipCode) {
+            if (zipCode != undefined && zipCode.length == 6) {
+                return zipCode.replace(/(^.{3})(.)/, '$1-$2');
+            } else {
+                return zipCode;
+            }
+        };
+
+        this.addCom = function(paramInt) {
+            if (isNaN(paramInt)) {
+                return 0;
+            }
+            var reg = /(^[+-]?\d+)(\d{3})/; // 정규식
+            var rtnValue = paramInt + ''; // 숫자를 문자열로 변환
+
+            while (reg.test(rtnValue)) {
+                rtnValue = rtnValue.replace(reg, '$1,$2');
+            }
+            return rtnValue;
+        };
+
+        // 월의 끝 일자 얻기 (param = yyyyMM)
+        this.getEndDate = function(datestr) {
+            var yy = Number(datestr.substring(0, 4));
+            var mm = Number(datestr.substring(4, 6));
+            // 윤년 검증
+            var boundDay = "";
+            if (mm != 2) {
+                var mon = new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                boundDay = mon[mm - 1];
+            } else {
+                if (yy % 4 == 0 && yy % 100 != 0 || yy % 400 == 0) {
+                    boundDay = 29;
+                } else {
+                    boundDay = 28;
+                }
+            }
+            return boundDay;
+        };
+
+
+        // 해당 월의 전체 일자 얻기 (param = yyyyMM)
+        this.getMonthAllDateArray = function (datestr) {
+            var arrayDate = new Array();
+
+            var lastDate = this.getEndDate(datestr);
+            lastDate = parseInt(lastDate);
+            for (var i=1; i <= lastDate; i++) {
+                arrayDate.push(i);
+            }
+
+            return arrayDate;
+        };
+
+        // 월이 1자리 일경우 앞에 0붙이기
+        this.addMMZero = function (date) {
+            date = date + "";
+            if (date.length == 1) {
+                date = "0" + date;
+            }
+            return date;
+        }
+
+        // 레이어 팝업 box로 alert 보여주는 함수
+        // TODO : 추후변경필요.
+        this.msgBoxAlert = function(msg, rtnObj) {
+
+            alert(msg);
+
+        };
+
+    }
+});

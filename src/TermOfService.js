@@ -1,7 +1,7 @@
 import {useRef} from "react";
 import $ from 'jquery';
 import * as common from "./js/find";
-import "./css/TermTable.css"
+// import "./css/TermTable.module.css";
 import Footer from "./Footer";
 
 function App() {
