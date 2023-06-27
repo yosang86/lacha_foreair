@@ -1,4 +1,4 @@
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import $ from 'jquery';
 // import * as common from "./js/common";
 import * as common from "./js/find";
@@ -9,6 +9,18 @@ function App() {
     document.getElementsByTagName('body')[0].classList.add('sub');
 
     useEffect(() => {
+        $(document).on("click",".inforCheck.type2 a",function(){
+            // console.log(this);
+
+            // $(this).closest("div").toggleClass("active");
+            // if ($(this).closest("div").hasClass("active")) {
+            //     $(this).closest("div").siblings(".reception").show();
+            // }
+            // else {
+            //     $(this).closest("div").siblings(".reception").hide();
+            // }
+        })
+
         $(document).on("click","#agreeConfirm",function(){
             if($(this).data('isClicked')) return true;
             $(this).data('isClicked', true);
@@ -86,17 +98,34 @@ function App() {
             $(obj).closest("div").find("#agrYn").val("N");
         }
 
+        let newState = {...active};
+        if (id == "mng") newState["0"] = true;
+        else if (id == "fvr") newState["1"] = true;
+        setActive(newState);
+
         $(obj).closest("div").addClass("active");
         $(obj).closest("div").parent().closest("div").find(".reception").show();
     }
-    const doToggleReception = (obj) => {
-        $(obj).closest("div").toggleClass("active");
-        if ($(obj).closest("div").hasClass("active")) {
-            $(obj).closest("div").siblings(".reception").show();
-        }
-        else {
-            $(obj).closest("div").siblings(".reception").hide();
-        }
+
+    const [active, setActive] = useState({
+        0: false,
+        1: false,
+    });
+    const doToggleReception = (obj, state) => {
+        let newState = {...active};
+        newState[state] = !active[state];
+        setActive(newState)
+
+        // console.log($(obj).closest("div"));
+        // $(obj).closest("div").toggleClass("active");
+        // if ($(obj).closest("div").hasClass("active")) {
+        //     $(obj).closest("div").removeClass("active");
+        //     $(obj).closest("div").siblings(".reception").hide();
+        // }
+        // else {
+        //     $(obj).closest("div").addClass("active");
+        //     $(obj).closest("div").siblings(".reception").show();
+        // }
     }
     const doCheck = () => {
         var checkflag = false;
@@ -2615,7 +2644,8 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                         </li>
                                         <li>
                                             <div className="inforCheck type2">
-                                                <div className="inner re1 down">
+                                                <div className={`inner re1 down ${active["0"] ? 'active' : ''}`}>
+                                                {/*<div className={`inner re1 down`}>*/}
                                                     <span className="schk">
                                                         <input type="checkbox" name="termCheck" id="termsCheck98"
                                                             // onClick="doSelectCheck(this,'mng')"
@@ -2626,7 +2656,7 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                                         </label>
                                                         <input type="hidden" name="agrYn" id="agrYn" value="N"/>
                                                     </span>
-                                                    <a href="javascript:void(0);" className="rea1" onClick={(e) => doToggleReception(e.currentTarget)}>
+                                                    <a href="javascript:void(0);" className="rea1" onClick={(e) => doToggleReception(e.currentTarget, 0)}>
                                                         <span className="hidden">[라쿠카라차] 운영 정보 수신동의  (선택)</span>
                                                     </a>
                                                 </div>
@@ -2676,7 +2706,8 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                         </li>
                                         <li>
                                             <div className="inforCheck type2">
-                                                <div className="inner re2 down">
+                                                <div className={`inner re2 down ${active["1"] ? 'active' : ''}`}>
+                                                {/*<div className="inner re2 down">*/}
                                                     <span className="schk">
                                                         <input type="checkbox" name="termCheck" id="termsCheck99"
                                                             // onClick="doSelectCheck(this,'fvr')"
@@ -2685,7 +2716,7 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                                         <label htmlFor="termsCheck99">혜택정보 수신동의 (선택)</label>
                                                         <input type="hidden" name="agrYn" id="agrYn" value="N"/>
                                                     </span>
-                                                    <a href="javascript:void(0);" className="rea2" onClick={(e) => doToggleReception(e.currentTarget)}>
+                                                    <a href="javascript:void(0);" className="rea2" onClick={(e) => doToggleReception(e.currentTarget, 1)}>
                                                             <span className="hidden">혜택정보 수신동의 (선택)</span>
                                                     </a>
                                                 </div>

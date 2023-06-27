@@ -372,7 +372,7 @@ function App() {
                     target.appendChild(liEl);
                 }
             },
-            error:function(data) {
+            error: function(data) {
                 common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
                 return;
             }
@@ -2936,7 +2936,8 @@ function App() {
                                onClick={() => applyCallBack()}
                             >동의</a>
                         </div>
-                        <div className="mgt_30 mgb_40"><span className="rafer-red">정보 공유에 동의하지 않으시는 경우 해당 서비스를 이용하실 수 없습니다.</span>
+                        <div className="mgt_30 mgb_40">
+                            <span className="rafer-red">정보 공유에 동의하지 않으시는 경우 해당 서비스를 이용하실 수 없습니다.</span>
                         </div>
                         <p className="gray">
                             본 서비스는 ㈜라쿠카라차가 제휴를 통해 제공하며, 상품의 주문, 결제, 배송, 교환, 환불 등

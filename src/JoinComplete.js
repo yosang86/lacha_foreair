@@ -22,13 +22,16 @@ function App() {
                                 <ol className="stepList">
                                     <li>
                                         <div className="step01"></div>
-                                        <em>약관동의</em></li>
+                                        <em>약관동의</em>
+                                    </li>
                                     <li>
                                         <div className="step02"></div>
-                                        <em>정보입력</em></li>
+                                        <em>정보입력</em>
+                                    </li>
                                     <li>
                                         <div className="step03 on"></div>
-                                        <em>가입완료</em></li>
+                                        <em>가입완료</em>
+                                    </li>
                                 </ol>
                             </div>
                         </div>
