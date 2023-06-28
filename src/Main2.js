@@ -2236,7 +2236,7 @@ function App() {
                                                         </dl>
                                                     </div>
                                                 </div>
-                                                <div id="multi_cell_1" className="placeSel">₩
+                                                <div id="multi_cell_1" className="placeSel">
                                                     <div id="multi_travel_1" className="multiSel">
                                                         <a href="#" className="start"
                                                            // onClick="foreOpenAirStation(this, '출발지');"

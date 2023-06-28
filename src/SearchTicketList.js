@@ -1,6 +1,4 @@
-// import 'bootstrap/dist/js/bootstrap';
-// import 'bootstrap/dist/css/bootstrap.css';
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import $ from 'jquery';
 import {ko} from "date-fns/esm/locale";
 import DatePicker from "react-datepicker";
@@ -8,7 +6,7 @@ import Slider from 'rc-slider';
 import * as common from './js/common';
 import * as custom from './js/custom';
 import 'rc-slider/assets/index.css';
-import './css/MyPage.css';
+// import './css/MyPage.css';
 import './css/common.css';
 import './css/search-content.css';
 import './css/ReactRangeSlider.css';
@@ -1538,6 +1536,11 @@ function MyPage() {
         document.getElementById("searchCount").innerHTML = count;
     }
 
+    function zeroFormat(value) {
+        if (value.toString().length == 1) return "0" + value;
+        else return value;
+    }
+
     let fareList;
     let availsList;
     let mappingList;
@@ -2321,22 +2324,29 @@ function MyPage() {
         });
     }
 
+    const [defaultPrice, setDefaultPrice] = useState([0, 9999900]);
+    const [startTime, setStartTime] = useState([0, 1439]);
+    const [arriveTime, setArriveTime] = useState([0, 1439]);
+    const [startHour, setStartHour] = useState([0, 1439]);
+    const [arriveHour, setArriveHour] = useState([0, 1439]);
     const initSlider = (type, id1, id2) => {
         if (type) {
-            $("#slider-range").slider({values: [lowCostValue, highCostValue]});
-            $("#min_price").val(comma(lowCostValue));
-            $("#max_price").val(comma(highCostValue));
-            $("#start_time").slider({values: timeStartValue});
-            $("#arrive_time").slider({values: timeArrvValue});
-            $("#max_start_time").val(timeSlider(timeStartValue[1]));
-            $("#max_arrive_time").val(timeSlider(timeArrvValue[1]));
+            // $("#slider-range").slider({values: [lowCostValue, highCostValue]});
+            // $("#min_price").val(comma(lowCostValue));
+            // $("#max_price").val(comma(highCostValue));
+            // $("#start_time").slider({values: timeStartValue});
+            // $("#arrive_time").slider({values: timeArrvValue});
+            // $("#max_start_time").val(timeSlider(timeStartValue[1]));
+            // $("#max_arrive_time").val(timeSlider(timeArrvValue[1]));
+
+            setDefaultPrice([0, 9999900]);
         } else {
-            $("#" + id1).slider({values: [0, 2400]});
-            $("#" + id2).slider({values: [0, 2400]});
-            $("#min_" + id1).val(time(timeInitValue[0]));
-            $("#min_" + id2).val(time(timeInitValue[0]));
-            $("#max_" + id1).val(time(timeInitValue[1]));
-            $("#max_" + id2).val(time(timeInitValue[1]));
+            // $("#" + id1).slider({values: [0, 2400]});
+            // $("#" + id2).slider({values: [0, 2400]});
+            // $("#min_" + id1).val(time(timeInitValue[0]));
+            // $("#min_" + id2).val(time(timeInitValue[0]));
+            // $("#max_" + id1).val(time(timeInitValue[1]));
+            // $("#max_" + id2).val(time(timeInitValue[1]));
         }
     }
     // function mappingListSort(callType) {
@@ -3775,7 +3785,8 @@ function MyPage() {
                                         <input type="checkbox" id="cbx_direct_chkAll" name="chk_direct" value="A"
                                             // onClick="checkDirectValue(this)"
                                             onClick={(e) => checkDirectValue(e.currentTarget)}
-                                            checked="checked"/>
+                                            // checked="checked"
+                                        />
                                         <label htmlFor="cbx_direct_chkAll">전체</label>
                                     </div>
                                     <div className="chkBox">
@@ -3800,7 +3811,8 @@ function MyPage() {
                                         <input type="checkbox" id="cbx_fee_chkAll" name="chk_fee" value="A"
                                             // onClick="checkCashValue(this)"
                                             onClick={(e) => checkCashValue(e.currentTarget)}
-                                            checked="checked"/>
+                                            // checked="checked"
+                                        />
                                         <label htmlFor="cbx_fee_chkAll">전체</label>
                                     </div>
                                     <div className="chkBox">
@@ -3831,13 +3843,13 @@ function MyPage() {
                                 <div className="handler_wrap">
                                     <div className="wonHandler">
                                         <div className="price-min">
-                                            <input type="text" id="min_price" className="price-range-field"/>
-                                            <span className="min_won">0원</span>
+                                            <input type="text" id="min_price" className="price-range-field" value={defaultPrice[0].toLocaleString("ko-KR")} readOnly={true}/>
+                                            <span className="min_won">원</span>
                                         </div>
 
                                         <div className="price-max">
-                                            <input type="text" id="max_price" className="price-range-field"/>
-                                            <span className="max_won">9,999,900원</span>
+                                            <input type="text" id="max_price" className="price-range-field" value={defaultPrice[1].toLocaleString("ko-KR")} readOnly={true}/>
+                                            <span className="max_won">원</span>
                                         </div>
                                     </div>
 
@@ -3853,7 +3865,13 @@ function MyPage() {
                                         range
                                         allowCross={false}
                                         defaultValue={[0, 9999900]}
-                                        onChange={(value) => console.log(value)}
+                                        onChange={(value) => {
+                                            setDefaultPrice(value);
+                                            // defaultPrice.current = value;
+                                            // $("#min_price").val(value[0].toLocaleString("ko-KR"));
+                                            // $("#max_price").val(value[1].toLocaleString("ko-KR"));
+                                        }}
+                                        value={defaultPrice}
                                         min={0}
                                         max={9999900}
                                     />
@@ -3870,10 +3888,10 @@ function MyPage() {
                                     <div className="wonHandler">
                                         <span className="handlerTxt">가는날 출발시간</span>
                                         <div className="price-min">
-                                            <input type="text" id="min_start" className="price-range-field" value="00:00"/>
+                                            <input type="text" id="min_start" className="price-range-field" value={zeroFormat(Math.floor(startTime[0] / 60)) + ":" + zeroFormat(startTime[0] % 60)} readOnly={true}/>
                                         </div>
                                         <div className="price-max">
-                                            <input type="text" id="max_start" className="price-range-field" value="23:59"/>
+                                            <input type="text" id="max_start" className="price-range-field" value={zeroFormat(Math.floor(startTime[1] / 60)) + ":" + zeroFormat(startTime[1] % 60)} readOnly={true}/>
                                         </div>
                                     </div>
                                     {/*<div id="start"*/}
@@ -3886,19 +3904,22 @@ function MyPage() {
                                     <Slider
                                         range
                                         allowCross={false}
-                                        defaultValue={[100000, 5000000]}
-                                        onChange={() => console.log("change")}
+                                        defaultValue={[0, 1439]}
+                                        onChange={(value) => {
+                                            setStartTime(value);
+                                        }}
+                                        value={startTime}
                                         min={0}
-                                        max={9999900}
+                                        max={1439}
                                     />
 
                                     <div className="wonHandler">
                                         <span className="handlerTxt">오는날 출발시간</span>
                                         <div className="price-min">
-                                            <input type="text" id="min_arrive" className="price-range-field" value="00:00"/>
+                                            <input type="text" id="min_arrive" className="price-range-field" value={zeroFormat(Math.floor(arriveTime[0] / 60)) + ":" + zeroFormat(arriveTime[0] % 60)} readOnly={true}/>
                                         </div>
                                         <div className="price-max">
-                                            <input type="text" id="max_arrive" className="price-range-field" value="23:59"/>
+                                            <input type="text" id="max_arrive" className="price-range-field" value={zeroFormat(Math.floor(arriveTime[1] / 60)) + ":" + zeroFormat(arriveTime[1] % 60)} readOnly={true}/>
                                         </div>
                                     </div>
                                     {/*<div id="arrive"*/}
@@ -3911,10 +3932,13 @@ function MyPage() {
                                     <Slider
                                         range
                                         allowCross={false}
-                                        defaultValue={[100000, 5000000]}
-                                        onChange={() => console.log("change")}
+                                        defaultValue={[0, 1439]}
+                                        onChange={(value) => {
+                                            setArriveTime(value);
+                                        }}
+                                        value={arriveTime}
                                         min={0}
-                                        max={9999900}
+                                        max={1439}
                                     />
                                 </div>
 
@@ -3929,10 +3953,10 @@ function MyPage() {
                                     <div className="wonHandler">
                                         <span className="handlerTxt">가는날 소요시간</span>
                                         <div className="price-min">
-                                            <input type="text" id="min_start_time" className="price-range-field" value="00:00"/>
+                                            <input type="text" id="min_start_time" className="price-range-field" value={zeroFormat(Math.floor(startHour[0] / 60)) + ":" + zeroFormat(startHour[0] % 60)} readOnly={true}/>
                                         </div>
                                         <div className="price-max">
-                                            <input type="text" id="max_start_time" className="price-range-field" value="23:59"/>
+                                            <input type="text" id="max_start_time" className="price-range-field" value={zeroFormat(Math.floor(startHour[1] / 60)) + ":" + zeroFormat(startHour[1] % 60)} readOnly={true}/>
                                         </div>
                                     </div>
                                     {/*<div id="start_time"*/}
@@ -3945,19 +3969,22 @@ function MyPage() {
                                     <Slider
                                         range
                                         allowCross={false}
-                                        defaultValue={[100000, 5000000]}
-                                        onChange={() => console.log("change")}
+                                        defaultValue={[0, 1439]}
+                                        onChange={(value) => {
+                                            setStartHour(value);
+                                        }}
+                                        value={startHour}
                                         min={0}
-                                        max={9999900}
+                                        max={1439}
                                     />
 
                                     <div className="wonHandler">
                                         <span className="handlerTxt">오는날 소요시간</span>
                                         <div className="price-min">
-                                            <input type="text" id="min_arrive_time" className="price-range-field" value="00:00"/>
+                                            <input type="text" id="min_arrive_time" className="price-range-field" value={zeroFormat(Math.floor(arriveHour[0] / 60)) + ":" + zeroFormat(arriveHour[0] % 60)} readOnly={true}/>
                                         </div>
                                         <div className="price-max">
-                                            <input type="text" id="max_arrive_time" className="price-range-field" value="23:59"/>
+                                            <input type="text" id="max_arrive_time" className="price-range-field" value={zeroFormat(Math.floor(arriveHour[1] / 60)) + ":" + zeroFormat(arriveHour[1] % 60)} readOnly={true}/>
                                         </div>
                                     </div>
                                     {/*<div id="arrive_time"*/}
@@ -3970,10 +3997,13 @@ function MyPage() {
                                     <Slider
                                         range
                                         allowCross={false}
-                                        defaultValue={[100000, 5000000]}
-                                        onChange={() => console.log("change")}
+                                        defaultValue={[0, 1439]}
+                                        onChange={(value) => {
+                                            setArriveHour(value);
+                                        }}
+                                        value={arriveHour}
                                         min={0}
-                                        max={9999900}
+                                        max={1439}
                                     />
 
                                 </div>
