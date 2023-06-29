@@ -613,14 +613,14 @@ function MyPage() {
             $("#AIR_FORE_DATASEL").find("dl").eq(1).show();
             $("#AIR_FORE_DATASEL").removeClass("v1");
             $("#AIR_FORE_DATASEL").addClass("v2");
-            $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").removeClass("select");
-            $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").text("날짜 선택");
+            // $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").removeClass("select");
+            // $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").text("날짜 선택");
         } else if (ord == 1) {
+            $("#AIR_FORE_DATASEL").find("dl").eq(1).hide();
             $("#AIR_FORE_DATASEL").removeClass("v2");
             $("#AIR_FORE_DATASEL").addClass("v1");
-            $("#AIR_FORE_DATASEL").find("dl").eq(1).hide();
-            $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").removeClass("select");
-            $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").text("날짜 선택");
+            // $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").removeClass("select");
+            // $("#AIR_FORE_DATASEL").find("dl").eq(1).find("dd").text("날짜 선택");
         }
 
         if (ord == 2) {
@@ -773,16 +773,24 @@ function MyPage() {
     }
 
     const swapArea = () => {
-        var depCity = $("#depCity").val();
-        var arrCity = $("#arrCity").val();
-        var depCityTit = $("#AIR_whereDepCity1").html();
-        var arrCityTit = $("#AIR_whereArrCity1").html();
+        // var depCity = $("#depCity").val();
+        // var arrCity = $("#arrCity").val();
+        // var depCityTit = $("#AIR_whereDepCity1").html();
+        // var arrCityTit = $("#AIR_whereArrCity1").html();
+        var depCity = $("#departCity").val();
+        var arrCity = $("#arrivelCity").val();
+        var depCityTit = $("#AIR_whereDepartCity").html();
+        var arrCityTit = $("#AIR_whereArrivelCity").html();
 
         if(depCity != "" && arrCity != "") {
-            $("#depCity").val(arrCity);
-            $("#arrCity").val(depCity);
-            $("#AIR_whereDepCity1").html(arrCityTit);
-            $("#AIR_whereArrCity1").html(depCityTit);
+            // $("#depCity").val(arrCity);
+            // $("#arrCity").val(depCity);
+            // $("#AIR_whereDepCity1").html(arrCityTit);
+            // $("#AIR_whereArrCity1").html(depCityTit);
+            $("#departCity").val(arrCity);
+            $("#arrivelCity").val(depCity);
+            $("#AIR_whereDepartCity").html(arrCityTit);
+            $("#AIR_whereArrivelCity").html(depCityTit);
         }
     }
 
@@ -1353,53 +1361,50 @@ function MyPage() {
     }
 
     function initFTSlider(){
-        var min_1=9999;
-        var max_1=0;
-        var min_2=9999;
-        var max_2=0;
+        // var min_1=9999;
+        // var max_1=0;
+        // var min_2=9999;
+        // var max_2=0;
+        //
+        // let avail_list=xmlData.getElementsByTagName("AVAIL")
+        // let len=avail_list.length
+        // for(var i=0;i<len;i++){
+        //     var _in=avail_list[i].getElementsByTagName("IN")[0].innerHTML
+        //     //var in= avail_list[i].getElementsByTagName("IN")[0].innerHTML
+        //     var ft=avail_list[i].getElementsByTagName("FLIGHT_TIME")[0].innerHTML
+        //     //console.log(ft)
+        //     if(_in=="1"){
+        //         if(ft<min_1)	min_1=ft;
+        //         if(ft>max_1)	max_1=ft;
+        //     }else if(_in=="2"){
+        //         if(ft<min_2)	min_2=ft;
+        //         if(ft>max_2)	max_2=ft;
+        //     }
+        // }
+        //
+        // $('#start_time').slider("option","values",[parseInt(min_1),parseInt(max_1)])
+        // $('#start_time').slider("option","min",parseInt(min_1))
+        // $('#start_time').slider("option","max",parseInt(max_1))
+        //
+        // var min_st=timeSlider(min_1);
+        // var max_st=timeSlider(max_1)
+        //
+        // $('#min_start_time').val(min_st)
+        // $('#max_start_time').val(max_st)
+        //
+        // var min_arr=timeSlider(min_2);
+        // var max_arr=timeSlider(max_2)
+        // // console.log(min_1+","+max_1+","+min_2+","+max_2)
+        // // console.log(min_st+","+max_st+","+min_arr+","+max_arr)
+        // $('#min_arrive_time').val(min_arr)
+        // $('#max_arrive_time').val(max_arr)
+        //
+        // $('#arrive_time').slider("option","values",[parseInt(min_2),parseInt(max_2)])
+        // $('#arrive_time').slider("option","min",parseInt(min_2))
+        // $('#arrive_time').slider("option","max",parseInt(max_2))
 
-        let avail_list=xmlData.getElementsByTagName("AVAIL")
-        let len=avail_list.length
-        for(var i=0;i<len;i++){
-
-
-            var _in=avail_list[i].getElementsByTagName("IN")[0].innerHTML
-            //var in= avail_list[i].getElementsByTagName("IN")[0].innerHTML
-            var ft=avail_list[i].getElementsByTagName("FLIGHT_TIME")[0].innerHTML
-            //console.log(ft)
-            if(_in=="1"){
-                if(ft<min_1)	min_1=ft;
-                if(ft>max_1)	max_1=ft;
-            }else if(_in=="2"){
-                if(ft<min_2)	min_2=ft;
-                if(ft>max_2)	max_2=ft;
-
-            }
-
-        }
-
-
-        $('#start_time').slider("option","values",[parseInt(min_1),parseInt(max_1)])
-        $('#start_time').slider("option","min",parseInt(min_1))
-        $('#start_time').slider("option","max",parseInt(max_1))
-
-        var min_st=timeSlider(min_1);
-        var max_st=timeSlider(max_1)
-
-        $('#min_start_time').val(min_st)
-        $('#max_start_time').val(max_st)
-
-
-        var min_arr=timeSlider(min_2);
-        var max_arr=timeSlider(max_2)
-        // console.log(min_1+","+max_1+","+min_2+","+max_2)
-        // console.log(min_st+","+max_st+","+min_arr+","+max_arr)
-        $('#min_arrive_time').val(min_arr)
-        $('#max_arrive_time').val(max_arr)
-
-        $('#arrive_time').slider("option","values",[parseInt(min_2),parseInt(max_2)])
-        $('#arrive_time').slider("option","min",parseInt(min_2))
-        $('#arrive_time').slider("option","max",parseInt(max_2))
+        setStartHour([0, 1439]);
+        setArriveHour([0, 1439]);
     }
 
     function setAllianceAirLineInfo(data) {
@@ -1569,12 +1574,21 @@ function MyPage() {
         filterObject.costType = element.value;
     }
     const checkAirline = (element, name) => {
-        if (name === 'chk_airline_ALL') {
-            const isCheck = document.getElementById("allInputCheckBox").checked;
-            document.getElementById("allInputCheckBox").checked = !isCheck;
+        // if (name === 'chk_airline_ALL') {
+        //     const isCheck = document.getElementById("allInputCheckBox").checked;
+        //     document.getElementById("allInputCheckBox").checked = !isCheck;
+        // }
+        // const selectBox = document.getElementsByName(name);
+        // selectBox.forEach((cb) => {cb.click()});
+
+        if (name === 'allInputCheckBox') {
+            const isCheck = !document.getElementById("allInputCheckBox").checked;
+            $("#airLineListArea input:not(#allInputCheckBox)").prop("checked", isCheck);
+            return;
         }
+        const checked = !$("#"+name).is(":checked");
         const selectBox = document.getElementsByName(name);
-        selectBox.forEach((cb) => {cb.click()});
+        selectBox.forEach((cb) => {cb.checked = checked});
     }
     const getLeftSeatCount = (index, type) => {
         const mappingData = type ? mappingList[index].getAttribute("LANDINGPARAM").split("&") : newMappingList[index].getAttribute("LANDINGPARAM").split("&");
@@ -2347,6 +2361,9 @@ function MyPage() {
             // $("#min_" + id2).val(time(timeInitValue[0]));
             // $("#max_" + id1).val(time(timeInitValue[1]));
             // $("#max_" + id2).val(time(timeInitValue[1]));
+
+            setStartTime([0, 1439]);
+            setArriveTime([0, 1439]);
         }
     }
     // function mappingListSort(callType) {
@@ -3088,113 +3105,111 @@ function MyPage() {
         aFlightRange: [0, 60],
     });
     const updateSearchList = () => {
-        // mappingList = xmlData.getElementsByTagName("fareScheduleSearchProcessRS")[0].getElementsByTagName("MAPPINGS")[0].children;
-        // newMappingList = new Array();
-        // let checkBox = document.getElementsByName("chk_direct");
-        // let directValue = "A";  // A : 그냥, Y : 직항만, N : 경유 1회인 아이들 포함된 것만
-        // checkBox.forEach((cb) => { if (cb.checked) directValue = cb.value; });
-        // checkBox = document.getElementsByName("chk_fee");
-        // let feeValue = "A"; // A : 그냥 , Y : 성인만(fn 5000번대 제외), N : 장애인만(fn 5000번대만)
-        // checkBox.forEach((cb) => { if (cb.checked) feeValue = cb.value; });
-        //
-        // const minPrice = document.getElementById("min_price").value.replaceAll(",", "");
-        // const maxPrice = document.getElementById("max_price").value.replaceAll(",", "");
-        // const minStart = document.getElementById("min_start").value.replace(":", "");
-        // const maxStart = document.getElementById("max_start").value.replace(":", "");
-        // const minArrive = document.getElementById("min_arrive").value.replace(":", "");
-        // const maxArrive = document.getElementById("max_arrive").value.replace(":", "");
-        // const minStartTime = document.getElementById("min_start_time").value.replace(":", "");
-        // const maxStartTime = document.getElementById("max_start_time").value.replace(":", "");
-        // const minArriveTime = document.getElementById("min_arrive_time").value.replace(":", "");
-        // const maxArriveTime = document.getElementById("max_arrive_time").value.replace(":", "");
-        //
-        // const airLineList = document.getElementById("airLineListArea").getElementsByTagName("dd");
-        // const selectAirLineArray = new Array();
-        // for (var i = 0; i < airLineList.length; i++) {
-        //     if (airLineList[i].children[0].checked) {
-        //         selectAirLineArray.push(airLineList[i].children[0].value);
-        //     }
-        // }
-        //
-        //
-        // const travelType = $("#travelType").find(".current").attr("data");
-        // for (var i = 0; i < mappingList.length; i++) {
-        //     const fnValue = mappingList[i].getAttribute("FN");
-        //     const targetFareXml = getFareData(fnValue);
-        //     const stopCount = targetFareXml.getElementsByTagName("STOP_CNT")[0].innerHTML;
-        //     //const stopCount2 = targetFareXml.innerHTML.getElementsByTagName("STOP_CNT");
-        //
-        //
-        //     if (directValue === "N") {
-        //         if (stopCount !== "1") continue;
-        //     } else if (directValue === "Y") {
-        //         if (stopCount !== "0") continue;
-        //     }
-        //
-        //     if (feeValue === "N") {
-        //         if (!fnValue.startsWith("50")) continue;
-        //     } else {
-        //         if (feeValue === "Y" && fnValue.startsWith("50")) continue;
-        //     }
-        //
-        //     let costValue = targetFareXml.getElementsByTagName("AD_AMT")[0].innerHTML;
-        //     costValue = (costValue * 1) + (targetFareXml.getElementsByTagName("AD_TASF")[0].innerHTML * 1);
-        //     if (minPrice > costValue || maxPrice < costValue) continue;
-        //     let checkTimeValue = false;
-        //     for (var j = 1; j < 5; j++) {
-        //         const anValue = mappingList[i].getAttribute("AN" + j);
-        //         if (anValue === "0") continue;
-        //         const targetAvailXml = getTargetAvailsData(j + "", anValue);
-        //         const deptTime = targetAvailXml.getElementsByTagName("DEP_TM")[0].innerHTML * 1;
-        //         if ((minStart * 1) > deptTime || (maxStart * 1) < deptTime) checkTimeValue = true;
-        //         const arrTime = targetAvailXml.getElementsByTagName("ARR_TM")[0].innerHTML * 1;
-        //         if((minArrive * 1) > arrTime || (maxArrive * 1) < arrTime) checkTimeValue = true;
-        //         let flightTime = targetAvailXml.getElementsByTagName("FLIGHT_TIME")[0].innerHTML * 1;
-        //         if (j === 2 && travelType === 'RT') {
-        //             if ((minArriveTime * 1) > flightTime || (maxArriveTime * 1) < flightTime) checkTimeValue = true;
-        //         } else {
-        //             if ((minStartTime * 1) > flightTime || (maxStartTime * 1) < flightTime) checkTimeValue = true;
-        //         }
-        //     }
-        //
-        //     if (checkTimeValue) continue;
-        //     let airLineValue = true;
-        //     const airLineCode = targetFareXml.getElementsByTagName("AIR_CD")[0].innerHTML;
-        //     for (var j = 0; j < selectAirLineArray.length; j++) {
-        //         if (airLineCode === selectAirLineArray[j]) airLineValue = false;
-        //     }
-        //     if (airLineValue) continue;
-        //     newMappingList.push(mappingList[i]);
-        // }
-        //
-        // mappingListSort(false);
-        // useFilter = true;
-        // $("#ticketArea").empty();
-        // const target = document.getElementById("ticketArea");
-        // for (var i = 0; i < newMappingList.length; i++) {
-        //     const ticketNew = document.createElement("div");
-        //     ticketNew.className = "ticket_new";
-        //     const ticketInner = document.createElement("div");
-        //     ticketInner.className = "ticketInner";
-        //     // 잔여좌석
-        //     let seatCount = getLeftSeatCount(i, false);
-        //     setTicketSitInfo(ticketInner, seatCount, i, travelType, false);
-        //
-        //     // 티켓정보
-        //     setAirLineInfo(ticketInner, newMappingList[i], travelType);
-        //     // 할인
-        //     setDefineInfo(ticketInner, newMappingList[i], i, false);
-        //
-        //     ticketNew.appendChild(ticketInner);
-        //     target.appendChild(ticketNew);
-        // }
-        //
-        // if (newMappingList.length === 0) setNoSearchList();
-        //
-        // // 조회 개수 입력해주기
-        // document.getElementById("searchCount").innerHTML = newMappingList.length;
+        mappingList = xmlData.getElementsByTagName("fareScheduleSearchProcessRS")[0].getElementsByTagName("MAPPINGS")[0].children;
+        newMappingList = new Array();
+        let checkBox = document.getElementsByName("chk_direct");
+        let directValue = "A";  // A : 그냥, Y : 직항만, N : 경유 1회인 아이들 포함된 것만
+        checkBox.forEach((cb) => { if (cb.checked) directValue = cb.value; });
+        checkBox = document.getElementsByName("chk_fee");
+        let feeValue = "A"; // A : 그냥 , Y : 성인만(fn 5000번대 제외), N : 장애인만(fn 5000번대만)
+        checkBox.forEach((cb) => { if (cb.checked) feeValue = cb.value; });
 
-        $("#filterPOP").hide();
+        const minPrice = document.getElementById("min_price").value.replaceAll(",", "");
+        const maxPrice = document.getElementById("max_price").value.replaceAll(",", "");
+        const minStart = document.getElementById("min_start").value.replace(":", "");
+        const maxStart = document.getElementById("max_start").value.replace(":", "");
+        const minArrive = document.getElementById("min_arrive").value.replace(":", "");
+        const maxArrive = document.getElementById("max_arrive").value.replace(":", "");
+        const minStartTime = document.getElementById("min_start_time").value.replace(":", "");
+        const maxStartTime = document.getElementById("max_start_time").value.replace(":", "");
+        const minArriveTime = document.getElementById("min_arrive_time").value.replace(":", "");
+        const maxArriveTime = document.getElementById("max_arrive_time").value.replace(":", "");
+
+        const airLineList = document.getElementById("airLineListArea").getElementsByTagName("dd");
+        const selectAirLineArray = new Array();
+        for (var i = 0; i < airLineList.length; i++) {
+            if (airLineList[i].children[0].checked) {
+                selectAirLineArray.push(airLineList[i].children[0].value);
+            }
+        }
+
+        const travelType = $("#travelType").find(".current").attr("data");
+        for (var i = 0; i < mappingList.length; i++) {
+            const fnValue = mappingList[i].getAttribute("FN");
+            const targetFareXml = getFareData(fnValue);
+            const stopCount = targetFareXml.getElementsByTagName("STOP_CNT")[0].innerHTML;
+            //const stopCount2 = targetFareXml.innerHTML.getElementsByTagName("STOP_CNT");
+
+            if (directValue === "N") {
+                if (stopCount !== "1") continue;
+            } else if (directValue === "Y") {
+                if (stopCount !== "0") continue;
+            }
+
+            if (feeValue === "N") {
+                if (!fnValue.startsWith("50")) continue;
+            } else {
+                if (feeValue === "Y" && fnValue.startsWith("50")) continue;
+            }
+
+            let costValue = targetFareXml.getElementsByTagName("AD_AMT")[0].innerHTML;
+            costValue = (costValue * 1) + (targetFareXml.getElementsByTagName("AD_TASF")[0].innerHTML * 1);
+            if (minPrice > costValue || maxPrice < costValue) continue;
+            let checkTimeValue = false;
+            for (var j = 1; j < 5; j++) {
+                const anValue = mappingList[i].getAttribute("AN" + j);
+                if (anValue === "0") continue;
+                const targetAvailXml = getTargetAvailsData(j + "", anValue);
+                const deptTime = targetAvailXml.getElementsByTagName("DEP_TM")[0].innerHTML * 1;
+                if ((minStart * 1) > deptTime || (maxStart * 1) < deptTime) checkTimeValue = true;
+                const arrTime = targetAvailXml.getElementsByTagName("ARR_TM")[0].innerHTML * 1;
+                if((minArrive * 1) > arrTime || (maxArrive * 1) < arrTime) checkTimeValue = true;
+                let flightTime = targetAvailXml.getElementsByTagName("FLIGHT_TIME")[0].innerHTML * 1;
+                if (j === 2 && travelType === 'RT') {
+                    if ((minArriveTime * 1) > flightTime || (maxArriveTime * 1) < flightTime) checkTimeValue = true;
+                } else {
+                    if ((minStartTime * 1) > flightTime || (maxStartTime * 1) < flightTime) checkTimeValue = true;
+                }
+            }
+
+            if (checkTimeValue) continue;
+            let airLineValue = true;
+            const airLineCode = targetFareXml.getElementsByTagName("AIR_CD")[0].innerHTML;
+            for (var j = 0; j < selectAirLineArray.length; j++) {
+                if (airLineCode === selectAirLineArray[j]) airLineValue = false;
+            }
+            if (airLineValue) continue;
+            newMappingList.push(mappingList[i]);
+        }
+
+        mappingListSort(false);
+        useFilter = true;
+        $("#ticketArea").empty();
+        const target = document.getElementById("ticketArea");
+        for (var i = 0; i < newMappingList.length; i++) {
+            const ticketNew = document.createElement("div");
+            ticketNew.className = "ticket_new";
+            const ticketInner = document.createElement("div");
+            ticketInner.className = "ticketInner";
+            // 잔여좌석
+            let seatCount = getLeftSeatCount(i, false);
+            setTicketSitInfo(ticketInner, seatCount, i, travelType, false);
+
+            // 티켓정보
+            setAirLineInfo(ticketInner, newMappingList[i], travelType);
+            // 할인
+            setDefineInfo(ticketInner, newMappingList[i], i, false);
+
+            ticketNew.appendChild(ticketInner);
+            target.appendChild(ticketNew);
+        }
+
+        if (newMappingList.length === 0) setNoSearchList();
+
+        // 조회 개수 입력해주기
+        document.getElementById("searchCount").innerHTML = newMappingList.length;
+
+        // $("#filterPOP").hide();
     }
     function mappingListSort(callType) {
         //console.log(useFilter)
@@ -3303,22 +3318,26 @@ function MyPage() {
         }
     }
     const filterClear = () => {
-        // const checkBox = document.getElementsByName("chk_direct");
-        // checkBox.forEach((cb) => { cb.checked = false; });
-        // document.getElementById("cbx_direct_chkAll").checked = true;
-        //
-        // const costFee = document.getElementsByName("chk_fee");
-        // costFee.forEach((cb) => { cb.checked = false; });
-        // document.getElementById("cbx_fee_chkAll").checked = true;
-        // initSlider(true, '', '');
-        // initSlider(false, 'start', 'arrive');
+        const checkBox = document.getElementsByName("chk_direct");
+        checkBox.forEach((cb) => { cb.checked = false; });
+        document.getElementById("cbx_direct_chkAll").checked = true;
+
+        const costFee = document.getElementsByName("chk_fee");
+        costFee.forEach((cb) => { cb.checked = false; });
+        document.getElementById("cbx_fee_chkAll").checked = true;
+
+        initSlider(true, '', '');
+        initSlider(false, 'start', 'arrive');
         // initSlider(false, 'start_time', 'arrive_time');
+        initFTSlider();
         // checkAirline(null, "chk_airline_ALL");
-        //
-        // const target = document.getElementById("ticketArea");
-        // $("#ticketArea").empty();
-        // const travelType = $("#travelType").find(".current")[0].getAttribute("data");
-        // setSearchData(target, mappingList.length, travelType);
+        $("#airLineListArea input").prop("checked", true);
+
+        const target = document.getElementById("ticketArea");
+        $("#ticketArea").empty();
+        const travelType = $("#travelType").find(".current")[0].getAttribute("data");
+        setSearchData(target, mappingList.length, travelType);
+
         $("#filterPOP").hide();
     }
 
@@ -4017,19 +4036,24 @@ function MyPage() {
                                                     <dl className="airline_dl" id="airLineListArea">
                                                         <dt>
                                                             <input type="checkbox" value="" id="allInputCheckBox"/>
-                                                            <label htmlFor="chk_airline_ALL"
+                                                            <label htmlFor="allInputCheckBox"
                                                                 // onClick="checkAirline(this, 'chk_airline_ALL')"
-                                                                onClick={(event) => checkAirline(event.currentTarget, 'chk_airline_ALL')}
+                                                                // onClick={(event) => checkAirline(event.currentTarget, 'chk_airline_ALL')}
+                                                                onClick={(event) => checkAirline(event.currentTarget, 'allInputCheckBox')}
                                                             >전체</label>
                                                         </dt>
 
                                                         {airline.map(a =>
                                                             <>
                                                                 <dt>
-                                                                    <input type="checkbox" value="" name="chk_airline_ALL"
-                                                                        onClick={(e) => checkAirline(e.currentTarget, a.id)}
+                                                                    <input type="checkbox"
+                                                                           // value=""
+                                                                           // name="chk_airline_ALL"
+                                                                        // onClick={(e) => checkAirline(e.currentTarget, a.id)}
                                                                         id={a.id}/>
-                                                                    <label htmlFor="chk_airline_0"
+                                                                    <label
+                                                                        // htmlFor="chk_airline_0"
+                                                                        htmlFor={a.id}
                                                                         onClick={(e) => checkAirline(e.currentTarget, a.id)}
                                                                     >{a.kor}</label>
                                                                 </dt>

@@ -67,7 +67,7 @@ function App(props) {
                     </dl>
 
                 </div>
-                <div id="go-top"><span className="hdn">top</span></div>
+                {/*<div id="go-top"><span className="hdn">top</span></div>*/}
             </div>
 
             {/*<ul id="btm-menu">*/}
