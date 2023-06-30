@@ -2323,9 +2323,9 @@ function MyPage() {
             success : function(data) {
                 if (data.session) {
                     localStorage.setItem("cookieValue", data.cookie);
-                    common.createForm(fmOption);
-                    common.setSerializedFormData(data);
-                    common.formSubmit();
+                    // controller.createForm(fmOption);
+                    // controller.setSerializedFormData(data);
+                    // controller.formSubmit();
                 } else {
                     cmnAlertLayer('','항공권 예약프로세스 요청 중 오류가 발생하였습니다. 잠시후에 다시 시도해 주십시오.');
                     return;

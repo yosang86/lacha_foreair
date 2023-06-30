@@ -1282,9 +1282,6 @@ function App() {
         // controller.createForm(fmOption);
         // controller.setSerializedFormData();
         // controller.formSubmit();
-        common.createForm(fmOption);
-        common.setSerializedFormData();
-        common.formSubmit();
         const newForm = document.createElement("form");
         newForm.setAttribute("method", "post");
         newForm.setAttribute("target", "_self");
@@ -1650,12 +1647,9 @@ function App() {
                 "action" : "/goods/air/s_AirList.do"
             };
 
-            controller.createForm(fmOption);
-            controller.setSerializedFormData(obj);
-            controller.formSubmit();
-            // common.createForm(fmOption);
-            // common.setSerializedFormData(obj);
-            // common.formSubmit();
+            // controller.createForm(fmOption);
+            // controller.setSerializedFormData(obj);
+            // controller.formSubmit();
         }
     };
 

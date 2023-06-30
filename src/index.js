@@ -23,6 +23,8 @@ import UpdateConsent from './UpdateConsent';
 import ChangePw from './ChangePw';
 import AddAddress from './AddAddress';
 import SearchTicketList from './SearchTicketList';
+import ReserveTicket from './ReserveTicket';
+import ReserveComplete from './ReserveComplete';
 import TermOfService from './TermOfService';
 import PrivacyPolicy from './PrivacyPolicy';
 import CsMain from './CsMain';
@@ -61,6 +63,8 @@ root.render(
               <Route path="/addAddress" element={<AddAddress title="배송지 등록" />}></Route>
               <Route path="/modifyAddress" element={<AddAddress title="배송지 수정" />}></Route>
               <Route path="/searchTicketList" element={<SearchTicketList />}></Route>
+              <Route path="/reserveTicket" element={<ReserveTicket />}></Route>
+              <Route path="/reserveComplete" element={<ReserveComplete />}></Route>
               <Route path="/termOfService" element={<TermOfService />}></Route>
               <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
               <Route path="/csMain" element={<CsMain />}></Route>
