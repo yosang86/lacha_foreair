@@ -3,7 +3,6 @@ import $ from 'jquery';
 function App(props) {
     return(
         <>
-
             <div id="header" className="center">
                 <div className="header_top">
                     <a href="/main/s_MainView.do" className="btnPrev">이전</a>
@@ -132,12 +131,14 @@ function App(props) {
                         </ul>
 
                         <div className="btnArea mgt_30">
-                            <a href="/foreign/reserve/s_ReservedCompleteInfo.do?key=airReservedInfo.ordNo" className="lbtn btn-large filled"
-                               style="background: #4a6cb3; border:1px solid #4a6cb3">예약 상세 / 결제하기</a>
+                            {/*<a href="/foreign/reserve/s_ReservedCompleteInfo.do?key=airReservedInfo.ordNo" className="lbtn btn-large filled"*/}
+                            <a href="/reservedCompleteInfo?ordNo=J230516162916N" className="lbtn btn-large filled"
+                               style={{background: "#4a6cb3", border: "1px solid #4a6cb3"}}>예약 상세 / 결제하기</a>
                         </div>
                         <div className="btnArea mgt_10">
-                            <a href="/mypage/s_New_MyPageOrderListView.do" className="lbtn btn-large cBlue2"
-                               style="border:1px solid #4a6cb3">항공 예약내역</a>
+                            {/*<a href="/mypage/s_New_MyPageOrderListView.do" className="lbtn btn-large cBlue2"*/}
+                            <a href="/orderList" className="lbtn btn-large cBlue2"
+                               style={{border: "1px solid #4a6cb3"}}>항공 예약내역</a>
                         </div>
                     </div>
                 </div>
