@@ -64,17 +64,25 @@ function App() {
 
                 if (uprSctCd != '') {
                     //var arr = sctData[uprSctCd]['value'];
-                    var opt = '<li class="current" data-tab="tab_0 " onclick="selSctCd(this, \'\');"><a href="javascript:void(0);">전체</a></li>';
+                    // var opt = '<li class="current" data-tab="tab_0 " onclick="selSctCd(this, \'\');"><a href="javascript:void(0);">전체</a></li>';
+                    var opt = '<li class="current" data-tab="tab_0 " data-value="" ><a href="javascript:void(0);">전체</a></li>';
                     for(var i = 0; i < data.faqCat.length; i++) {
                         //var obj = arr[i];
                         //var val = obj['value'];
                         //var name = obj['name'];
                         var val = data.faqCat[i].sctCd
                         var name = data.faqCat[i].sctCdNm
-                        opt += '<li data-tab="tab_' + val + '" onclick="selSctCd(this, \'' + val + '\', \'' + name + '\');"><a href="javascript:void(0);">' + name + '</a></li>';
-
+                        // opt += '<li data-tab="tab_' + val + '" onclick="selSctCd(this, \'' + val + '\', \'' + name + '\');"><a href="javascript:void(0);">' + name + '</a></li>';
+                        opt += '<li data-tab="tab_' + val + '" data-value="' + val + '" data-name="' + name + '"><a href="javascript:void(0);">' + name + '</a></li>';
                     }
                     $('#faqSection').find('#selDept').html(opt);
+                    const children = document.getElementById("selDept").getElementsByTagName("li");
+                    for (const item of Object.values(children)) {
+                        item.addEventListener("click", function(event) {
+                            const item = event.currentTarget;
+                            selSctCd(item, item.dataset.value, item.dataset.name);
+                        })
+                    }
                     $("#faqForm").find("#sctCd").val("");
                 }
 

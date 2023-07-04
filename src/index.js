@@ -33,6 +33,7 @@ import Faq from './Faq';
 import Question from './Question';
 import AddQuestion from './AddQuestion';
 import Withdraw from './Withdraw';
+import Test from './Test';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
@@ -73,6 +74,7 @@ root.render(
               <Route path="/question" element={<Question />}></Route>
               <Route path="/addQuestion" element={<AddQuestion />}></Route>
               <Route path="/withdraw" element={<Withdraw />}></Route>
+              <Route path="/test" element={<Test />}></Route>
               <Route path="*" element={<App />}></Route>
           </Routes>
       </BrowserRouter>

@@ -351,6 +351,36 @@ export const dateFormat = (date, type) => {
     return year + '-' + month + '-' + day + time;
 }
 
+export function questionUpdate(e) {
+    var bbSn = $(e).closest('.qnaCont').find('#bbSn').val();
+    $('#questionForm').find('#bbSn').val(bbSn);
+    $('#questionForm').submit();
+}
+
+export function questionDelete(e) {
+    cmnConfirmLayer('삭제 하시겠습니까?', function () {
+        var bbSn = $(e).closest('.qnaCont').find('#bbSn').val();
+        var param = {
+            bbSn : bbSn
+        }
+
+        $.ajax({
+            url : '/newnotice/s_QuestionDelete.json',
+            data : param,
+            dataType : 'json',
+            type : 'post',
+            success : function(data) {
+                cmnAlertLayer('btn1', '삭제 하였습니다.', function() {
+                    questionSearch();
+                });
+            },
+            error : function(data) {
+                cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+            }
+        });
+    });
+}
+
 export const questionSearch = (page) => {
     $("#formSrch").find('#pageNo').val(page);
     getQuestionList();
@@ -399,22 +429,17 @@ export const getQuestionList = () => {
                     tViewHtml += '	<input type="hidden" id="bbSn" name="bbSn" value="'+obj.bbSn+'">';
                     tViewHtml += '	<div class="top">';
                     if(rplyYn == 'Y') {
-
                         tViewHtml += '		<div class="state complete">답변완료</div>';
                     } else {
-
                         tViewHtml += '		<div class="state ready">답변대기</div>';
                     }
                     tViewHtml += sctNm;
-
                     tViewHtml += '			<div class="floatright">';
                     if(onoStatCd == '02') {
-
-                        tViewHtml += '<a href="javascript:void(0);" onclick="questionDelete(this);">삭제</a>';
+                        tViewHtml += '<a href="javascript:void(0);" data-type="delete" onclick="questionDelete(this);">삭제</a>';
                     } else {
-
-                        tViewHtml += '<a href="javascript:void(0);" onclick="questionUpdate(this);">수정</a>';
-                        tViewHtml += '<a href="javascript:void(0);" onclick="questionDelete(this);">삭제</a>';
+                        tViewHtml += '<a href="javascript:void(0);" data-type="update" onclick="questionUpdate(this);">수정</a>';
+                        tViewHtml += '<a href="javascript:void(0);" data-type="delete" onclick="questionDelete(this);">삭제</a>';
                     }
                     tViewHtml += '			</div>';
                     tViewHtml += '		</div>';
@@ -422,13 +447,11 @@ export const getQuestionList = () => {
                     tViewHtml += '		<div class="a-cont" style="display: none;">';
                     tViewHtml += '			<div class="answer01">' + cont + '</div>';
                     if(onoStatCd == '02') {
-
                         tViewHtml += '<div class="a-title mgt_30"><span>A</span>' + rplyTit + '<p>' + sysRegDtime + '</p></div>';
                         tViewHtml += '<div class="answer02">' + rplyCont + '</div>';
                     }
                     tViewHtml += '	</div>';
                     tViewHtml += '</div>';
-
                 }
 
             } else {
@@ -443,6 +466,13 @@ export const getQuestionList = () => {
             $(".qnaList .totalNum #totNum").html(pageInfoVO.totalCount);
 
             $('#questionList').html(tViewHtml);
+            const children = document.getElementById("").getElementsByTagName("a");
+            for (const item of Object.values(children)) {
+                item.addEventListener("click", function(event) {
+                    if (event.currentTarget.dataset.type == "update") questionUpdate(event.currentTarget);
+                    else questionDelete(event.currentTarget);
+                })
+            }
         }
         , error : function(data) {
             cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');

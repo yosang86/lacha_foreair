@@ -82,7 +82,8 @@ function App() {
 
                 tViewHtml += '<li>';
                 // tViewHtml += '	<a href="#noticeList01POP" onclick="controller.getNoticeDetailData('+objList[i].bbSn+');" class="top-btn full-pop-layer">';
-                tViewHtml += '	<a href="#noticeList01POP" onclick="getNoticeDetailData('+objList[i].bbSn+');" class="top-btn full-pop-layer">';
+                // tViewHtml += '	<a href="#noticeList01POP" onclick="getNoticeDetailData('+objList[i].bbSn+');" class="top-btn full-pop-layer">';
+                tViewHtml += '	<a href="#noticeList01POP" data-detail="' + objList[i].bbSn + '" class="top-btn full-pop-layer">';
                 tViewHtml += '		<h2 '+topClass+'>'+objList[i].tit+'</h2>';
                 tViewHtml += '		<p>'+objList[i].sysRegDtimeStr+'</p>';
                 tViewHtml += '	</a>';
@@ -102,6 +103,12 @@ function App() {
         $(".noticeList .totalNum #totNum").html(pageInfoVO.totalCount);
 
         $("#noticeList").html(tViewHtml);
+        const children = document.getElementById("noticeList").getElementsByTagName("a");
+        for (const item of Object.values(children)) {
+            item.addEventListener("click", function(event) {
+                getNoticeDetailData(event.currentTarget.dataset.detail);
+            })
+        }
     }
 
     return(
