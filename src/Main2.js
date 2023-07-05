@@ -1744,23 +1744,30 @@ function App() {
                                 <div className="s-tabArea">
                                     <ul className="tab" style={{marginTop: "10px", marginBottom: "10px"}}>
                                         <input type="hidden" id="trnSctCd" value="10"/>
-                                        <li className="current" onClick="setTrnType(this, 0);"><a href="#">KTX</a></li>
+                                        <li className="current"
+                                            // onClick="setTrnType(this, 0);"
+                                        ><a href="#">KTX</a></li>
                                         <li style={{fontSize: "small"}}>&nbsp; 예매 시 기차표 or 숙박쿠폰 추가 제공</li>
                                     </ul>
                                     <div id="tab1-1" className="tabcontent current">
                                         <div className="quick-option">
                                             <div className="placeSel">
                                                 <a href="javascript:void(0);" className="start"
-                                                   onClick="openStation(this, '출발지');" id="dptSttNm">출발</a>
+                                                   // onClick="openStation(this, '출발지');"
+                                                   id="dptSttNm">출발</a>
                                                 <a href="javascript:void(0);" className="change"
-                                                   onClick="exchangeVal(this);"></a>
+                                                   // onClick="exchangeVal(this);"
+                                                ></a>
                                                 <a href="javascript:void(0);" className="arrive"
-                                                   onClick="openStation(this, '도착지');" id="arrvSttNm">도착</a>
+                                                   // onClick="openStation(this, '도착지');"
+                                                   id="arrvSttNm">도착</a>
                                             </div>
                                             <div className="dateSel v1">
                                                 <dl>
                                                     <dt>가는 날</dt>
-                                                    <dd onClick="openCalendar2(this, 0);" id="trnDt"
+                                                    <dd
+                                                        // onClick="openCalendar2(this, 0);"
+                                                        id="trnDt"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -1779,7 +1786,8 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'trnSubmit');">열차검색</a>
+                                       // onClick="confirmPopup(this, 'trnSubmit');"
+                                    >열차검색</a>
                                 </div>
                             </div>
 
@@ -1787,22 +1795,29 @@ function App() {
                                 <div className="s-tabArea">
                                     <ul className="tab" style={{marginTop: "10px", marginBottom: "10px"}}>
                                         <input type="hidden" id="trnSctCd" value="10"/>
-                                        <li className="current" onClick="setTrnType(this, 0);"><a href="#">KTX</a></li>
+                                        <li className="current"
+                                            // onClick="setTrnType(this, 0);"
+                                        ><a href="#">KTX</a></li>
                                     </ul>
                                     <div id="tab1-1" className="tabcontent current">
                                         <div className="quick-option">
                                             <div className="placeSel">
                                                 <a href="javascript:void(0);" className="start"
-                                                   onClick="openStation(this, '출발지');" id="dptSttNm">출발</a>
+                                                   // onClick="openStation(this, '출발지');"
+                                                   id="dptSttNm">출발</a>
                                                 <a href="javascript:void(0);" className="change"
-                                                   onClick="exchangeVal(this);"></a>
+                                                   // onClick="exchangeVal(this);"
+                                                ></a>
                                                 <a href="javascript:void(0);" className="arrive"
-                                                   onClick="openStation(this, '도착지');" id="arrvSttNm">도착</a>
+                                                   // onClick="openStation(this, '도착지');"
+                                                   id="arrvSttNm">도착</a>
                                             </div>
                                             <div className="dateSel v1">
                                                 <dl>
                                                     <dt>가는 날</dt>
-                                                    <dd onClick="openCalendar2(this, 0);" id="trnDt"
+                                                    <dd
+                                                        // onClick="openCalendar2(this, 0);"
+                                                        id="trnDt"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -1810,7 +1825,8 @@ function App() {
                                                     <dt>인원</dt>
                                                     <dd className="select">
                                                         <a href="javascript:void(0);" className=""
-                                                           onClick="openTrnMember(this);" id="TRN_whereACnt">성인 1명</a>
+                                                           // onClick="openTrnMember(this);"
+                                                           id="TRN_whereACnt">성인 1명</a>
                                                     </dd>
                                                     <input type="hidden" id="trnCnt" value="1"/>
                                                     <input type="hidden" id="trnChldCnt" value="0"/>
@@ -1821,31 +1837,41 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'trnSubmit');">열차검색</a>
+                                       // onClick="confirmPopup(this, 'trnSubmit');"
+                                    >열차검색</a>
                                 </div>
                             </div>
 
                             <div id="S_0" className="tabcont item02" style={{display: "none"}}>
                                 <div className="s-tabArea">
                                     <ul className="tab">
-                                        <li className="current" onClick="setWayType(this, 0);" id="KTX_TAB"><a
+                                        <li className="current"
+                                            // onClick="setWayType(this, 0);"
+                                            id="KTX_TAB"><a
                                             href="#">편도</a></li>
-                                        <li onClick="setWayType(this, 1);"><a href="#">왕복</a></li>
+                                        <li
+                                            // onClick="setWayType(this, 1);"
+                                        ><a href="#">왕복</a></li>
                                     </ul>
                                     <div id="tab10" className="tabcontent current">
                                         <div className="quick-option">
                                             <div className="placeSel">
                                                 <a href="javascript:void(0);" className="start"
-                                                   onClick="openKtxStation(this, '출발지');" id="KTX_w1DepCity">출발</a>
+                                                   // onClick="openKtxStation(this, '출발지');"
+                                                   id="KTX_w1DepCity">출발</a>
                                                 <a href="javascript:void(0);" className="change"
-                                                   onClick="exchangeVal(this);"></a>
+                                                   // onClick="exchangeVal(this);"
+                                                ></a>
                                                 <a href="javascript:void(0);" className="arrive"
-                                                   onClick="openKtxStation(this, '도착지');" id="KTX_w1ArrCity">도착</a>
+                                                   // onClick="openKtxStation(this, '도착지');"
+                                                   id="KTX_w1ArrCity">도착</a>
                                             </div>
                                             <div className="dateSel">
                                                 <dl>
                                                     <dt>가는 날</dt>
-                                                    <dd onClick="openCalendar2(this, 1, 1, 1);" id="KTX_wDepDate"
+                                                    <dd
+                                                        // onClick="openCalendar2(this, 1, 1, 1);"
+                                                        id="KTX_wDepDate"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -1853,16 +1879,26 @@ function App() {
                                                     <dt>성인</dt>
                                                     <dd>
                                                     </dd>
-                                                    <dd><a href="javascript:void(0);" className="person-sel"
-                                                           onClick="selectboxEvent(this, 0);" id="KTX_w1ACnt">1명</a>
+                                                    <dd>
+                                                        <a href="javascript:void(0);" className="person-sel"
+                                                           // onClick="selectboxEvent(this, 0);"
+                                                           id="KTX_w1ACnt">1명</a>
                                                     </dd>
                                                     <div className="person-num" style={{display: "none"}}>
                                                         <div className="numlist">
                                                             <ul>
-                                                                <li onClick="setSelectBoxVal(this, 0, 1, 1);">1명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 2, 1);">2명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 3, 1);">3명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 4, 1);">4명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 1, 1);"
+                                                                >1명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 2, 1);"
+                                                                >2명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 3, 1);"
+                                                                >3명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 4, 1);"
+                                                                >4명</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1872,17 +1908,29 @@ function App() {
                                                     <dt>소아</dt>
                                                     <dd>
                                                     </dd>
-                                                    <dd><a href="#" className="person-sel"
-                                                           onClick="selectboxEvent(this, 1);" id="KTX_w1CCnt">0명</a>
+                                                    <dd>
+                                                        <a href="#" className="person-sel"
+                                                           // onClick="selectboxEvent(this, 1);"
+                                                           id="KTX_w1CCnt">0명</a>
                                                     </dd>
                                                     <div className="person-num" style={{display: "none"}}>
                                                         <div className="numlist">
                                                             <ul>
-                                                                <li onClick="setSelectBoxVal(this, 1, 0, 1);">0명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 1, 1);">1명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 2, 1);">2명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 3, 1);">3명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 4, 1);">4명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 0, 1);"
+                                                                >0명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 1, 1);"
+                                                                >1명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 2, 1);"
+                                                                >2명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 3, 1);"
+                                                                >3명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 4, 1);"
+                                                                >4명</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1892,7 +1940,9 @@ function App() {
                                             <div className="dateSel" style={{display: "none"}}>
                                                 <dl>
                                                     <dt>오는 날</dt>
-                                                    <dd onClick="openCalendar2(this, 1, 1, 1);" id="KTX_wArrDate"
+                                                    <dd
+                                                        // onClick="openCalendar2(this, 1, 1, 1);"
+                                                        id="KTX_wArrDate"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -1900,15 +1950,26 @@ function App() {
                                                     <dt>성인</dt>
                                                     <dd>
                                                     </dd>
-                                                    <dd><a href="javascript:void(0);" className="person-sel"
-                                                           onClick="selectboxEvent(this, 0);">1명</a></dd>
+                                                    <dd>
+                                                        <a href="javascript:void(0);" className="person-sel"
+                                                           // onClick="selectboxEvent(this, 0);"
+                                                        >1명</a>
+                                                    </dd>
                                                     <div className="person-num" style={{display: "none"}}>
                                                         <div className="numlist">
                                                             <ul>
-                                                                <li onClick="setSelectBoxVal(this, 0, 1, 0);">1명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 2, 0);">2명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 3, 0);">3명</li>
-                                                                <li onClick="setSelectBoxVal(this, 0, 4, 0);">4명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 1, 0);"
+                                                                >1명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 2, 0);"
+                                                                >2명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 3, 0);"
+                                                                >3명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 0, 4, 0);"
+                                                                >4명</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1918,16 +1979,29 @@ function App() {
                                                     <dt>소아</dt>
                                                     <dd>
                                                     </dd>
-                                                    <dd><a href="#" className="person-sel"
-                                                           onClick="selectboxEvent(this, 1);">0명</a></dd>
+                                                    <dd>
+                                                        <a href="#" className="person-sel"
+                                                           // onClick="selectboxEvent(this, 1);"
+                                                        >0명</a>
+                                                    </dd>
                                                     <div className="person-num" style={{display: "none"}}>
                                                         <div className="numlist">
                                                             <ul>
-                                                                <li onClick="setSelectBoxVal(this, 1, 0, 0);">0명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 1, 0);">1명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 2, 0);">2명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 3, 0);">3명</li>
-                                                                <li onClick="setSelectBoxVal(this, 1, 4, 0);">4명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 0, 0);"
+                                                                >0명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 1, 0);"
+                                                                >1명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 2, 0);"
+                                                                >2명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 3, 0);"
+                                                                >3명</li>
+                                                                <li
+                                                                    // onClick="setSelectBoxVal(this, 1, 4, 0);"
+                                                                >4명</li>
                                                             </ul>
                                                         </div>
                                                     </div>
@@ -1939,7 +2013,8 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'ktxSubmit');">열차검색</a>
+                                       // onClick="confirmPopup(this, 'ktxSubmit');"
+                                    >열차검색</a>
                                 </div>
                             </div>
 
@@ -1952,16 +2027,21 @@ function App() {
                                         <div className="quick-option">
                                             <div className="placeSel">
                                                 <a href="javascript:void(0);" className="start"
-                                                   onClick="openSrtStation(this, '출발지');" id="SRT_D">출발</a>
+                                                   // onClick="openSrtStation(this, '출발지');"
+                                                   id="SRT_D">출발</a>
                                                 <a href="javascript:void(0);" className="change"
-                                                   onClick="exchangeVal(this);"></a>
+                                                   // onClick="exchangeVal(this);"
+                                                ></a>
                                                 <a href="javascript:void(0);" className="arrive"
-                                                   onClick="openSrtStation(this, '도착지');" id="SRT_A">도착</a>
+                                                   // onClick="openSrtStation(this, '도착지');"
+                                                   id="SRT_A">도착</a>
                                             </div>
                                             <div className="dateSel">
                                                 <dl>
                                                     <dt>가는 날</dt>
-                                                    <dd onClick="openCalendar2(this, 0);" id="SRT_wDepDate"
+                                                    <dd
+                                                        // onClick="openCalendar2(this, 0);"
+                                                        id="SRT_wDepDate"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -1969,14 +2049,23 @@ function App() {
                                                     <dt>성인</dt>
                                                     <dd>
                                                         <a href="#" className="person-sel"
-                                                           onClick="selectboxEvent(this, 0);" id="SRT_w1ACnt">1명</a>
+                                                           // onClick="selectboxEvent(this, 0);"
+                                                           id="SRT_w1ACnt">1명</a>
                                                         <div className="person-num" style={{display: "none"}}>
                                                             <div className="numlist">
                                                                 <ul>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 1);">1명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 2);">2명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 3);">3명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 4);">4명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 1);"
+                                                                    >1명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 2);"
+                                                                    >2명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 3);"
+                                                                    >3명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 4);"
+                                                                    >4명</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -1988,40 +2077,53 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'srtSubmit');">열차검색</a>
+                                       // onClick="confirmPopup(this, 'srtSubmit');"
+                                    >열차검색</a>
                                 </div>
                             </div>
 
                             <div id="S_2" className="tabcont item04" style={{display: "none"}}>
                                 <div className="s-tabArea">
                                     <ul className="tab">
-                                        <li className="current" onClick="setAirWayType(this, 0);" id="AIR_TAB"><a
+                                        <li className="current"
+                                            // onClick="setAirWayType(this, 0);"
+                                            id="AIR_TAB"><a
                                             href="#">왕복</a></li>
-                                        <li onClick="setAirWayType(this, 1);"><a href="#">편도</a></li>
+                                        <li
+                                            // onClick="setAirWayType(this, 1);"
+                                        >
+                                            <a href="#">편도</a>
+                                        </li>
                                     </ul>
                                     <div id="tab4-1" className="tabcontent current">
                                         <div className="quick-option">
                                             <div className="placeSel">
                                                 <a href="javascript:void(0);" className="start"
-                                                   onClick="openAirStation(this, '출발지');" id="AIR_whereDepCity1">출발</a>
+                                                   // onClick="openAirStation(this, '출발지');"
+                                                   id="AIR_whereDepCity1">출발</a>
                                                 <input type="hidden" name="depCity" id="depCity"/>
                                                 <a href="javascript:void(0);" className="change"
-                                                   onClick="swapArea();"></a>
+                                                   // onClick="swapArea();"
+                                                ></a>
                                                 <a href="javascript:void(0);" className="arrive"
-                                                   onClick="openAirStation(this, '도착지');"
+                                                   // onClick="openAirStation(this, '도착지');"
                                                    id="AIR_whereArrCity1">도착</a>
                                                 <input type="hidden" name="arrCity" id="arrCity"/>
                                             </div>
                                             <div id="AIR_DATASEL" className="dateSel v2">
                                                 <dl>
                                                     <dt>가는날</dt>
-                                                    <dd onClick="openCalendar(this, 1, 1, 1);" id="AIR_whereDepDate"
+                                                    <dd
+                                                        // onClick="openCalendar(this, 1, 1, 1);"
+                                                        id="AIR_whereDepDate"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
                                                 <dl>
                                                     <dt>오는날</dt>
-                                                    <dd onClick="openCalendar(this, 1, 1, 1);" id="AIR_whereArrDate"
+                                                    <dd
+                                                        // onClick="openCalendar(this, 1, 1, 1);"
+                                                        id="AIR_whereArrDate"
                                                         className="CAL_DATE">날짜 선택
                                                     </dd>
                                                 </dl>
@@ -2030,7 +2132,8 @@ function App() {
                                                 <dl>
                                                     <dt>인원</dt>
                                                     <dd className="select">
-                                                        <a href="javascript:void(0);" onClick="openAirMember(this);"
+                                                        <a href="javascript:void(0);"
+                                                           // onClick="openAirMember(this);"
                                                            id="AIR_whereACnt">성인 1명</a>
                                                     </dd>
                                                     <input type="hidden" id="AIR_C_1" value="1"/>
@@ -2039,9 +2142,10 @@ function App() {
                                                 </dl>
                                                 <dl>
                                                     <dt>좌석</dt>
-                                                    <dd className="select"><a href="javascript:void(0);"
-                                                                              onClick="openAirSeat(this);"
-                                                                              id="AIR_question">전체</a></dd>
+                                                    <dd className="select">
+                                                        <a href="javascript:void(0);"
+                                                           // onClick="openAirSeat(this);"
+                                                           id="AIR_question">전체</a></dd>
                                                 </dl>
                                             </div>
                                         </div>
@@ -2049,25 +2153,40 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'airSubmit');">항공권 검색</a>
+                                       // onClick="confirmPopup(this, 'airSubmit');"
+                                    >항공권 검색</a>
                                 </div>
                             </div>
 
                             <div id="S_3" className="tabcont item05" style={{display: "none"}}>
                                 <div className="s-tabArea">
                                     <ul className="tab">
-                                        <li className="current" onClick="setHotelType(this, 0);" data-cd=""><a
+                                        <li className="current"
+                                            // onClick="setHotelType(this, 0);"
+                                            data-cd=""><a
                                             href="#">전체</a></li>
-                                        <li onClick="setHotelType(this, 1);" data-cd="01"><a href="#">호텔</a></li>
-                                        <li onClick="setHotelType(this, 2);" data-cd="05"><a href="#">모텔</a></li>
-                                        <li onClick="setHotelType(this, 3);" data-cd="02"><a href="#">리조트</a></li>
-                                        <li onClick="setHotelType(this, 4);" data-cd="04"><a href="#">펜션</a></li>
-                                        <li onClick="setHotelType(this, 5);" data-cd="03"><a href="#">레지던스</a></li>
+                                        <li
+                                            // onClick="setHotelType(this, 1);"
+                                            data-cd="01"><a href="#">호텔</a></li>
+                                        <li
+                                            // onClick="setHotelType(this, 2);"
+                                            data-cd="05"><a href="#">모텔</a></li>
+                                        <li
+                                            // onClick="setHotelType(this, 3);"
+                                            data-cd="02"><a href="#">리조트</a></li>
+                                        <li
+                                            // onClick="setHotelType(this, 4);"
+                                            data-cd="04"><a href="#">펜션</a></li>
+                                        <li
+                                            // onClick="setHotelType(this, 5);"
+                                            data-cd="03"><a href="#">레지던스</a></li>
                                     </ul>
                                     <div className="searchWrap">
                                         <div className="searchForm">
                                             <input type="text" id="HOTEL_aName" placeholder="도시, 지역, 숙소명, 관광 명소 등으로 검색"/>
-                                            <a href="javascript:void(0);" className="btn-srh" onClick="hotelSubmit();">
+                                            <a href="javascript:void(0);" className="btn-srh"
+                                               // onClick="hotelSubmit();"
+                                            >
                                                 <span className="hdn">검색</span>
                                             </a>
                                         </div>
@@ -2077,14 +2196,16 @@ function App() {
                                             <div className="dateSel v3">
                                                 <dl>
                                                     <dt>체크인</dt>
-                                                    <dd className="CAL_DATE" onClick="openCalendar(this, 1, 2, 2);"
+                                                    <dd className="CAL_DATE"
+                                                        // onClick="openCalendar(this, 1, 2, 2);"
                                                         id="HOTEL_wDepDate">날짜 선택
                                                     </dd>
                                                 </dl>
                                                 <dl>
                                                     <dt>체크아웃</dt>
                                                     <dd className="CAL_DATE dimColor"
-                                                        onClick="openCalendar(this, 1, 2, 2);" id="HOTEL_wArrDate">날짜 선택
+                                                        // onClick="openCalendar(this, 1, 2, 2);"
+                                                        id="HOTEL_wArrDate">날짜 선택
                                                     </dd>
                                                 </dl>
                                             </div>
@@ -2093,15 +2214,26 @@ function App() {
                                                     <dt>객실수</dt>
                                                     <dd className="blk">
                                                         <a href="javascript:void(0);" className="person-sel"
-                                                           onClick="selectboxEvent(this, 0);" id="HOTEL_rCnt">1개</a>
+                                                           // onClick="selectboxEvent(this, 0);"
+                                                           id="HOTEL_rCnt">1개</a>
                                                         <div className="person-num" style={{display: "none"}}>
                                                             <div className="numlist">
                                                                 <ul>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 0);">0개</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 1);">1개</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 2);">2개</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 3);">3개</li>
-                                                                    <li onClick="setSelectBoxVal(this, 0, 4);">4개</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 0);"
+                                                                    >0개</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 1);"
+                                                                    >1개</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 2);"
+                                                                    >2개</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 3);"
+                                                                    >3개</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 0, 4);"
+                                                                    >4개</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -2112,14 +2244,23 @@ function App() {
                                                     <dt>인원</dt>
                                                     <dd>
                                                         <a href="javascript:void(0);" className="person-sel"
-                                                           onClick="selectboxEvent(this, 1);" id="HOTEL_aCnt">2명</a>
+                                                           // onClick="selectboxEvent(this, 1);"
+                                                           id="HOTEL_aCnt">2명</a>
                                                         <div className="person-num" style={{display: "none"}}>
                                                             <div className="numlist">
                                                                 <ul>
-                                                                    <li onClick="setSelectBoxVal(this, 1, 1);">1명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 1, 2);">2명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 1, 3);">3명</li>
-                                                                    <li onClick="setSelectBoxVal(this, 1, 4);">4명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 1, 1);"
+                                                                    >1명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 1, 2);"
+                                                                    >2명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 1, 3);"
+                                                                    >3명</li>
+                                                                    <li
+                                                                        // onClick="setSelectBoxVal(this, 1, 4);"
+                                                                    >4명</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -2131,7 +2272,8 @@ function App() {
                                 </div>
                                 <div className="btnArea">
                                     <a href="javascript:void(0);" className="lbtn filled"
-                                       onClick="confirmPopup(this, 'hotelSubmit');">숙소 검색</a>
+                                       // onClick="confirmPopup(this, 'hotelSubmit');"
+                                    >숙소 검색</a>
                                 </div>
                             </div>
 
@@ -2442,8 +2584,13 @@ function App() {
             {/*    </div>*/}
             {/*</section>*/}
 
-            <select onChange="chgMain(this)" style={{display:"none"}}>
-                <option value="01" selected="selected">숙박</option>
+            <select
+                // onChange="chgMain(this)"
+                style={{display:"none"}}
+                defaultValue={"01"}
+            >
+                {/*<option value="01" selected="selected">숙박</option>*/}
+                <option value="01">숙박</option>
                 <option value="02">도서</option>
                 <option value="03">골프</option>
             </select>

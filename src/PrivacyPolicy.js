@@ -114,15 +114,15 @@ function App() {
                                             <td><p><b>보유기간</b></p></td>
                                         </tr>
                                         <tr>
-                                            <td rowspan="6"><p><span>회원으로부터 수집</span></p></td>
-                                            <td rowspan="2"><p><span>기본 정보</span></p></td>
+                                            <td rowSpan="6"><p><span>회원으로부터 수집</span></p></td>
+                                            <td rowSpan="2"><p><span>기본 정보</span></p></td>
                                             <td>
                                                 <p><span>[</span><span>공통항목<span>]<br/></span>이름<span>,</span>아이디<span>, </span>비밀번호<span>, </span>가입인증번호<span>,</span>이메일주소<span>,&nbsp;</span>휴대폰번호<span>, </span>전화번호<span>, </span>주소<span>,</span></span></p>
                                                 <p><span>뉴스레터<span>/SMS </span>수신여부<span>, </span>사번</span></p>
                                             </td>
-                                            <td rowspan="4"><p><span>회원가입<span>, <br/></span>서비스이용 신청서 등<br/>서면양식에 서명<span>, </span>전화<span>, <br/></span>상담 게시판<span>, <br/></span>이벤트 응모<span>,<br/></span>제휴사로 부터의 제공<span>,<br/></span>배송요청<br/><br/></span></p></td>
-                                            <td rowspan="2"><p><span>회원 관리<br/><span>(</span>본인확인<span>, </span>개인식별<span>, </span>부정이용 방지와 <br/>비인가사용 방지<span>, </span>가입의사 확인<span>, <br/></span>연령확인<span>, </span>불만 처리 등 민원처리<span>,<br/>&nbsp;&nbsp;</span>고지사항 전달<span>) <br/></span>서비스 제공에 관한 계약 이행 및<br/>&nbsp;서비스 제공에 따른 요금정산<span>, <br/></span>컨텐츠 제공<span>, </span>서비스 및 가입상담<br/><br/></span></p></td>
-                                            <td rowspan="4"><p><span>회원탈퇴 시 또는 법정의무 보유기간</span></p></td>
+                                            <td rowSpan="4"><p><span>회원가입<span>, <br/></span>서비스이용 신청서 등<br/>서면양식에 서명<span>, </span>전화<span>, <br/></span>상담 게시판<span>, <br/></span>이벤트 응모<span>,<br/></span>제휴사로 부터의 제공<span>,<br/></span>배송요청<br/><br/></span></p></td>
+                                            <td rowSpan="2"><p><span>회원 관리<br/><span>(</span>본인확인<span>, </span>개인식별<span>, </span>부정이용 방지와 <br/>비인가사용 방지<span>, </span>가입의사 확인<span>, <br/></span>연령확인<span>, </span>불만 처리 등 민원처리<span>,<br/>&nbsp;&nbsp;</span>고지사항 전달<span>) <br/></span>서비스 제공에 관한 계약 이행 및<br/>&nbsp;서비스 제공에 따른 요금정산<span>, <br/></span>컨텐츠 제공<span>, </span>서비스 및 가입상담<br/><br/></span></p></td>
+                                            <td rowSpan="4"><p><span>회원탈퇴 시 또는 법정의무 보유기간</span></p></td>
                                         </tr>
                                         <tr>
                                             <td>
@@ -131,7 +131,7 @@ function App() {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>부가 정보</span></p>
                                             </td>
                                             {/*<td>*/}
@@ -139,7 +139,7 @@ function App() {
                                                 <p><span>결혼여부</span><span>, </span><span>결혼기념일</span><span><span>,</span><span>&nbsp;</span></span><span>자녀유무,<br/></span><span>정보 수신 동의 및 마케팅 관련정보,</span></p>
                                                 <p><span>IP Address, 방문일시, 쿠키 등&nbsp;</span><br/><span>자동수집정보</span></p>
                                             </td>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>마케팅<span>/</span>광고 활용<span> <br/>(</span>이벤트 등 광고성 정보전달<span> , <br/></span>인구통계학적 특성에 따른 <br/>서비스제공 및 광고 게재<span>)<br/></span></span></p>
                                             </td>
                                         </tr>
@@ -147,19 +147,19 @@ function App() {
                                         {/*    <td><p>&nbsp;</p></td>*/}
                                         </tr>
                                         <tr>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>상품 구매</span></p>
                                             </td>
                                             <td>
                                                 <p><span>[</span><span>주문고객정보<span>]<br/></span>필수<span> : </span>이름<span>, </span>휴대전화번호</span></p>
                                             </td>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>상품 구매 시 수집</span></p>
                                             </td>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>주문 상품에 대한 결제 및 상품배송<span>, </span>계약이행을 위한 연락 및 고지</span></p>
                                             </td>
-                                            <td rowspan="2">
+                                            <td rowSpan="2">
                                                 <p><span>법정의무 보유기간</span></p>
                                             </td>
                                         </tr>

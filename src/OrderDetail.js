@@ -15,8 +15,6 @@ function App() {
         // let $noticeToggle = $('.flightNoticeToggle a');
         $noticeToggle.on('click', function (e) {
             let $noticeCont = $(e.target).closest('li').find('.flightNoticeCont');
-            console.log($noticeToggle);
-            console.log($noticeCont);
             $(e.target).toggleClass('active');
             $noticeCont.toggleClass('active');
             // if ($noticeCont.hasClass('active')) $noticeCont.show();
@@ -1508,8 +1506,7 @@ function App() {
                                                         <li>프랑크푸르트</li>
                                                         <li>무료수하물 1개</li>
                                                         <li>
-                                                                <span className="txtTotal">
-</span>
+                                                            <span className="txtTotal"></span>
                                                         </li>
                                                     </ul>
                                                 </dd>
@@ -1552,8 +1549,7 @@ function App() {
                                                         <li>히드로</li>
                                                         <li>무료수하물 2개</li>
                                                         <li>
-                                                                <span className="txtTotal">
-</span>
+                                                            <span className="txtTotal"></span>
                                                         </li>
                                                     </ul>
                                                 </dd>
@@ -1589,8 +1585,7 @@ function App() {
                                                         <li>프랑크푸르트</li>
                                                         <li>무료수하물 2개</li>
                                                         <li>
-                                                                <span className="txtTotal">
-</span>
+                                                            <span className="txtTotal"></span>
                                                         </li>
                                                     </ul>
                                                 </dd>
@@ -1707,10 +1702,12 @@ function App() {
                             </div>
                             <div className="timeLine pdb_30 mgt_20 textWrap">
                                 <select id="canselSelectBox"
+                                        defaultValue={""}
                                     // onChange="checkSelectBox(true)"
                                     onChange={() => checkSelectBox(true)}
                                 >
-                                    <option selected="" disabled="">취소 사유를 선택해주세요</option>
+                                    {/*<option selected="" disabled="">취소 사유를 선택해주세요</option>*/}
+                                    <option value="" disabled={true}>취소 사유를 선택해주세요</option>
                                     <option value="D06">여행 일정 변경</option>
                                     <option value="D03">할인혜택 적용을 위해</option>
                                     <option value="D04">다른 상품으로 재 예약하기 위해서</option>
@@ -1810,7 +1807,9 @@ function App() {
                                     <dt>이메일</dt>
                                     <dd>
                                         <input type="text" className="mgt_10 mgb_10" id="reservedEmailUpdate"
-                                               value="korail@hcclab.com"/>
+                                           // value="korail@hcclab.com"
+                                           defaultValue={"korail@hcclab.com"}
+                                        />
                                     </dd>
                                 </dl>
                                 <ul className="sectionTxt noneLine">
@@ -1843,37 +1842,45 @@ function App() {
                     </div>
                     <div className="pop-cont">
                         <div className="boxCont msgBox">
-                            <div class="timeLine pdb_20 passportInfoList">
-                                <div class="sumTxt mgb_20">engLast/engFirst</div>
-                                <dl class="inputArea">
+                            <div className="timeLine pdb_20 passportInfoList">
+                                <div className="sumTxt mgb_20">engLast/engFirst</div>
+                                <dl className="inputArea">
                                     <dt>생년월일</dt>
-                                    <dd class="mgt_10 mgb_20">
+                                    <dd className="mgt_10 mgb_20">
                                         {/*<fmt:parseDate var="birthday" value="${item.birthDay}" pattern="yyyyMMdd" />*/}
-                                        yyyyMMdd
-                                        <input type="text" class="" placeholder="" value="yyyy-MM-dd" id="passportBirth_count" data1="passengerId"/>
+                                        <input type="text" className="" placeholder=""
+                                               // value="yyyy-MM-dd"
+                                               defaultValue={"yyyy-MM-dd"}
+                                               id="passportBirth_count" data1="passengerId"/>
                                     </dd>
                                     <dt>여권번호</dt>
-                                    <dd class="mgt_10 mgb_20">
+                                    <dd className="mgt_10 mgb_20">
                                         <input type="text"
-                                               // class="passportNoArea <c:if test="${item.passportNo == null}">err-input</c:if>"
-                                               class="passportNoArea"
-                                               placeholder="" value="passportNo" id="passportNo_count"/>
-                                        {/*<p class="err" style="display: <c:if test="${item.passportNo != null}">none</c:if>;" id="p_passportNo_<c:out value="${index.count}"/>"><i class="bgiNone">*</i> 여권번호를 입력해주세요</p><!-- 에러 메세지 -->*/}
-                                        <p class="err" style={{display: "none"}} id="p_passportNo_count">
-                                            <i class="bgiNone">*</i> 여권번호를 입력해주세요
+                                               // className="passportNoArea <c:if test="${item.passportNo == null}">err-input</c:if>"
+                                               className="passportNoArea"
+                                               placeholder=""
+                                               // value="passportNo"
+                                               defaultValue={"passportNo"}
+                                               id="passportNo_count"/>
+                                        {/*<p className="err" style="display: <c:if test="${item.passportNo != null}">none</c:if>;" id="p_passportNo_<c:out value="${index.count}"/>"><i className="bgiNone">*</i> 여권번호를 입력해주세요</p><!-- 에러 메세지 -->*/}
+                                        <p className="err" style={{display: "none"}} id="p_passportNo_count">
+                                            <i className="bgiNone">*</i> 여권번호를 입력해주세요
                                         </p>
                                     </dd>
                                     <dt>여권만료일</dt>
-                                    <dd class="mgt_10 mgb_20">
+                                    <dd className="mgt_10 mgb_20">
                                         yyyyMMdd
-                                        <input type="text" class="passportDateArea err-input" placeholder="" value="${passpordDateInfo}" pattern="yyyy-MM-dd" id="passportDate_${index.count}"/>
-                                        <p class="err" id="p_passportDate_${index.count}">
-                                            <i class="bgiNone">*</i> 여권만료일을 입력해주세요
+                                        <input type="text" className="passportDateArea err-input" placeholder=""
+                                               // value="${passpordDateInfo}"
+                                               defaultValue={"passpordDateInfo"}
+                                               pattern="yyyy-MM-dd" id="passportDate_${index.count}"/>
+                                        <p className="err" id="p_passportDate_${index.count}">
+                                            <i className="bgiNone">*</i> 여권만료일을 입력해주세요
                                         </p>
                                     </dd>
                                     <dt>국적</dt>
-                                    <dd class="mgt_10 mgb_20">
-                                        <select id="passportAuthority_count">
+                                    <dd className="mgt_10 mgb_20">
+                                        <select id="passportAuthority_count" defaultValue={"KR"}>
                                             <option value="KR">대한민국</option>
                                             <option value="US">미국</option>
                                             <option value="CA">케나다</option>
@@ -1881,9 +1888,9 @@ function App() {
                                         </select>
                                     </dd>
                                     <dt>발행국</dt>
-                                    <dd class="mgt_10 mgb_20">
-                                        <select id="passportNational_count">
-                                            <option value="KR" selected>대한민국</option>
+                                    <dd className="mgt_10 mgb_20">
+                                        <select id="passportNational_count" defaultValue={"KR"}>
+                                            <option value="KR">대한민국</option>
                                             <option value="US">미국</option>
                                             <option value="CA">케나다</option>
                                             <option value="JP">일본</option>
@@ -1891,7 +1898,7 @@ function App() {
                                     </dd>
                                     </dl>
                                         {/*<c:if test="${index.last}">*/}
-                                            <ul class="sectionTxt noneLine">
+                                            <ul className="sectionTxt noneLine">
                                                 <li>※ 탑승자명은 여권상의 영문명과 동일해야 하며, 영문명 변경 요청은 항공사 사정에 따라 거부될 수 있으니 정확한 정보를 입력해주시기 바랍니다.</li>
                                                 <li>※ 여권 정보 오입력으로 인해 항공편 탑승 및 현지 입국이 거절될 수 있으며 이에 대해서는 당사는 책임지지 않습니다.</li>
                                                 <li>※ 여권 유효기간은 출국일 기준 6개월 이상 남아야 출국 가능합니다.</li>
@@ -1960,8 +1967,9 @@ function App() {
                                             <select id="questionSelectArea"
                                                 // onChange="setQuestionSelectInfo()"
                                                 onChange={() => setQuestionSelectInfo()}
+                                                    defaultValue={""}
                                             >
-                                                <option selected="" disabled="">상담 사유를 선택해주세요</option>
+                                                <option value="" disabled={true}>상담 사유를 선택해주세요</option>
                                                 <option value="CRSV">예약</option>
                                                 <option value="CFAR">운임</option>
                                                 <option value="CREF">환불</option>
@@ -2102,12 +2110,17 @@ function App() {
                                     </dd>
                                     <dt>우편번호</dt>
                                     <dd className="mgt_10 mgb_20">
-                                        <input type="text" className="" placeholder="" value="" id="stayPost_1"/>
+                                        <input type="text" className="" placeholder=""
+                                               // value=""
+                                               defaultValue={""}
+                                               id="stayPost_1"/>
                                     </dd>
                                     <dt>주소</dt>
                                     <dd className="mgt_10 mgb_10">
-                                        <input type="text" className="stayAddressArea" placeholder="" value=""
-                                            id="stayAddress_1"/>
+                                        <input type="text" className="stayAddressArea" placeholder=""
+                                               // value=""
+                                               defaultValue={""}
+                                               id="stayAddress_1"/>
                                     </dd>
                                 </dl>
 
@@ -2727,8 +2740,9 @@ function App() {
                                         <select id="airLineList"
                                             // onChange="setSelectAirLine()"
                                             onChange={() => setSelectAirLine()}
+                                                defaultValue={"LH"}
                                         >
-                                            <option value="LH" selected="">루프트한자</option>
+                                            <option value="LH">루프트한자</option>
                                             <option value="AC">에어캐나다</option>
                                             <option value="UA">유나이티드</option>
                                             <option value="SK">스칸디나비아</option>
@@ -2806,7 +2820,10 @@ function App() {
                                     </dd>
                                     <dd className="mgb_10">
                                         <input type="text" className="" id="mileageNumberArea"
-                                               placeholder="항공사 마일리지 번호를 입력해주세요" value=""/>
+                                               placeholder="항공사 마일리지 번호를 입력해주세요"
+                                               // value=""
+                                               defaultValue={""}
+                                        />
                                     </dd>
                                 </dl>
 
@@ -2950,8 +2967,9 @@ function App() {
                                         <select id="refundSelectBox"
                                             // onChange="checkSelectBox(false)"
                                             onChange={() => checkSelectBox(false)}
+                                            defaultValue={""}
                                         >
-                                            <option selected="" disabled="">환불 사유를 선택해주세요</option>
+                                            <option value="" disabled={true}>환불 사유를 선택해주세요</option>
                                             <option value="D06">여행 일정 변경</option>
                                             <option value="D03">할인혜택 적용을 위해</option>
                                             <option value="D04">다른 상품으로 재 예약하기 위해서</option>

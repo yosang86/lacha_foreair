@@ -298,6 +298,7 @@ function App() {
                                                            className="mgt_10" placeholder="예)홍"
                                                            // onChange="checkStringValue(this)"
                                                            onChange={(event) => checkStringValue(event.currentTarget)}
+                                                           autoComplete="off"
                                                         />
                                                     </dd>
                                                 </dl>
@@ -310,6 +311,7 @@ function App() {
                                                            className="mgt_10" placeholder="예)길동"
                                                            // onChange="checkStringValue(this)"
                                                            onChange={(event) => checkStringValue(event.currentTarget)}
+                                                           autoComplete="off"
                                                         />
                                                     </dd>
                                                 </dl>
@@ -324,6 +326,7 @@ function App() {
                                                            className="mgt_10" placeholder="예)HONG"
                                                            // onChange="checkStringValue(this)"
                                                            onChange={(event) => checkStringValue(event.currentTarget)}
+                                                           autoComplete="off"
                                                         />
                                                     </dd>
                                                 </dl>
@@ -336,6 +339,7 @@ function App() {
                                                            className="mgt_10" placeholder="예)GILDONG"
                                                            // onChange="checkStringValue(this)"
                                                            onChange={(event) => checkStringValue(event.currentTarget)}
+                                                           autoComplete="off"
                                                         />
                                                     </dd>
                                                 </dl>
@@ -345,7 +349,9 @@ function App() {
                                             <dt><i className="err bgiNone">*</i> 생년월일</dt>
                                             <dd>
                                                 <input type="text" className="mgt_10" id="birthday"
-                                                       placeholder="예)1996-06-21"/>
+                                                       placeholder="예)1996-06-21"
+                                                       autoComplete="off"
+                                                />
                                             </dd>
                                             <dt><i className="err bgiNone">*</i> 성별</dt>
                                             <dd>
@@ -361,10 +367,10 @@ function App() {
                                             <dt>국적</dt>
                                             <dd>
                                                 <div className="mgt_10">
-                                                    <select id="nationalType">
+                                                    <select id="nationalType" defaultValue={"대한민국"}>
                                                         <option value="미국">미국</option>
                                                         <option value="호주">호주</option>
-                                                        <option value="대한민국" selected>대한민국</option>
+                                                        <option value="대한민국">대한민국</option>
                                                         <option value="일본">일본</option>
                                                         <option value="중국">중국</option>
                                                     </select>

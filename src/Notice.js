@@ -122,7 +122,10 @@ function App() {
             <div id="content">
                 <section className="mgb_0">
                     <div className="box2">
-                        <form name="formSrch" id="formSrch" method="post" onSubmit="return false;"
+                        {/*<form name="formSrch" id="formSrch" method="post" onSubmit="return false;"*/}
+                        <form name="formSrch" id="formSrch" method="post" onSubmit={() => {
+                            return false;
+                        }}
                               className="sub-srhArea">
                             <input type="hidden" name="pageSize" id="pageSize" value="5"/>
                             <input type="hidden" name="pageNo" id="pageNo" value="1"/>
