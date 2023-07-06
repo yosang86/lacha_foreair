@@ -7,17 +7,17 @@ import Footer from "./Footer";
 function App() {
     document.getElementsByTagName('body')[0].classList.add('sub');
 
-    window.addEventListener("scroll", function() {
-        const goTop = $('#go-top');
-
-        if ($(window).scrollTop() > 800) {
-            goTop.addClass('show');
-        } else {
-            goTop.removeClass('show');
-        }
-    })
-
     useEffect(() => {
+        window.addEventListener("scroll", function() {
+            const goTop = $('#go-top');
+
+            if ($(window).scrollTop() > 800) {
+                goTop.addClass('show');
+            } else {
+                goTop.removeClass('show');
+            }
+        })
+
         $("*").each(function() {
             if ($(this).innerWidth() > 375) {
                 console.log($(this));

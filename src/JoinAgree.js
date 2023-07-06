@@ -185,7 +185,7 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);"
+                    <a // href="javascript:void(0);"
                         // onClick="doHistoryBack();"
                         onClick={() => common.doHistoryBack()}
                         className="btnPrev">이전</a>
@@ -854,7 +854,7 @@ margin-bottom:.0001pt&quot;><span style=&quot;font-size: 9pt;&quot;>&amp;nbsp;</
 당시 이용자의 주소 또는 거소가 분명하지 않거나 외국 거주자의 경우에는 민사소송법상의 관할법원에 제기합니다<span lang=&quot;EN-US&quot;>.</span></span></p><p style=&quot;margin: 0cm 0cm 0.0001pt 4.95pt; line-height: 1.8;&quot;><span style=&quot;font-size: 9pt;&quot;>③ 회사와 이용자간에 제기된 전자상거래 소송에는 한국법을 적용합니다</span><span lang=&quot;EN-US&quot; style=&quot;font-size: 9pt;&quot;>.</span></p>"
                        disabled="disabled"/>
                                                     </span>
-                                                    <a href="javascript:void(0);"
+                                                    <a // href="javascript:void(0);"
                                                         // onClick="doTermLayer(this,'termsCheck_21Pop');"
                                                         onClick={(e) => doTermLayer(e.currentTarget,'termsCheck_21Pop')}
                                                     >
@@ -2633,7 +2633,7 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
 개인정보처리방침<span lang=&quot;EN-US&quot;> 2021</span>년 <span lang=&quot;EN-US&quot;>4</span>월<span lang=&quot;EN-US&quot;> 30</span>일부터 시행합니다<span lang=&quot;EN-US&quot;>.</span></span><span lang=&quot;EN-US&quot; style=&quot;font-size:13.5pt;mso-ascii-font-family:&quot; 맑은=&quot;&quot; 고딕&quot;;mso-fareast-font-family:=&quot;&quot; &quot;맑은=&quot;&quot; 고딕&quot;;mso-hansi-font-family:&quot;맑은=&quot;&quot; 고딕&quot;;mso-bidi-font-family:굴림;color:red;=&quot;&quot; mso-font-kerning:0pt&quot;=&quot;&quot;><o:p></o:p></span></p><p>
 &amp;nbsp; &amp;nbsp;​&amp;nbsp;</p>" disabled="disabled"/>
             </span>
-                                                    <a href="javascript:void(0);"
+                                                    <a // href="javascript:void(0);"
                                                         // onClick="doTermLayer(this,'termsCheck_23Pop');"
                                                         onClick={(e) => doTermLayer(e.currentTarget,'termsCheck_23Pop')}
                                                     >
@@ -2656,7 +2656,8 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                                         </label>
                                                         <input type="hidden" name="agrYn" id="agrYn" value="N"/>
                                                     </span>
-                                                    <a href="javascript:void(0);" className="rea1" onClick={(e) => doToggleReception(e.currentTarget, 0)}>
+                                                    <a // href="javascript:void(0);"
+                                                       className="rea1" onClick={(e) => doToggleReception(e.currentTarget, 0)}>
                                                         <span className="hidden">[라쿠카라차] 운영 정보 수신동의  (선택)</span>
                                                     </a>
                                                 </div>
@@ -2716,7 +2717,8 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                                                         <label htmlFor="termsCheck99">혜택정보 수신동의 (선택)</label>
                                                         <input type="hidden" name="agrYn" id="agrYn" value="N"/>
                                                     </span>
-                                                    <a href="javascript:void(0);" className="rea2" onClick={(e) => doToggleReception(e.currentTarget, 1)}>
+                                                    <a // href="javascript:void(0);"
+                                                       className="rea2" onClick={(e) => doToggleReception(e.currentTarget, 1)}>
                                                             <span className="hidden">혜택정보 수신동의 (선택)</span>
                                                     </a>
                                                 </div>
@@ -2769,7 +2771,8 @@ padding:.75pt .75pt .75pt .75pt;height:17.25pt&quot;>
                             </div>
                         </form>
                         <div className="btnArea mgt_20">
-                            <a href="javascript:void(0);" className="lbtn btn-large disable" id="agreeConfirm">확인</a>
+                            <a // href="javascript:void(0);"
+                               className="lbtn btn-large disable" id="agreeConfirm">확인</a>
                         </div>
                     </div>
 

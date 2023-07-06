@@ -3477,7 +3477,8 @@ function MyPage() {
                         <div className="allCountD">검색결과</div>
                         <div className="allCount">
                             총 <span className="fbd" id="searchCount">260</span>개 요금
-                            <a href="#costInfomation" className="pop-layer question" onClick={() => {
+                            <a // href="#costInfomation"
+                               className="pop-layer question" onClick={() => {
                                 const div = document.createElement("div");
                                 div.setAttribute("id", "dimmd-layer");
                                 document.body.appendChild(div);
@@ -3487,7 +3488,8 @@ function MyPage() {
                     </div>
                     <div>
                         <a href="#" className="pop-sort icSort pop-layer" onClick={() => showSortPopup()}>정렬</a>
-                        <a href="#filterPOP" className="icFilter top-btn full-pop-layer" onClick={() => $("#filterPOP").show()}>필터</a>
+                        <a // href="#filterPOP"
+                           className="icFilter top-btn full-pop-layer" onClick={() => $("#filterPOP").show()}>필터</a>
                     </div>
                 </div>
 
@@ -3569,7 +3571,8 @@ function MyPage() {
 
                 <div id="allSns01" className="popup-box">
                     <div className="popWrap">
-                        <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                        <a // href="javascript:void(0);"
+                           className="pop-close layer-close">닫기</a>
                         <div className="pop-header">
                             <div className="pop-tit">
                                 <h1>공유하기</h1>
@@ -3628,18 +3631,21 @@ function MyPage() {
                                     <div className="quick-option">
                                         <div id="noneMulti">
                                             <div id="fore_travel_0" className="placeSel">
-                                                <a href="javascript:void(0);" className="select"
+                                                <a // href="javascript:void(0);"
+                                                   className="select"
                                                    // onClick="foreOpenAirStation(this, '출발지');"
                                                    onClick={(e) => foreOpenAirStation(e.currentTarget, '출발지')}
                                                    id="AIR_whereDepartCity">
                                                     ICN<span className="country">인천</span>
                                                 </a>
                                                 <input type="hidden" name="depCity" id="departCity" value="ICN"/>
-                                                <a href="javascript:void(0);" className="change"
+                                                <a // href="javascript:void(0);"
+                                                   className="change"
                                                     // onClick="swapArea();"
                                                     onClick={() => swapArea()}
                                                 ></a>
-                                                <a href="javascript:void(0);" className="select"
+                                                <a // href="javascript:void(0);"
+                                                   className="select"
                                                    // onClick="foreOpenAirStation(this, '도착지');"
                                                    onClick={(e) => foreOpenAirStation(e.currentTarget, '도착지')}
                                                    id="AIR_whereArrivelCity">
@@ -3740,7 +3746,8 @@ function MyPage() {
                                             <dl>
                                                 <dt>인원</dt>
                                                 <dd className="select">
-                                                    <a href="javascript:void(0);" id="AIR_F_whereACnt">성인 1명</a>
+                                                    <a // href="javascript:void(0);"
+                                                       id="AIR_F_whereACnt">성인 1명</a>
                                                 </dd>
                                                 <input type="hidden" id="AIR_F_C_1" value="1"/>
                                                 <input type="hidden" id="AIR_F_C_2" value="0"/>
@@ -3749,7 +3756,8 @@ function MyPage() {
                                             <dl>
                                                 <dt>좌석</dt>
                                                 <dd className="select">
-                                                    <a href="javascript:void(0);" id="AIR_F_Seat">일반석</a>
+                                                    <a // href="javascript:void(0);"
+                                                       id="AIR_F_Seat">일반석</a>
                                                 </dd>
                                                 <input type="hidden" id="AIR_F_S" value="Y"/>
                                             </dl>
@@ -4151,7 +4159,8 @@ function MyPage() {
                                 </section>
 
                                 <div className="btnArea mgt_30">
-                                    <a href="#none" className="lbtn btn-large filled"
+                                    <a // href="#none"
+                                       className="lbtn btn-large filled"
                                        style={{background: "#4a6cb3", border: "1px solid #4a6cb3"}}
                                        // onClick="updateSearchList()"
                                        onClick={() => updateSearchList()}
@@ -4170,7 +4179,8 @@ function MyPage() {
 
                 <div id="lacha01" className="popup-box">
                     <div className="popWrap">
-                        <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                        <a // href="javascript:void(0);"
+                           className="pop-close layer-close">닫기</a>
                         <div className="pop-header">
                             <div className="pop-tit">
                                 <h1>라쿠카라차 특가</h1>
@@ -4187,7 +4197,8 @@ function MyPage() {
 
                 <div id="skpoint01" className="popup-box">
                     <div className="popWrap">
-                        <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                        <a // href="javascript:void(0);"
+                           className="pop-close layer-close">닫기</a>
                         <div className="pop-header">
                             <div className="pop-tit">
                                 <h1>SK 포인트 특가</h1>
@@ -4212,7 +4223,8 @@ function MyPage() {
                 <input type="hidden" name="foreInputArea" id="foreInputArea"/>
                 <div id="header" className="center">
                     <div className="header_top">
-                        <a href="javascript:void(0);" className="btnPrev foreAirStationArea"
+                        <a // href="javascript:void(0);"
+                           className="btnPrev foreAirStationArea"
                            // onClick="closeForeAirStation();"
                            onClick={() => closeForeAirStation()}
                         >이전</a>
@@ -4275,7 +4287,8 @@ function MyPage() {
             <div className="foreAirDateArea" style={{display:"none", paddingTop: "57px",}}>
                 <div id="header" className="center">
                     <div className="header_top">
-                        <a href="javascript:void(0);" className="btnPrev foreCalendarArea"
+                        <a // href="javascript:void(0);"
+                           className="btnPrev foreCalendarArea"
                             // onClick="closeMultiCalendar();"
                             onClick={() => closeMultiCalendar()}
                         >이전</a>
@@ -4323,7 +4336,8 @@ function MyPage() {
                 />
 
                 <div className="btmBtn-fixed cal ">
-                    <a href="javascript:void(0);" className="lbtn filled btn-large mgt_30"
+                    <a // href="javascript:void(0);"
+                       className="lbtn filled btn-large mgt_30"
                         style={{background: "#466cc2", border: "1px solid #466cc2",}}
                         onClick={() => closeMultiCalendar()}
                     >선택 완료</a>
@@ -4418,7 +4432,8 @@ function MyPage() {
                     </ul>
 
                     <div className="btmBtn-fixed">
-                        <a href="#none" className="lbtn filled btn-large mgt_30"
+                        <a // href="#none"
+                           className="lbtn filled btn-large mgt_30"
                             style={{background: "#4a6cb3", border: "1px solid #4a6cb3"}}
                             // onClick="closeAirMemberAndSeat()"
                             onClick={() => closeAirMemberAndSeat()}
@@ -4430,7 +4445,8 @@ function MyPage() {
             <div className="calendarArea" style={{display:"none"}}>
                 <div id="header" className="center">
                     <div className="header_top">
-                        <a href="javascript:void(0);" className="btnPrev calendarArea"
+                        <a // href="javascript:void(0);"
+                           className="btnPrev calendarArea"
                             // onClick="closeCalendar();"
                             onClick={() => closeCalendar()}
                         >이전</a>
@@ -4441,11 +4457,13 @@ function MyPage() {
                     <div className="dateSel v2 bg CALENDAR_TP">
                         <dl>
                             <dt id="CAL_START">가는날</dt>
-                            <dd><a href="javascript:void(0);" id="CALENDAR_D_DATE">날짜 선택</a></dd>
+                            <dd><a // href="javascript:void(0);"
+                                   id="CALENDAR_D_DATE">날짜 선택</a></dd>
                         </dl>
                         <dl>
                             <dt id="CAL_END">오는날</dt>
-                            <dd><a href="javascript:void(0);" id="CALENDAR_A_DATE">날짜 선택</a></dd>
+                            <dd><a // href="javascript:void(0);"
+                                   id="CALENDAR_A_DATE">날짜 선택</a></dd>
                         </dl>
                     </div>
                 </div>
@@ -4476,7 +4494,8 @@ function MyPage() {
                 />
 
                 <div className="btmBtn-fixed cal CALENDAR_DBL" style={{display:"none"}}>
-                    <a href="javascript:void(0);" className="lbtn filled btn-large mgt_30"
+                    <a // href="javascript:void(0);"
+                       className="lbtn filled btn-large mgt_30"
                         style={{background: "#466cc2", border: "1px solid #466cc2",}}
                         // onClick="setFromToVal();"
                         onClick={() => setFromToVal()}
@@ -4506,7 +4525,8 @@ function MyPage() {
                         </div>
                         <div className="flexWrap btnArea mgt_20">
                             {/*<a href="javascript:void(0);" className="lbtn filled-g btn-m filled alert-close">취소</a>*/}
-                            <a href="javascript:void(0);" className="lbtn btn-m filled alert-close"
+                            <a // href="javascript:void(0);"
+                               className="lbtn btn-m filled alert-close"
                                 style={{background: "#4a6cb3", border: "1px solid #4a6cb3",}}
                                 onClick={() => {
                                     $("#costInfomation").hide();

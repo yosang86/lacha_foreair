@@ -419,7 +419,8 @@ function App() {
                 <div className="header_top center">
                     <a href="/mypage" className="btnPrev">이전</a>
                     <h1>적립금</h1>
-                    <a href="#" className="btnBasket">장바구니</a>
+                    <a // href="#"
+                       className="btnBasket">장바구니</a>
                 </div>
             </div>
 
@@ -443,19 +444,22 @@ function App() {
                     <div className="searchArea v1">
                         <ul className="term">
                             <li>
-                                <a href="javascript:void(0);" data-value="50"
+                                <a // href="javascript:void(0);"
+                                   data-value="50"
                                    // onClick="doMonthSearch(this);"
                                    onClick={(event) => doMonthSearch(event.currentTarget)}
                                    id="3month" className="selected">3개월</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" data-value="60"
+                                <a // href="javascript:void(0);"
+                                   data-value="60"
                                    // onClick="doMonthSearch(this);"
                                    onClick={(event) => doMonthSearch(event.currentTarget)}
                                    id="6month">6개월</a>
                             </li>
                             <li>
-                                <a href="javascript:void(0);" className="set">기간설정</a>
+                                <a // href="javascript:void(0);"
+                                   className="set">기간설정</a>
                             </li>
                         </ul>
                         <a href="#pointIntroPOP" className="top-btn full-pop-layer">적립금안내</a>
@@ -463,25 +467,28 @@ function App() {
                             <div className="tabArea mgt_10 mgb_30">
                                 <ul className="tab v1">
                                     <li data-tab="tab1">
-                                        <a href="javascript:void(0);" data-value="40" data-type="tab"
+                                        <a // href="javascript:void(0);"
+                                           data-value="40" data-type="tab"
                                             // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >1개월</a>
                                     </li>
                                     <li data-tab="tab2">
-                                        <a href="javascript:void(0);" data-value="50" data-type="tab"
+                                        <a // href="javascript:void(0);"
+                                           data-value="50" data-type="tab"
                                             // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >3개월</a>
                                     </li>
                                     <li data-tab="tab3">
-                                        <a href="javascript:void(0);" data-value="60" data-type="tab"
+                                        <a // href="javascript:void(0);"
+                                           data-value="60" data-type="tab"
                                             // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >6개월</a>
                                     </li>
                                     <li data-tab="tab4" className="current">
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            data-value="70" data-type="tab"
                                             // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
@@ -497,14 +504,16 @@ function App() {
                                                     <span className="w100 mgt_10 vam">
                                                         <span className="input_cal v2">
                                                             <input type="text" id="strtDtm" name="strtDtm" readOnly="readonly"/>
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                onClick={(e) => create_calendar_layer_Pop("#strtDtm")}
                                                             >달력</a>
                                                         </span>
                                                         <span>~</span>
                                                         <span className="input_cal v3">
                                                             <input type="text" id="endDtm" name="endDtm" readOnly="readonly"/>
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                onClick={(e) => create_calendar_layer_Pop("#endDtm")}
                                                             >달력</a>
                                                         </span>
@@ -512,7 +521,7 @@ function App() {
                                                 </p>
                                             </dd>
                                         </dl>
-                                        <a href="javascript:void(0);"
+                                        <a //href="javascript:void(0);"
                                            // onClick="doSearch();"
                                            onClick={() => doList()}
                                            className="lbtn filled btn-large mgt_20"
@@ -528,25 +537,29 @@ function App() {
                     <div className="tab02 mgt_10">
                         <ul className="tab v1">
                             <li className="tabSub current" data-tab="pointTab">
-                                <a href="javascript:void(0);" data-value="all"
+                                <a //href="javascript:void(0);"
+                                   data-value="all"
                                    // onClick="doTab(this);"
                                    onClick={() => doTab(this)}
                                 >전체</a>
                             </li>
                             <li className="tabSub" data-tab="pointTab">
-                                <a href="javascript:void(0);" data-value="save"
+                                <a // href="javascript:void(0);"
+                                   data-value="save"
                                     // onClick="doTab(this);"
                                    onClick={() => doTab(this)}
                                 >적립</a>
                             </li>
                             <li className="tabSub" data-tab="pointTab">
-                                <a href="javascript:void(0);" data-value="use"
+                                <a // href="javascript:void(0);"
+                                   data-value="use"
                                     // onClick="doTab(this);"
                                    onClick={() => doTab(this)}
                                 >사용</a>
                             </li>
                             <li className="tabSub" data-tab="pointTab">
-                                <a href="javascript:void(0);" data-value="passing"
+                                <a // href="javascript:void(0);"
+                                   data-value="passing"
                                     // onClick="doTab(this);"
                                    onClick={() => doTab(this)}
                                 >소멸</a>
@@ -596,7 +609,8 @@ function App() {
                                 </div>
                             </div>
                             <div className="btnArea pdl_15 pdr_15">
-                                <a href="#none" className="lbtn btn-large filled mgt_30 mgb_30 full-pop-close"
+                                <a // href="#none"
+                                   className="lbtn btn-large filled mgt_30 mgb_30 full-pop-close"
                                    style={{background: "#466cc2", border: "1px solid #466cc2"}}>확인</a>
                             </div>
                         </div>
@@ -610,7 +624,8 @@ function App() {
 
             <div id="calendar-pop" className="popup-box">
                 <div className="popWrap">
-                    <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       className="pop-close layer-close">닫기</a>
                     <div className="pop-cont">
                         <DatePicker
                             id="ForeCAL_1"

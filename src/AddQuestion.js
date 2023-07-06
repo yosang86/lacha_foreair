@@ -131,7 +131,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => base.doHistoryBack()} className="btnClose full-pop-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => base.doHistoryBack()} className="btnClose full-pop-close">닫기</a>
                     <h1>1:1 문의하기</h1>
                 </div>
             </div>
@@ -158,24 +159,30 @@ function App() {
                         <dl className="cate" id="sctCd">
                             <dt>카테고리</dt>
                             <dd className="">
-                                <a href="javascript:void(0);" className="select" data-type="001001"
+                                <a // href="javascript:void(0);"
+                                   className="select" data-type="001001"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >포인트</a>
-                                <a href="javascript:void(0);" className="" data-type="001002"
+                                <a // href="javascript:void(0);"
+                                   className="" data-type="001002"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >복지제도</a>
-                                <a href="javascript:void(0);" className="" data-type="001003"
+                                <a // href="javascript:void(0);"
+                                   className="" data-type="001003"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >회원정보</a>
                             </dd>
                             <dd className="mgt_5">
-                                <a href="javascript:void(0);" className="" data-type="001006"
+                                <a // href="javascript:void(0);"
+                                   className="" data-type="001006"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >상품/제휴서비스</a>
-                                <a href="javascript:void(0);" className="" data-type="001007"
+                                <a // href="javascript:void(0);"
+                                   className="" data-type="001007"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >적립금/쿠폰</a>
-                                <a href="javascript:void(0);" className="" data-type="001008"
+                                <a // href="javascript:void(0);"
+                                   className="" data-type="001008"
                                     onClick={(e) => setCategory(e.currentTarget)}
                                 >불편/건의/기타</a>
                             </dd>
@@ -190,7 +197,8 @@ function App() {
                         <dl>
                             <dt>
                                 내용
-                                <a href="javascript:void(0);" className="sbtn border"
+                                <a // href="javascript:void(0);"
+                                   className="sbtn border"
                                     style={{color: "#466cc2", border: "1px solid #466cc2"}}
                                     // onClick="contInit();"
                                     onClick={() => contInit()}
@@ -231,7 +239,7 @@ function App() {
                         {/* </p> -->*/}
                         <div className="flexWrap mgt_30">
                             <a href="/question" className="lbtn filled-g btn-large">취소</a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                 // onClick="questionInsert();"
                                 onClick={() => questionInsert()}
                                 className="lbtn filled btn-large"

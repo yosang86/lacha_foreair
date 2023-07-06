@@ -10,7 +10,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => common.doHistoryBack()} className="btnPrev">이전</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => common.doHistoryBack()} className="btnPrev">이전</a>
                     <h1>고객센터</h1>
                 </div>
             </div>

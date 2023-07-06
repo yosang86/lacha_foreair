@@ -255,7 +255,8 @@ function App(props) {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => find.doHistoryBack()} className="btnClose">닫기</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => find.doHistoryBack()} className="btnClose">닫기</a>
                     <h1>{props.title}</h1>
                 </div>
             </div>
@@ -326,7 +327,7 @@ function App(props) {
 
                                     <dd>
                                         <p className="input_inline">
-                                            <a href="javascript:void(0);"
+                                            <a // href="javascript:void(0);"
                                                className="mbtn mgt_10 lbtn filled btn-large mgr_5 search-zipcode"
                                                style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                                data-post_id="postNo" data-addr1_id="postAddr"
@@ -351,7 +352,7 @@ function App(props) {
                                     </dd>
                                 </dl>
                                 <div className="btnArea mgt_30">
-                                    <a href="#none" className="lbtn btn-large filled"
+                                    <a href="#" className="lbtn btn-large filled"
                                        style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                        // onClick="insertAddress();"
                                        onClick={() => insertAddress()}

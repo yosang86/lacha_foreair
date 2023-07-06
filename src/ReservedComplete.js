@@ -5,7 +5,10 @@ function App(props) {
         <>
             <div id="header" className="center">
                 <div className="header_top">
-                    <a href="/main/s_MainView.do" className="btnPrev">이전</a>
+                    <a
+                        // href="/main/s_MainView.do"
+                        href="/"
+                       className="btnPrev">이전</a>
                     <h1>예약</h1>
                 </div>
             </div>
@@ -132,7 +135,7 @@ function App(props) {
 
                         <div className="btnArea mgt_30">
                             {/*<a href="/foreign/reserve/s_ReservedCompleteInfo.do?key=airReservedInfo.ordNo" className="lbtn btn-large filled"*/}
-                            <a href="/reservedCompleteInfo?ordNo=J230516162916N" className="lbtn btn-large filled"
+                            <a href="/orderDetail?ordNo=J230516162916N" className="lbtn btn-large filled"
                                style={{background: "#4a6cb3", border: "1px solid #4a6cb3"}}>예약 상세 / 결제하기</a>
                         </div>
                         <div className="btnArea mgt_10">

@@ -272,7 +272,8 @@ function App() {
                                     <dt className="weddYn" style={isMarried ? {} : {display: "none"}}>결혼기념일</dt>
                                     <dd className="mgt_10 weddYn" style={isMarried ? {} : {display: "none"}}>
                                         <span className="w100 mgt_10 vam">
-                                            <a href="#datepicker" className="input_cal calendar-pop-layer"
+                                            <a // href="#datepicker"
+                                               className="input_cal calendar-pop-layer"
                                                onClick={(e) => calendar.create_calendar_layer_Pop("#weddDt")}
                                             >
                                                 <input type="text" id="weddDt" name="weddDt" readOnly="readonly"/>
@@ -341,7 +342,8 @@ function App() {
                             </div>
                         </form>
                         <div className="btnArea mgt_30">
-                            <a href="#none" className="lbtn btn-large filled"
+                            <a // href="#none"
+                               className="lbtn btn-large filled"
                                style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                // onClick="updateMerExtra();"
                                onClick={() => updateMerExtra()}
@@ -353,7 +355,8 @@ function App() {
 
             <div id="calendar-pop" className="popup-box">
                 <div className="popWrap">
-                    <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       className="pop-close layer-close">닫기</a>
                     <div className="pop-cont">
                         <DatePicker
                             id="ForeCAL_1"
@@ -398,7 +401,8 @@ function App() {
                             )}
                             renderDayContents={(day) => (<div><span>{day}</span></div>)}
                         />
-                        <a href="#" className="btm-layer-btn mgt_25 pop-close">닫기</a>
+                        <a // href="#"
+                           className="btm-layer-btn mgt_25 pop-close">닫기</a>
                     </div>
                 </div>
             </div>

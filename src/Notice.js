@@ -115,7 +115,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
                     <h1>공지사항</h1>
                 </div>
             </div>
@@ -133,7 +134,7 @@ function App() {
                             <input type="hidden" name="offset" id="offset" value="0"/>
                             <input type="hidden" name="limit" id="limit" value="6"/>
                             <input type="text" name="srchTxt" id="srchTxt" placeholder="검색어를 입력해 주세요."/>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="controller.getSearchNoticeData();"
                                onClick={() => getSearchNoticeData()}
                             >
@@ -162,14 +163,20 @@ function App() {
 
                     <div id="pagingList" className="pagination">
                         <div className="paging pdb_50">
-                            <a href="javascript:void(0);" className="first"><span className="hdn">맨앞으로</span></a>
-                            <a href="javascript:void(0);" className="prev"><span className="hdn">이전</span></a>
-                            <a href="javascript:void(0);"><span className="active">1</span></a>
+                            <a // href="javascript:void(0);"
+                               className="first"><span className="hdn">맨앞으로</span></a>
+                            <a // href="javascript:void(0);"
+                               className="prev"><span className="hdn">이전</span></a>
+                            <a // href="javascript:void(0);"
+                            ><span className="active">1</span></a>
                             {/*<a href="javascript:void(0);" onClick="javascript:controller.nextPage('2');">2</a>*/}
-                            <a href="javascript:void(0);" onClick={() => nextPage('2')}>2</a>
-                            <a href="javascript:void(0);" className="next"><span className="hdn">다음</span></a>
+                            <a // href="javascript:void(0);"
+                               onClick={() => nextPage('2')}>2</a>
+                            <a // href="javascript:void(0);"
+                               className="next"><span className="hdn">다음</span></a>
                             {/*<a href="javascript:void(0);" onClick="javascript:controller.nextPage('2'); return false;" className="last"><span className="hdn">맨뒤로</span></a>*/}
-                            <a href="javascript:void(0);"  onClick={() => nextPage('2')} className="last"><span className="hdn">맨뒤로</span></a>
+                            <a // href="javascript:void(0);"
+                               onClick={() => nextPage('2')} className="last"><span className="hdn">맨뒤로</span></a>
                         </div>
                     </div>
                 </section>
@@ -180,7 +187,8 @@ function App() {
                     <div className="pop-header">
                         <div className="pop-tit">
                             <h1>공지사항 상세</h1>
-                            <a href="javascript:void(0);" className="btnClose full-pop-close"
+                            <a // href="javascript:void(0);"
+                               className="btnClose full-pop-close"
                                 onClick={() => $("#noticeList01POP").css("display", "")}
                             >닫기</a>
                         </div>

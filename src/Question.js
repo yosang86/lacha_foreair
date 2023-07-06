@@ -74,7 +74,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
                     <h1>1:1 문의 내역</h1>
                 </div>
             </div>
@@ -82,13 +83,15 @@ function App() {
             <div id="content">
                 <div className="searchArea v1">
                     <ul className="term">
-                        <li className="date" data-num="3"><a href="javascript:void(0);" className="selected"
+                        <li className="date" data-num="3"><a // href="javascript:void(0);"
+                                                             className="selected"
                             // onClick={() => setQuestionRange()}
                         >3개월</a></li>
-                        <li className="date" data-num="6"><a href="javascript:void(0);"
+                        <li className="date" data-num="6"><a // href="javascript:void(0);"
                             // onClick={() => setQuestionRange()}
                         >6개월</a></li>
-                        <li className="date" data-num="0"><a href="javascript:void(0);" className="set"
+                        <li className="date" data-num="0"><a // href="javascript:void(0);"
+                                                             className="set"
                             // onClick={() => setQuestionRange()}
                         >기간설정</a></li>
                     </ul>
@@ -96,16 +99,16 @@ function App() {
                         <div className="rafer">조회기준 : 문의 등록일</div>
                         <div className="tabArea mgt_10 mgb_30">
                             <ul className="tab v1">
-                                <li className="date" data-tab="tab1" data-num="1"><a href="javascript:void(0);"
+                                <li className="date" data-tab="tab1" data-num="1"><a // href="javascript:void(0);"
                                     // onClick={(e) => setQuestionRangeDetail(e.currentTarget.parentNode)}
                                 >1개월</a></li>
-                                <li className="date" data-tab="tab2" data-num="3"><a href="javascript:void(0);"
+                                <li className="date" data-tab="tab2" data-num="3"><a // href="javascript:void(0);"
                                     // onClick={(e) => setQuestionRangeDetail(e.currentTarget.parentNode)}
                                 >3개월</a></li>
-                                <li className="date" data-tab="tab3" data-num="6"><a href="javascript:void(0);"
+                                <li className="date" data-tab="tab3" data-num="6"><a // href="javascript:void(0);"
                                     // onClick={(e) => setQuestionRangeDetail(e.currentTarget.parentNode)}
                                 >6개월</a></li>
-                                <li className="current date" data-tab="tab4" data-num="0"><a href="javascript:void(0);"
+                                <li className="current date" data-tab="tab4" data-num="0"><a // href="javascript:void(0);"
                                     // onClick={(e) => setQuestionRangeDetail(e.currentTarget.parentNode)}
                                 >기간설정</a></li>
                             </ul>
@@ -125,7 +128,8 @@ function App() {
                                                             <input type="text" id="strtDtm" name="strtDtm" readOnly="readonly"
                                                                 value={formatDate(null, 6)}
                                                             />
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                // onClick={(e) => setCalendarLayerPopup(e.currentTarget)}
                                                                onClick={(e) => calendar.create_calendar_layer_Pop("#strtDtm")}
                                                             >달력</a>
@@ -135,7 +139,8 @@ function App() {
                                                             <input type="text" id="endDtm" name="endDtm" readOnly="readonly"
                                                                 value={formatDate(null)}
                                                             />
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                // onClick={(e) => setCalendarLayerPopup(e.currentTarget)}
                                                                onClick={(e) => calendar.create_calendar_layer_Pop("#endDtm")}
                                                             >달력</a>
@@ -145,7 +150,8 @@ function App() {
                                             </dd>
                                         </dl>
                                     </form>
-                                    <a href="javascript:void(0);" className="lbtn filled btn-large mgt_20"
+                                    <a // href="javascript:void(0);"
+                                       className="lbtn filled btn-large mgt_20"
                                        // onClick="questionSearch(1)"
                                        onClick={() => common.questionSearch(1)}
                                        style={{background: "#466cc2", border: "1px solid #466cc2"}}>조회</a>
@@ -208,7 +214,8 @@ function App() {
 
             <div id="calendar-pop" className="popup-box">
                 <div className="popWrap">
-                    <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       className="pop-close layer-close">닫기</a>
                     <div className="pop-cont">
                         <DatePicker
                             id="ForeCAL_1"

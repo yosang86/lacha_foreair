@@ -88,7 +88,8 @@ function MyPage() {
                                       <span>2023-06-12 15:55:37</span>
                                       {/* <!-- 상품유형코드 GOODS_TP_CD 10 일반상품, 20 핀번호, 30 숙박 상품, 40 제휴사 항공, 50 자체 숙박, 60 승차권 --> */}
                                       {/*<a href="javascript:goDetail('I230612416001N');" className="floatright">상세보기</a>*/}
-                                      <a href="javascript:void(0);" onClick={() => goDetail('I230612416001N')} className="floatright">상세보기</a>
+                                      <a // href="javascript:void(0);"
+                                         onClick={() => goDetail('I230612416001N')} className="floatright">상세보기</a>
                                   </dt>
                                   <dd className="orderDesc">
                                       <div className="inner">

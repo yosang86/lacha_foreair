@@ -12,7 +12,8 @@ function App() {
     <>
         <div id="header" className="center">
             <div className="header_top center">
-                <a href="javascript:void(0);"
+                <a
+                    // href="javascript:void(0);"
                     // onClick="doHistoryBack();"
                     onClick={() => common.doHistoryBack()}
                     className="btnPrev">이전</a>
@@ -33,13 +34,13 @@ function App() {
                                     >휴대폰 본인인증</a>
                                 </li>*/}
                                 <li className="current" id="tab02">
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                         // onClick="doTab('cellNo');"
                                         onClick={(e) => common.doTab(e.currentTarget, 'cellNo')}
                                     >휴대폰으로 찾기</a>
                                 </li>
                                 <li id="tab03">
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                         // onClick="doTab('email');"
                                         onClick={(e) => common.doTab(e.currentTarget, 'email')}
                                     >이메일로 찾기</a>
@@ -51,7 +52,7 @@ function App() {
                                         <p>안전한 통신사 본인인증 (PASS)에서 인증합니다.</p>
                                         <p className="stxt">PASS 간편인증 또는 문자인증으로 본인인증 가능</p>
                                     </div>
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                        // onClick="callKmcert();"
                                        onClick={(e) => pcert.callKmcert(e.currentTarget)}
                                        className="lbtn filled btn-large mgt_40"
@@ -111,7 +112,8 @@ function App() {
                                         <dt>인증번호</dt>
                                         <dd>
                                             <p className="input_inline">
-                                                <a href="javascript:void(0);" id="sendBtn"
+                                                <a // href="javascript:void(0);"
+                                                    id="sendBtn"
                                                    // onClick="sendKey(this);"
                                                    onClick={(event) => common.sendKey(event.currentTarget)}
                                                    className="mbtn mgt_10 lbtn filled btn-large mgr_5"
@@ -125,9 +127,12 @@ function App() {
                                         </dd>
                                     </dl>
                                     <div className="btnArea mgt_30">
-                                        <a href="javascript:void(0);" id="confirmCnBtn"
+                                        <a
+                                            // href="javascript:void(0);"
+                                           id="confirmCnBtn"
                                            className="lbtn disable btn-large">인증완료하기</a>
-                                        <a href="javascript:void(0);"
+                                        <a
+                                            // href="javascript:void(0);"
                                            // onClick="passWordChange();"
                                            onClick={() => common.passwordChange()}
                                            id="confirmBtn"
@@ -156,7 +161,8 @@ function App() {
                         <div className="pop-header">
                             <div className="pop-tit">
                                 <h1 className="pop-name">휴대폰인증</h1>
-                                <a href="javascript:void(0);"
+                                <a
+                                    // href="javascript:void(0);"
                                    className="btnClose full-pop-close">닫기</a>
                             </div>
                         </div>

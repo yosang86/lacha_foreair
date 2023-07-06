@@ -128,7 +128,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => base.doHistoryBack()} className="btnClose full-pop-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => base.doHistoryBack()} className="btnClose full-pop-close">닫기</a>
                     <h1>회원탈퇴요청</h1>
                 </div>
             </div>
@@ -157,7 +158,8 @@ function App() {
                         <dl className="cate" id="sctCd" style={{display: "none"}}>
                             <dt>카테고리</dt>
                             <dd className="mgt_5">
-                                <a href="javascript:void(0);" className="select" data-type="001009">회원탈퇴</a>
+                                <a // href="javascript:void(0);"
+                                   className="select" data-type="001009">회원탈퇴</a>
                             </dd>
                         </dl>
 
@@ -183,7 +185,8 @@ function App() {
 
                         <dl id="resignPop_cont" style={{display: "none"}}>
                             <dt>
-                                내용<a href="javascript:void(0);" className="sbtn border"
+                                내용<a // href="javascript:void(0);"
+                                     className="sbtn border"
                                      style={{color: "#466cc2", border: "1px solid #466cc2"}}
                                      onClick={() => contInit()}>작성내용초기화</a>
                             </dt>
@@ -204,7 +207,8 @@ function App() {
                         </div>
                         <div className="flexWrap mgt_30">
                             <a href="/csMain" className="lbtn filled-g btn-large">취소</a>
-                            <a href="javascript:void(0);" onClick={() => questionInsert()}
+                            <a // href="javascript:void(0);"
+                               onClick={() => questionInsert()}
                                className="lbtn filled btn-large"
                                style={{background: "#466cc2", border: "1px solid #466cc2"}}>회원 탈퇴 신청</a>
                         </div>

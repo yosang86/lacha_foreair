@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import DatePicker from "react-datepicker";
 import {ko} from "date-fns/esm/locale";
 import Footer from "./Footer";
@@ -9,13 +9,12 @@ import * as calendar from "./js/calendar";
 function App() {
     document.getElementsByTagName('body')[0].classList.add('sub');
 
-    document.getElementsByTagName('body')[0].addEventListener("load", function () {
-        console.log("loaded");
-
+    useEffect(() => {
         setSearchDate('50', 'strtDtm', 'endDtm'); // 3개월 날짜 세팅
         doList();
         setCalendarLayerPopup();
-    })
+    }, [])
+
     function setCalendarLayerPopup() {
         $(document).on('click','.calendar-pop-layer', function(e) {
             var y = '';
@@ -378,15 +377,18 @@ function App() {
 
                     <div className="searchArea v1">
                         <ul className="term">
-                            <li><a href="javascript:void(0);" data-value="50"
+                            <li><a // href="javascript:void(0);"
+                                   data-value="50"
                                    // onClick="doMonthSearch(this);"
                                    onClick={(event) => doMonthSearch(event.currentTarget)}
                                    id="3month">3개월</a></li>
-                            <li><a href="javascript:void(0);" data-value="60"
+                            <li><a // href="javascript:void(0);"
+                                   data-value="60"
                                    // onClick="doMonthSearch(this);"
                                    onClick={(event) => doMonthSearch(event.currentTarget)}
                                    id="6month">6개월</a></li>
-                            <li><a href="javascript:void(0);" className="set">기간설정</a></li>
+                            <li><a // href="javascript:void(0);"
+                                   className="set">기간설정</a></li>
                         </ul>
 
                         <a href="#couponAddPOP" className="top-btn pop-layer">쿠폰등록</a>
@@ -395,28 +397,28 @@ function App() {
                             <div className="tabArea mgt_10 mgb_30">
                                 <ul className="tab v1">
                                     <li data-tab="tab1">
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            data-value="40" data-type="tab"
                                            // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >1개월</a>
                                     </li>
                                     <li data-tab="tab2">
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            data-value="50" data-type="tab"
                                            // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >3개월</a>
                                     </li>
                                     <li data-tab="tab3">
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            data-value="60" data-type="tab"
                                            // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
                                         >6개월</a>
                                     </li>
                                     <li data-tab="tab4" className="current">
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            data-value="70" data-type="tab"
                                            // onClick="doMonthSearch(this);"
                                            onClick={(event) => doMonthSearch(event.currentTarget)}
@@ -432,14 +434,16 @@ function App() {
                                                     <span className="w100 mgt_10 vam">
                                                         <span className="input_cal v2">
                                                             <input type="text" id="strtDtm" name="strtDtm" readOnly="readonly"/>
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                 onClick={() => calendar.create_calendar_layer_Pop("#strtDtm")}
                                                             >달력</a>
                                                         </span>
                                                         <span>~</span>
                                                         <span className="input_cal v3">
                                                             <input type="text" id="endDtm" name="endDtm" readOnly="readonly"/>
-                                                            <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                            <a // href="javascript:void(0);"
+                                                               className="btnCal calendar-pop-layer"
                                                                onClick={() => calendar.create_calendar_layer_Pop("#endDtm")}
                                                             >달력</a>
                                                         </span>
@@ -447,7 +451,7 @@ function App() {
                                                 </p>
                                             </dd>
                                         </dl>
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            className="lbtn filled btn-large mgt_20"
                                            style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                            // onClick="doSearch();"
@@ -465,13 +469,13 @@ function App() {
                         <ul className="tab">
                             <li className="current" data-tab="couponList">
                                 <a // href="javascript:doSearch('10');"
-                                    href="javascript:void(0);"
+                                    // href="javascript:void(0);"
                                     onClick={() => doSearch('10')}
                                     id="cpnUseCd10" className="type1 on">사용가능</a>
                             </li>
                             <li className="" data-tab="couponList">
                                 <a // href="javascript:doSearch('30');"
-                                    href="javascript:void(0);"
+                                    // href="javascript:void(0);"
                                     onClick={() => doSearch('30')}
                                     id="cpnUseCd30" className="type2">사용완료/만료</a>
                             </li>
@@ -490,7 +494,8 @@ function App() {
 
                 <div id="couponAddPOP" className="popup-box">
                     <div className="popWrap">
-                        <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                        <a // href="javascript:void(0);"
+                           className="pop-close layer-close">닫기</a>
                         <div className="pop-tit">쿠폰(프로모션) 등록</div>
                         <div className="pop-cont">
                             <div className="couponAdd">
@@ -500,7 +505,7 @@ function App() {
                                         <p className="input_inline">
                                             <input id="cpnNoInpt" name="cpnNoInpt" type="text" className="mgr_5"
                                                    placeholder="등록하실 쿠폰 번호 입력"/>
-                                            <a href="javascript:void(0);"
+                                            <a // href="javascript:void(0);"
                                                // onClick="couponIssu();"
                                                onClick={() => couponIssu()}
                                                className="mbtn lbtn filled btn-large "
@@ -516,7 +521,8 @@ function App() {
                                 </p>
                             </div>
                             <div className="btnArea mgt_20">
-                                <a href="#none" className="lbtn btn-large filled"
+                                <a // href="#none"
+                                   className="lbtn btn-large filled"
                                    // onClick="couponIssu();"
                                    onClick={() => couponIssu()}
                                    style={{background: "#4a6cb3", border: "1px solid #4a6cb3"}}>확인</a>
@@ -528,7 +534,8 @@ function App() {
 
             <div id="calendar-pop" className="popup-box">
                 <div className="popWrap">
-                    <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       className="pop-close layer-close">닫기</a>
                     <div className="pop-cont">
                         <DatePicker
                             id="ForeCAL_1"

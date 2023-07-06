@@ -1152,7 +1152,8 @@ function App() {
                                     <div className="flightNoticeToggle">
                                         <a
                                             // href="#"
-                                            href="javascript:void(0);" className="mgl_5"
+                                            // href="javascript:void(0);"
+                                            className="mgl_5"
                                         >탑승자 및 여권/증빙</a>
                                     </div>
                                     <div className="flightNoticeCont">
@@ -1388,24 +1389,26 @@ function App() {
 
                                 <div id="tab_covid_1" className="tabcontent current">
                                     <div className="txtDate mgt_10">작성일 : 2021. 01. 16(토)</div>
-                                    <div><p><span>○ 영국 정부는 2021.01.15.(금) 총리 브리핑을 통해 코로나19 변이바이러스의 세계적 확산에 따라 2021.1.18.(월) 04:00부터 기존 코로나19 저위험국가 입국자 대상 자가격리 면제제도(Travel Corridors)를 중단하고 대한민국을 포함한 모든 해외입국자를 대상으로 10일간 자가격리 의무를 부여할 예정입니다.</span>
-                                    </p><p><span><br/></span></p><p
-                                       ><span><br/></span></p><p
-                                       ><span>○ 같은 일시부터 영국 입국 시 코로나19 음성확인서 제출 의무화(Passenger Locator Form도 별도로 제출 필요)도 함께 시행되오니 영국에 입국할 계획이 있으신 우리 국민께서는 각별히 유념하여 주시기 바랍니다.</span>
-                                    </p><p><span><br/></span></p><p
-                                       ><span><br/></span></p><p
-                                       ><span>○ 영국 내 자가격리와 관련된 보다 자세한 내용은 아래의 영국정부 홈페이지를 참고해 주시기 바랍니다.</span>
-                                    </p><p><span
-                                       >※ Coronavirus (COVID-19): how to self-isolate when you travel to England</span>
-                                    </p><p><span><br/></span></p><p
-                                       ><span><br/></span></p><p
-                                       ><span>○ 기타 도움이 필요하시거나 긴급 상황 발생 시 아래 연락처로 연락해 주시기 바랍니다.</span>
-                                    </p><p><span
-                                       >☞ 주영국대한민국대사관<br/>&nbsp; &nbsp;- 대표번호(근무시간 중) : +44-20-7227-5500<br/>&nbsp; &nbsp;- 긴급연락처(사건사고 등 긴급상황 발생 시, 24시간) : +44-78-7650-6895<br/>☞ 영사콜센터(서울, 24시간) : +82-2-3210-0404 / 카카오톡 '외교부 영사콜센터' 친구추가</span>
-                                    </p><p><span><br/></span></p><p
-                                       ><span><br/></span></p><p
-                                       ><span><br/></span></p></div>
-                                    <br/><p className="f13 gray mgb_20">※ 이 데이터는 외교부가 제공하는 공공데이터에서 가져온 정보입니다.</p></div>
+                                    <div>
+                                        <p><span>○ 영국 정부는 2021.01.15.(금) 총리 브리핑을 통해 코로나19 변이바이러스의 세계적 확산에 따라 2021.1.18.(월) 04:00부터 기존 코로나19 저위험국가 입국자 대상 자가격리 면제제도(Travel Corridors)를 중단하고 대한민국을 포함한 모든 해외입국자를 대상으로 10일간 자가격리 의무를 부여할 예정입니다.</span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span>○ 같은 일시부터 영국 입국 시 코로나19 음성확인서 제출 의무화(Passenger Locator Form도 별도로 제출 필요)도 함께 시행되오니 영국에 입국할 계획이 있으신 우리 국민께서는 각별히 유념하여 주시기 바랍니다.</span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span>○ 영국 내 자가격리와 관련된 보다 자세한 내용은 아래의 영국정부 홈페이지를 참고해 주시기 바랍니다.</span></p>
+                                        <p><span>※ Coronavirus (COVID-19): how to self-isolate when you travel to England</span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span>○ 기타 도움이 필요하시거나 긴급 상황 발생 시 아래 연락처로 연락해 주시기 바랍니다.</span></p>
+                                        <p><span>☞ 주영국대한민국대사관<br/>&nbsp; &nbsp;- 대표번호(근무시간 중) : +44-20-7227-5500<br/>&nbsp; &nbsp;- 긴급연락처(사건사고 등 긴급상황 발생 시, 24시간) : +44-78-7650-6895<br/>☞ 영사콜센터(서울, 24시간) : +82-2-3210-0404 / 카카오톡 '외교부 영사콜센터' 친구추가</span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span><br/></span></p>
+                                        <p><span><br/></span></p>
+                                    </div>
+                                    <br/>
+                                    <p className="f13 gray mgb_20">※ 이 데이터는 외교부가 제공하는 공공데이터에서 가져온 정보입니다.</p>
+                                </div>
 
                                 <div id="tab_covid_2" className="tabcontent">
                                 </div>
@@ -1418,16 +1421,16 @@ function App() {
 
                                 <div id="tab_covid_kr" className="tabcontent">
                                     <br/>
-                                        <p className="f13 gray mgb_20">
-                                            한국입국 시 자가격리 관련 상세 내용은
-                                            아래의 보건복지부 및 질병관리청 정보 확인 부탁드립니다.
-                                        </p>
+                                    <p className="f13 gray mgb_20">
+                                        한국입국 시 자가격리 관련 상세 내용은
+                                        아래의 보건복지부 및 질병관리청 정보 확인 부탁드립니다.
+                                    </p>
 
-                                        <a href="http://ncov.mohw.go.kr/shBoardView.do?brdId=2&amp;brdGubun=23&amp;ncvContSeq=5280"
-                                           className="txtLink">보건복지부 백신 접종자 자가격리 안내</a>
-                                        <br/>
-                                            <a href="https://nqs.kdca.go.kr/nqs/quaStation/incheonAirport.do?gubun=step"
-                                               className="txtLink">질병관리청 국내입국시 검역 절차 안내</a>
+                                    <a href="http://ncov.mohw.go.kr/shBoardView.do?brdId=2&amp;brdGubun=23&amp;ncvContSeq=5280"
+                                       className="txtLink">보건복지부 백신 접종자 자가격리 안내</a>
+                                    <br/>
+                                    <a href="https://nqs.kdca.go.kr/nqs/quaStation/incheonAirport.do?gubun=step"
+                                       className="txtLink">질병관리청 국내입국시 검역 절차 안내</a>
                                 </div>
                             </div>
                         </div>

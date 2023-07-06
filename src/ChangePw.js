@@ -239,7 +239,8 @@ function App() {
             <div id="header" className="center">
                 {/*<div className="header_top center">*/}
                 <div className="header_top">
-                    <a href="javascript:void(0);" onClick={() => common.doHistoryBack()} className="btnClose">이전</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => common.doHistoryBack()} className="btnClose">이전</a>
                     <h1>비밀번호 변경</h1>
                 </div>
             </div>
@@ -272,7 +273,8 @@ function App() {
                                         <p className="err" id="pwChkValid" style={{display: "none"}}></p>
                                     </dd>
                                 </dl>
-                                <a href="#none" className="lbtn filled btn-large mgt_30"
+                                <a // href="#none"
+                                   className="lbtn filled btn-large mgt_30"
                                    style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                    // onClick="passwordChange();"
                                    onClick={() => passwordChange()}

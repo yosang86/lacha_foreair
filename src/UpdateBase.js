@@ -146,7 +146,8 @@ function App() {
                                 </dd>
                                 <dt>
                                     휴대폰
-                                    <a href="javascript:void(0);" className="change"
+                                    <a // href="javascript:void(0);"
+                                       className="change"
                                         // onClick="callKmcert(this);"
                                         onClick={(e) => pcert.callKmcert(e.currentTarget)}
                                     >변경</a>
@@ -167,7 +168,8 @@ function App() {
                             </ul>
                         </div>
                         <div className="btnArea mgt_20">
-                            <a href="javascript:void(0);" className="lbtn btn-large filled"
+                            <a // href="javascript:void(0);"
+                               className="lbtn btn-large filled"
                                style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                // onClick="saveBaseInfo();"
                                onClick={() => saveBaseInfo()}
@@ -187,7 +189,7 @@ function App() {
                             <div className="pop-header">
                                 <div className="pop-tit">
                                     <h1 className="pop-name">휴대폰인증</h1>
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                        className="btnClose full-pop-close">닫기</a>
                                 </div>
                             </div>

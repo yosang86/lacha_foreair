@@ -295,7 +295,8 @@ function App() {
                                 <label htmlFor="autoLogin" style={{display: "none"}}>자동로그인</label>
                             </p>
                             <div className="btnArea">
-                                <a href="javascript:void(0);" className="lbtn btn-large filled"
+                                <a // href="javascript:void(0);"
+                                   className="lbtn btn-large filled"
                                    style={{background: "#466cc2", border: "1px solid #466cc2",}} id="btnLogin"
                                     onClick={() => tryLogin()}
                                 >로그인</a>

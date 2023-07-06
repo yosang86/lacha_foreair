@@ -189,7 +189,8 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);" onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
+                    <a // href="javascript:void(0);"
+                       onClick={() => base.doHistoryBack()} className="btnPrev">이전</a>
                     <h1>자주묻는 질문</h1>
                 </div>
             </div>
@@ -210,7 +211,7 @@ function App() {
                             <input type="hidden" name="limit" id="limit" value="10"/>
                             <div className="sub-srhArea">
                                 <input type="text" id="tit" name="tit" placeholder="검색어를 입력해 주세요."/>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="searchFaq();"
                                    onClick={() => searchFaq()}
                                 ><span className="hdn">검색</span></a>
@@ -251,13 +252,15 @@ function App() {
                                         // onClick="selSctCd(this, '');"
                                         onClick={(event) => selSctCd(event.currentTarget, '')}
                                     >
-                                        <a href="javascript:void(0);">전체</a>
+                                        <a // href="javascript:void(0);"
+                                        >전체</a>
                                     </li>
                                     <li data-tab="tab_002006001"
                                         // onClick="selSctCd(this, '002006001', '주문/결제');"
                                         onClick={(event) => selSctCd(event.currentTarget, '002006001', '주문/결제')}
                                     >
-                                        <a href="javascript:void(0);">주문/결제</a>
+                                        <a // href="javascript:void(0);"
+                                        >주문/결제</a>
                                     </li>
                                 </ul>
                                 <div className="ofh">
@@ -287,30 +290,33 @@ function App() {
 
                         <div id="pagingList" className="pagination" style={{padding: "10px"}}>
                             <div className="paging pdb_50">
-                                <a href="javascript:void(0);" className="first"><span className="hdn">맨앞으로</span></a>
-                                <a href="javascript:void(0);" className="prev"><span className="hdn">이전</span></a>
-                                <a href="javascript:void(0);"><span className="active">1</span></a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
+                                   className="first"><span className="hdn">맨앞으로</span></a>
+                                <a // href="javascript:void(0);"
+                                   className="prev"><span className="hdn">이전</span></a>
+                                <a // href="javascript:void(0);"
+                                ><span className="active">1</span></a>
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('2');"
                                    onClick={() => faqList('2')}
                                 >2</a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('3');"
                                    onClick={() => faqList('3')}
                                 >3</a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('4');"
                                    onClick={() => faqList('4')}
                                 >4</a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('5');"
                                    onClick={() => faqList('5')}
                                 >5</a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('6')"
                                    onClick={() => faqList('6')}
                                    className="next"><span className="hdn">다음</span></a>
-                                <a href="javascript:void(0);"
+                                <a // href="javascript:void(0);"
                                    // onClick="javascript:faqList('8'); return false;"
                                    onClick={() => {faqList('8'); return false;}}
                                    className="last"><span className="hdn">맨뒤로</span></a>
@@ -338,30 +344,33 @@ function App() {
 
                     <div id="pagingSchList" className="pagination">
                         <div className="paging pdb_50">
-                            <a href="javascript:void(0);" className="first"><span className="hdn">맨앞으로</span></a>
-                            <a href="javascript:void(0);" className="prev"><span className="hdn">이전</span></a>
-                            <a href="javascript:void(0);"><span className="active">1</span></a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
+                               className="first"><span className="hdn">맨앞으로</span></a>
+                            <a // href="javascript:void(0);"
+                               className="prev"><span className="hdn">이전</span></a>
+                            <a // href="javascript:void(0);"
+                            ><span className="active">1</span></a>
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('2');"
                                onClick={() => faqList('2')}
                             >2</a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('3');"
                                onClick={() => faqList('3')}
                             >3</a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('4');"
                                onClick={() => faqList('4')}
                             >4</a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('5');"
                                onClick={() => faqList('5')}
                             >5</a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('6')"
                                onClick={() => faqList('6')}
                                className="next"><span className="hdn">다음</span></a>
-                            <a href="javascript:void(0);"
+                            <a // href="javascript:void(0);"
                                // onClick="javascript:faqList('8'); return false;"
                                onClick={() => {faqList('8'); return false;}}
                                className="last"><span className="hdn">맨뒤로</span></a>

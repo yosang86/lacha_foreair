@@ -599,7 +599,7 @@ function App() {
 
                             <div className="schedule-title pdt_20">
                                 <div className="sch_btn mgr_15">
-                                    <a href="#B2_f"
+                                    <a // href="#B2_f"
                                        className="full-pop-layer linkOpen go blue"
                                        // onClick="setDetailSearch()"
                                        onClick={() => setDetailSearch()}
@@ -701,14 +701,16 @@ function App() {
                                                         <span className="w100 mgt_10 vam">
                                                             <span className="input_cal v2">
                                                                 <input type="text" name="schStartDate3" id="airStartDate" readOnly="readonly"/>
-                                                                <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                                <a // href="javascript:void(0);"
+                                                                   className="btnCal calendar-pop-layer"
                                                                    onClick={(e) => create_calendar_layer_Pop("#airStartDate")}
                                                                 >달력</a>
                                                             </span>
                                                             <span>~</span>
                                                             <span className="input_cal v3">
                                                                 <input type="text" name="schEndDate3" id="airEndDate" readOnly="readonly"/>
-                                                                <a href="javascript:void(0);" className="btnCal calendar-pop-layer"
+                                                                <a // href="javascript:void(0);"
+                                                                   className="btnCal calendar-pop-layer"
                                                                    onClick={(e) => create_calendar_layer_Pop("#airEndDate")}
                                                                 >달력</a>
                                                             </span>
@@ -768,7 +770,8 @@ function App() {
 
             <div id="calendar-pop" className="popup-box">
                 <div className="popWrap">
-                    <a href="javascript:void(0);" className="pop-close layer-close">닫기</a>
+                    <a // href="javascript:void(0);"
+                       className="pop-close layer-close">닫기</a>
                     <div className="pop-cont">
                         <DatePicker
                             id="ForeCAL_1"

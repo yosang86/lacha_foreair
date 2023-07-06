@@ -530,7 +530,7 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);"
+                    <a // href="javascript:void(0);"
                         // onClick="doHistoryBack();"
                         onClick={() => find.doHistoryBack()}
                         className="btnPrev">이전</a>
@@ -603,7 +603,9 @@ function App() {
                                                     autoComplete="off"
                                                     onChange={() => resetCheckId()}
                                                 />
-                                                <a href="javascript:void(0);" id="idChk" className="mbtn mgt_10 lbtn filled btn-large "
+                                                <a
+                                                    // href="javascript:void(0);"
+                                                   id="idChk" className="mbtn mgt_10 lbtn filled btn-large "
                                                     style={{background: "#466cc2", border: "1px solid #466cc2",}}
                                                     onClick={() => checkId()}
                                                 >중복조회</a>
@@ -663,7 +665,9 @@ function App() {
                                             <p className="input_inline">
                                                 <input type="text" name="cellNo" id="cellNo" className="mgt_10 mgr_5 onlyNum" maxLength="11" placeholder="숫자만 입력"
                                                     autoComplete="off"/>
-                                                <a href="javascript:void(0);" className="mbtn mgt_10 lbtn filled btn-large " style={{background: "#466cc2", border: "1px solid #466cc2",}}
+                                                <a
+                                                    // href="javascript:void(0);"
+                                                   className="mbtn mgt_10 lbtn filled btn-large " style={{background: "#466cc2", border: "1px solid #466cc2",}}
                                                     // onClick="callKmcert(this);"
                                                     onClick={(e) => pcert.callKmcert(e.currentTarget)}
                                                 >본인인증</a>
@@ -703,14 +707,16 @@ function App() {
 
                                         <dd>
                                             <p className="input_inline">
-                                                <a href="javascript:void(0);" className="mbtn mgt_10 lbtn filled btn-large mgr_5 search-zipcode"
+                                                <a
+                                                    // href="javascript:void(0);"
+                                                   className="mbtn mgt_10 lbtn filled btn-large mgr_5 search-zipcode"
                                                    style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                                    data-post_id="postNo" data-addr1_id="postAddr" data-addr2_id="postAddrDtl"
                                                    onClick={(e) => openPostcode(e)}
                                                 >주소검색</a>
                                                 <input type="text" name="postNo" id="postNo" className="mgt_10" readOnly="readonly"/>
                                             </p>
-                                            <input type="text" name="postAddr" id="postAddr" c      lassName="mgt_10" readOnly="readonly"/>
+                                            <input type="text" name="postAddr" id="postAddr" className="mgt_10" readOnly="readonly"/>
                                             <input type="text" name="postAddrDtl" id="postAddrDtl" maxLength="120" className="mgt_10" placeholder="상세 주소 입력" autoComplete="off"/>
                                         </dd>
                                     </dl>
@@ -723,7 +729,9 @@ function App() {
                             <div className="box">
                                 <div className="btnArea mgt_30">
                                     {/*<a href="#none" class="lbtn disable btn-large">가입하기</a>  비활성화*/}
-                                    <a href="javascript:void(0);" id="joinBtn" className="lbtn btn-large filled" style={{background: "#466cc2", border: "1px solid #466cc2",}}
+                                    <a
+                                        // href="javascript:void(0);"
+                                       id="joinBtn" className="lbtn btn-large filled" style={{background: "#466cc2", border: "1px solid #466cc2",}}
                                         onClick={() => join()}
                                     >가입하기</a>
                                 </div>
@@ -742,7 +750,9 @@ function App() {
                             <div className="pop-header">
                                 <div className="pop-tit">
                                     <h1 className="pop-name">휴대폰인증</h1>
-                                    <a href="javascript:void(0);" className="btnClose full-pop-close">닫기</a>
+                                    <a
+                                        // href="javascript:void(0);"
+                                       className="btnClose full-pop-close">닫기</a>
                                 </div>
                             </div>
 

@@ -10,7 +10,7 @@ function App() {
         <>
             <div id="header" className="center">
                 <div className="header_top center">
-                    <a href="javascript:void(0);"
+                    <a // href="javascript:void(0);"
                         // onClick="doHistoryBack();"
                         onClick={() => common.doHistoryBack()}
                         className="btnPrev">이전</a>
@@ -24,13 +24,13 @@ function App() {
                         <div className="tabArea">
                             <ul className="tab">
                                 <li id="tab01" className="current">
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                         // onClick="doTab('cellNo');"
                                         onClick={(e) => common.doTab(e.currentTarget, 'cellNo')}
                                     >휴대폰으로 찾기</a>
                                 </li>
                                 <li id="tab02">
-                                    <a href="javascript:void(0);"
+                                    <a // href="javascript:void(0);"
                                         // onClick="doTab('email');"
                                         onClick={(e) => common.doTab(e.currentTarget, 'email')}
                                     >이메일로 찾기</a>
@@ -91,7 +91,8 @@ function App() {
                                         <dt>인증번호</dt>
                                         <dd>
                                             <p className="input_inline">
-                                                <a href="javascript:void(0);" id="sendBtn"
+                                                <a // href="javascript:void(0);"
+                                                   id="sendBtn"
                                                     // onClick="sendKey(this);"
                                                     onClick={(event) => common.sendKey(event.currentTarget)}
                                                     className="mbtn mgt_10 lbtn filled btn-large mgr_5"
@@ -105,9 +106,10 @@ function App() {
                                         </dd>
                                     </dl>
                                     <div className="btnArea mgt_30">
-                                        <a href="javascript:void(0);" id="confirmCnBtn"
+                                        <a // href="javascript:void(0);"
+                                           id="confirmCnBtn"
                                            className="lbtn disable btn-large">인증완료하기</a>
-                                        <a href="javascript:void(0);"
+                                        <a // href="javascript:void(0);"
                                            // onClick="passWordChange();"
                                            onClick={() => common.passwordChange()}
                                            id="confirmBtn" className="lbtn btn-large filled"
