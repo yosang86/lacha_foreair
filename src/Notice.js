@@ -187,7 +187,7 @@ function App() {
                     <div className="pop-header">
                         <div className="pop-tit">
                             <h1>공지사항 상세</h1>
-                            <a // href="javascript:void(0);"
+                            <a // href="javascript:void(0);" 
                                className="btnClose full-pop-close"
                                 onClick={() => $("#noticeList01POP").css("display", "")}
                             >닫기</a>

@@ -1279,9 +1279,10 @@ function App() {
             "action" : "/foreign/reserve/s_SearchTicketList.do"
         };
 
-        // controller.createForm(fmOption);
-        // controller.setSerializedFormData();
-        // controller.formSubmit();
+        controller.createForm(fmOption);
+        controller.setSerializedFormData();
+        controller.formSubmit();
+
         const newForm = document.createElement("form");
         newForm.setAttribute("method", "post");
         newForm.setAttribute("target", "_self");
@@ -1344,7 +1345,7 @@ function App() {
 
 
     // const controller = {};
-    const controller = common.controller;
+    const controller = new common.controller;
 
     // const cmnAlertLayer = (targetId, msg, callback) => {
     //     // var $open_btn = $("#" + targetId);
@@ -1409,13 +1410,13 @@ function App() {
     // };
 
     const getRecentForeAirList = () => {
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
+        // $.ajax({
             url : "/foreign/reserve/RecentList.json",
             type : "post",
             dataType : "json",
-            // successCall : function(data) {
-            success : function(data) {
+            successCall : function(data) {
+            // success : function(data) {
                 if (data.recentList.length > 0) {
                     const targetArea = document.getElementById("recentSearchArea");
                     for (var i = 0; i < data.recentList.length; i++) {
@@ -1510,13 +1511,14 @@ function App() {
         const dataObject = {
             "sn":element.getAttribute("data1")
         }
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
+        // $.ajax({
             url : "/foreign/reserve/deleteRecentSearch.json",
             type : "post",
             dataType : "json",
             data :dataObject,
-            success : function(data) {
+            successCall : function(data) {
+            // success : function(data) {
                 $(element).closest('div').remove();
                 $("#recentSearchArea").empty();
                 getRecentForeAirList();
@@ -1647,9 +1649,9 @@ function App() {
                 "action" : "/goods/air/s_AirList.do"
             };
 
-            // controller.createForm(fmOption);
-            // controller.setSerializedFormData(obj);
-            // controller.formSubmit();
+            controller.createForm(fmOption);
+            controller.setSerializedFormData(obj);
+            controller.formSubmit();
         }
     };
 

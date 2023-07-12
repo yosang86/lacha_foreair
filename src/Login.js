@@ -1,9 +1,12 @@
 import './css/Login.css';
 import $ from 'jquery';
+import * as common from './js/common';
 import Footer from "./Footer";
 
 function App() {
     document.getElementsByTagName('body')[0].classList.add('sub');
+
+    const controller = new common.controller();
 
     const scrollBottom = () => {
         $("html, body").animate({ scrollTop: $(document).height() }, 500);
@@ -48,6 +51,20 @@ function App() {
         loginProc();
     }
 
+    var isMobile = {
+        Android: function () {
+            return navigator.userAgent.match(/Android/i) == null ? false : true;
+        },
+        iOS: function () {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i) == null ? false : true;
+        },
+        any: function () {
+            return (isMobile.Android() || isMobile.iOS());
+        }
+    }
+
+    var appCall = false;
+
     const loginProc = () => {
         var isClick = false;
         var loginId = $.trim($("#loginId").val());
@@ -73,119 +90,119 @@ function App() {
             dataType : 'json',
             type : 'post',
             success: function(result) {
-//                 var retCode = result.retCode;
-//                 var pwdErrUseYn = result.pwdErrUseYn;
-//                 var pwdErrCnt = controller.nvl(result.pwdErrCnt, 0);
-//                 var passwdFailCnt = controller.nvl(result.passwdFailCnt, 0);
-//                 var returnUrl = controller.nvl(result.returnUrl, "");
-//                 var monthChk = controller.nvl(result.monthChk, 0);
-//                 var mbrSctCdType = result.mbrSctCdType;
-//                 var mbrSctCd = result.mbrSctCd;
-//                 var confirmObj = new Object();
-//
-//                 if(retCode == "0001"){
-//                     passwdFailCnt = Number(passwdFailCnt);
-//                     if(pwdErrUseYn == "Y" && pwdErrCnt >= passwdFailCnt) {
-//                         confirmObj.pwdErrCnt = pwdErrCnt;
-//                         checkConfirm('0001', confirmObj);
-// //					if(confirm("아이디 또는 비밀번호가 "+pwdErrCnt+"회이상 실패했습니다. 비밀번호 찾기 화면으로 이동하시겠습니까?")){
-// //						location.href="/login/LoginPwdSearch.do";
-// //					}else{
-// //						isClick = false;
-// //						return false;
-// //					}
-//                     } else {
-//                         cmnAlertLayer("loginId", "아이디 또는 비밀번호가 일치하지않습니다. 다시 입력해주세요.");
-//                         $("#loginId").addClass("is-invalid");
-//                         $("#passwd").addClass("is-invalid");
-//                         $("#idPwErorrText").show();
-//                         $("#loginId").focus();
-//                         isClick = false;
-//                         return false;
-//                     }
-//                 }else if(retCode == "0002" || retCode == "0004"){
-//                     cmnAlertLayer("loginId", "아이디 또는 비밀번호가 일치하지않습니다.");
-//                     $("#loginId").addClass("is-invalid");
-//                     $("#passwd").addClass("is-invalid");
-//                     $("#idPwErorrText").show();
-//
-//                     $("#loginId").val("");
-//                     $("#passwd").val("");
-//                     $("#loginId").focus();
-//                     isClick = false;
-//                     return false;
-//                 }else if(retCode == "0007"){
-//                     confirmObj.pwdErrCnt = pwdErrCnt;
-//                     checkConfirm('0007', confirmObj);
-//                 }else if(retCode == "0008"){
-//                     cmnAlertLayer("loginId", "사이트오픈일이 아닙니다.");
-//                     isClick = false;
-//                     return false;
-//                 }else if(retCode == "0009"){
-//                     cmnAlertLayer("loginId", "서비스기간이 종료 되었습니다.");
-//                     isClick = false;
-//                     return false;
-//                 }else if(retCode == "0010"){
-//                     checkConfirm('0010', confirmObj);
-//                 }else if (retCode == "0013") {
-//                     cmnAlertLayer("loginId", "탈퇴한 계정입니다.");
-//                     isClick = false;
-//                     return;
-//                 }else if (retCode == "0014") {
-//                     location.href = "/main/s_MainView.do";
-//                     return;
-//                 }else if (retCode == "0015") {
-//                     cmnAlertLayer("loginId", "관리자에 의해 잠긴 계정입니다.");
-//                     isClick = false;
-//                     return;
-//                 }else if (retCode == "0016") {
-//                     cmnAlertLayer("loginId", "재직중인 계정이 아닙니다.");
-//                     isClick = false;
-//                     return;
-//                 }else if (retCode == "0017") {
-//                     cmnAlertLayer("loginId", "구독중인 계정이 아닙니다.<br/>T우주 구독서비스를 신청해 주세요.");
-//                     isClick = false;
-//                     return;
-//                 }else if(retCode == "9999"){
-//                     cmnAlertLayer("loginId", "시스템 장애입니다. 잠시후에 다시 시도해 주십시요.");
-//                     isClick = false;
-//                     return false;
-//                 }else if(retCode == "0000"){
-//                     // 앱 자동로그인 체크
-//                     if(appCall && $("#autoLogin").is(":checked")) {
-//                         if(isMobile.Android()){
-//                             window.hccApp.saveLoginInfo(loginId, passwd, window.location.hostname);
-//                         }else if(isMobile.iOS()){
-//                             var message = {
-//                                 "loginId": loginId,
-//                                 "passwd" : passwd,
-//                                 "hostname": window.location.hostname
-//                             };
-//                             window.webkit.messageHandlers.saveLoginInfo.postMessage(message);
-//                         }
-//                     }
-//
-//                     isClick = true;
-//                     $("#loginId").removeClass("is-invalid");
-//                     $("#passwd").removeClass("is-invalid");
-//                     $("#idPwErorrText").hide();
-//
-//                     if(monthChk == "1"){
-//                         var formOption = {
-//                             "method" : "get"
-//                             , "action" : "/login/NinetyDayPwdChange.do"
-//                         };
-//
-//                         controller.createForm(formOption);
-//                         controller.formSubmit();
-//                     }else{
-//                         if(returnUrl != ""){
-//                             location.href = returnUrl;
-//                         }else{
-//                             location.href = "/main/s_MainView.do";
-//                         }
-//                     }
-//                 }
+                var retCode = result.retCode;
+                var pwdErrUseYn = result.pwdErrUseYn;
+                var pwdErrCnt = controller.nvl(result.pwdErrCnt, 0);
+                var passwdFailCnt = controller.nvl(result.passwdFailCnt, 0);
+                var returnUrl = controller.nvl(result.returnUrl, "");
+                var monthChk = controller.nvl(result.monthChk, 0);
+                var mbrSctCdType = result.mbrSctCdType;
+                var mbrSctCd = result.mbrSctCd;
+                var confirmObj = new Object();
+
+                if(retCode == "0001"){
+                    passwdFailCnt = Number(passwdFailCnt);
+                    if(pwdErrUseYn == "Y" && pwdErrCnt >= passwdFailCnt) {
+                        confirmObj.pwdErrCnt = pwdErrCnt;
+                        checkConfirm('0001', confirmObj);
+//					if(confirm("아이디 또는 비밀번호가 "+pwdErrCnt+"회이상 실패했습니다. 비밀번호 찾기 화면으로 이동하시겠습니까?")){
+//						location.href="/login/LoginPwdSearch.do";
+//					}else{
+//						isClick = false;
+//						return false;
+//					}
+                    } else {
+                        cmnAlertLayer("loginId", "아이디 또는 비밀번호가 일치하지않습니다. 다시 입력해주세요.");
+                        $("#loginId").addClass("is-invalid");
+                        $("#passwd").addClass("is-invalid");
+                        $("#idPwErorrText").show();
+                        $("#loginId").focus();
+                        isClick = false;
+                        return false;
+                    }
+                }else if(retCode == "0002" || retCode == "0004"){
+                    cmnAlertLayer("loginId", "아이디 또는 비밀번호가 일치하지않습니다.");
+                    $("#loginId").addClass("is-invalid");
+                    $("#passwd").addClass("is-invalid");
+                    $("#idPwErorrText").show();
+
+                    $("#loginId").val("");
+                    $("#passwd").val("");
+                    $("#loginId").focus();
+                    isClick = false;
+                    return false;
+                }else if(retCode == "0007"){
+                    confirmObj.pwdErrCnt = pwdErrCnt;
+                    checkConfirm('0007', confirmObj);
+                }else if(retCode == "0008"){
+                    cmnAlertLayer("loginId", "사이트오픈일이 아닙니다.");
+                    isClick = false;
+                    return false;
+                }else if(retCode == "0009"){
+                    cmnAlertLayer("loginId", "서비스기간이 종료 되었습니다.");
+                    isClick = false;
+                    return false;
+                }else if(retCode == "0010"){
+                    checkConfirm('0010', confirmObj);
+                }else if (retCode == "0013") {
+                    cmnAlertLayer("loginId", "탈퇴한 계정입니다.");
+                    isClick = false;
+                    return;
+                }else if (retCode == "0014") {
+                    window.location.href = "/main/s_MainView.do";
+                    return;
+                }else if (retCode == "0015") {
+                    cmnAlertLayer("loginId", "관리자에 의해 잠긴 계정입니다.");
+                    isClick = false;
+                    return;
+                }else if (retCode == "0016") {
+                    cmnAlertLayer("loginId", "재직중인 계정이 아닙니다.");
+                    isClick = false;
+                    return;
+                }else if (retCode == "0017") {
+                    cmnAlertLayer("loginId", "구독중인 계정이 아닙니다.<br/>T우주 구독서비스를 신청해 주세요.");
+                    isClick = false;
+                    return;
+                }else if(retCode == "9999"){
+                    cmnAlertLayer("loginId", "시스템 장애입니다. 잠시후에 다시 시도해 주십시요.");
+                    isClick = false;
+                    return false;
+                }else if(retCode == "0000"){
+                    // 앱 자동로그인 체크
+                    if(appCall && $("#autoLogin").is(":checked")) {
+                        if(isMobile.Android()){
+                            window.hccApp.saveLoginInfo(loginId, passwd, window.location.hostname);
+                        }else if(isMobile.iOS()){
+                            var message = {
+                                "loginId": loginId,
+                                "passwd" : passwd,
+                                "hostname": window.location.hostname
+                            };
+                            window.webkit.messageHandlers.saveLoginInfo.postMessage(message);
+                        }
+                    }
+
+                    isClick = true;
+                    $("#loginId").removeClass("is-invalid");
+                    $("#passwd").removeClass("is-invalid");
+                    $("#idPwErorrText").hide();
+
+                    if(monthChk == "1"){
+                        var formOption = {
+                            "method" : "get"
+                            , "action" : "/login/NinetyDayPwdChange.do"
+                        };
+
+                        controller.createForm(formOption);
+                        controller.formSubmit();
+                    }else{
+                        if(returnUrl != ""){
+                            window.location.href = returnUrl;
+                        }else{
+                            window.location.href = "/main/s_MainView.do";
+                        }
+                    }
+                }
             },
             error:function(data) {
                 //console.log(JSON.stringify(data));
@@ -195,6 +212,19 @@ function App() {
             }
         });
     }
+
+    function checkConfirm(cdVal, obj) {
+        if (cdVal == '0001') {
+            var msgVal = "아이디 또는 비밀번호가 "+obj.pwdErrCnt+"회이상 실패했습니다. 비밀번호 찾기 화면으로 이동하시겠습니까?";
+            common.cmnConfirmLayer(msgVal, "moveFindUrl");
+        } else if (cdVal == '0007') {
+            var msgVal = "아이디 또는 비밀번호가 "+obj.pwdErrCnt+"회이상 실패했습니다. 비밀번호 찾기 화면으로 이동하시겠습니까?";
+            common.cmnConfirmLayer(msgVal, "moveFindUrl");
+        } else if (cdVal == '0010') {
+            var msgVal = "장기간 미 이용으로<br/>휴면 상태인 회원입니다.<br/>고객센터로 문의하여 주세요.";
+            common.cmnAlertLayer("loginId", msgVal);
+        }
+    };
 
     const cmnAlertLayer = (targetId, msg, callback) => {
         // var $open_btn = $("#" + targetId);

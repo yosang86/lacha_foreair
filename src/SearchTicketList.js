@@ -15,6 +15,8 @@ import Footer from "./Footer";
 function MyPage() {
     document.getElementsByTagName('body')[0].classList.add('sub');
 
+    const controller = new common.controller();
+
     const country = [
         {kor : "국내", eng : "KOR", list : [
                 {kor: "김포", eng: "GMP"},
@@ -430,37 +432,37 @@ function MyPage() {
         const dataObject = {
             keyword: $("#searchForeWord").val()
         }
-        // controller.ajaxSend({
-        //     url : "/foreign/reserve/CitySearch.json"
-        //     ,type : "post"
-        //     ,dataType : "json"
-        //     ,data : dataObject
-        //     ,successCall : function(data) {
-        //         viewChange(false);
-        //         const searchList = data.searchResult;
-        //         const target = document.getElementById("searchTarget");
-        //         for (var i = 0; i < searchList.length; i++) {
-        //             let liEl = document.createElement("li");
-        //             liEl.setAttribute("onclick", "setForeList(this)");
-        //             let spanEl1 = document.createElement("span");
-        //             spanEl1.className = "airport";
-        //             spanEl1.innerText = searchList[i].cityCd;
-        //             liEl.appendChild(spanEl1);
-        //             let spanEl2 = document.createElement("span");
-        //             spanEl2.style.display = "none";
-        //             spanEl2.innerText = searchList[i].cityInfo.split(',')[1];
-        //             liEl.appendChild(spanEl2);
-        //             let spanEl3 = document.createElement("span");
-        //             spanEl3.innerText = searchList[i].cityInfo;
-        //             liEl.appendChild(spanEl3);
-        //             target.appendChild(liEl);
-        //         }
-        //     }
-        //     , error:function(data) {
-        //         cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
-        //         return;
-        //     }
-        // });
+        controller.ajaxSend({
+            url : "/foreign/reserve/CitySearch.json"
+            ,type : "post"
+            ,dataType : "json"
+            ,data : dataObject
+            ,successCall : function(data) {
+                viewChange(false);
+                const searchList = data.searchResult;
+                const target = document.getElementById("searchTarget");
+                for (var i = 0; i < searchList.length; i++) {
+                    let liEl = document.createElement("li");
+                    liEl.setAttribute("onclick", "setForeList(this)");
+                    let spanEl1 = document.createElement("span");
+                    spanEl1.className = "airport";
+                    spanEl1.innerText = searchList[i].cityCd;
+                    liEl.appendChild(spanEl1);
+                    let spanEl2 = document.createElement("span");
+                    spanEl2.style.display = "none";
+                    spanEl2.innerText = searchList[i].cityInfo.split(',')[1];
+                    liEl.appendChild(spanEl2);
+                    let spanEl3 = document.createElement("span");
+                    spanEl3.innerText = searchList[i].cityInfo;
+                    liEl.appendChild(spanEl3);
+                    target.appendChild(liEl);
+                }
+            }
+            , error:function(data) {
+                common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+                return;
+            }
+        });
     }
     const setClickDataVal = (selectVal) => {
         var checkVal = "" + selectVal;
@@ -500,7 +502,7 @@ function MyPage() {
 // 							cmnAlertLayer("", "체크인과 체크아웃은 다른날로 선택해 주세요.");
 // 						}
                     if (calendarImgVal == '2') {
-                        cmnAlertLayer("", "체크인과 체크아웃은 다른날로 선택해 주세요.");
+                        common.cmnAlertLayer("", "체크인과 체크아웃은 다른날로 선택해 주세요.");
                     } else {
                         var d_date = "" + selectCalendarF;
                         var a_date = "" + selectCalendarS;
@@ -703,7 +705,7 @@ function MyPage() {
                 startCityCode = document.getElementById("departCity").value;
             }
             if (startCityCode != "" && startCityCode == code) {
-                cmnAlertLayer("", "출발지, 도착지는<br/>동일하게 설정 불가능합니다.");
+                common.cmnAlertLayer("", "출발지, 도착지는<br/>동일하게 설정 불가능합니다.");
                 return;
             }
 
@@ -954,9 +956,9 @@ function MyPage() {
         }
         else {
             if (calendarImgVal == '1') {
-                cmnAlertLayer("", "가는날과 오는날을 모두 선택해 주세요.");
+                common.cmnAlertLayer("", "가는날과 오는날을 모두 선택해 주세요.");
             } else if (calendarImgVal == '2') {
-                cmnAlertLayer("", "체크인과 체크아웃을 모두 선택해 주세요.");
+                common.cmnAlertLayer("", "체크인과 체크아웃을 모두 선택해 주세요.");
             }
         }
     }
@@ -1172,7 +1174,7 @@ function MyPage() {
         let adultCount = c1;
         const parentTarget = document.getElementById("adult");
         if (countId == "AIR_F_C_3" && updateCount > adultCount) {
-            cmnAlertLayer("", "성인 1인당, 유아 1인까지 동반 탑승 가능합니다");
+            common.cmnAlertLayer("", "성인 1인당, 유아 1인까지 동반 탑승 가능합니다");
         } else {
             target.innerHTML = updateCount;
             document.getElementById(countId).value = updateCount;
@@ -1879,7 +1881,7 @@ function MyPage() {
 
             },
             error:function(data) {
-                cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+                common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
                 return;
             }
         });
@@ -2088,15 +2090,15 @@ function MyPage() {
                 endDate = document.getElementById("AIR_whereDepartDate_" + elementCount).innerHTML;
             }
         } catch (e) {
-            cmnAlertLayer("", "입력한 정보를 확인해 주세요.")
+            common.cmnAlertLayer("", "입력한 정보를 확인해 주세요.")
             return;
         }
 
-        if (startCode == null || "" == startCode) {cmnAlertLayer("", "출발지를 선택해 주세요."); return true;}
-        if (endCode == null || "" == endCode) {cmnAlertLayer("", "도착지를 선택해 주세요."); return true;}
-        if (startDate == null || "날짜 선택" == startDate) {cmnAlertLayer("", "가는날을 선택해 주세요."); return true;}
-        if ((endDate == null || "날짜 선택" == endDate) && travelType != "OW") {cmnAlertLayer("", "오는날을 선택해 주세요."); return true;}
-        if (checkMultiTravel() && travelType == "MT") {cmnAlertLayer("", "모든 다구간 여정을 선택해 주세요."); return true;}
+        if (startCode == null || "" == startCode) {common.cmnAlertLayer("", "출발지를 선택해 주세요."); return true;}
+        if (endCode == null || "" == endCode) {common.cmnAlertLayer("", "도착지를 선택해 주세요."); return true;}
+        if (startDate == null || "날짜 선택" == startDate) {common.cmnAlertLayer("", "가는날을 선택해 주세요."); return true;}
+        if ((endDate == null || "날짜 선택" == endDate) && travelType != "OW") {common.cmnAlertLayer("", "오는날을 선택해 주세요."); return true;}
+        if (checkMultiTravel() && travelType == "MT") {common.cmnAlertLayer("", "모든 다구간 여정을 선택해 주세요."); return true;}
         const countInfo = getCountList();
         const travelInfo = getTravelInfoList();
 
@@ -2148,7 +2150,7 @@ function MyPage() {
             data : data,
             success : function(data) {
                 if (undefined != data.planInfo.responseCode && data.planInfo.responseCode === 503) {
-                    cmnAlertLayer("", "조회 중 오류가 발생하였습니다.<br>관리자에게 문의하시거나 나중에 다시 시도하여주십시오.");
+                    common.cmnAlertLayer("", "조회 중 오류가 발생하였습니다.<br>관리자에게 문의하시거나 나중에 다시 시도하여주십시오.");
                     setNoSearchList();
                     $("#searchingImage").hide();
                     return
@@ -2162,9 +2164,9 @@ function MyPage() {
                     setNoSearchList();
                     let errorMessage = xmlData.getElementsByTagName("returnMessage")[0].innerHTML;
                     if (errorMessage.indexOf("출발 일정이 임박") != -1) {
-                        cmnAlertLayer("", errorMessage);
+                        common.cmnAlertLayer("", errorMessage);
                     } else {
-                        cmnAlertLayer("", "조회 중 오류가 발생하였습니다.<br>조건을 변경하거나 다시 시도하여주십시오.");
+                        common.cmnAlertLayer("", "조회 중 오류가 발생하였습니다.<br>조건을 변경하거나 다시 시도하여주십시오.");
                     }
                     setNoSearchList();
                     $("#searchingImage").hide();
@@ -2172,7 +2174,7 @@ function MyPage() {
                 }
 
                 if (xmlData.getElementsByTagName("returnMessage").length > 0 && xmlData.getElementsByTagName("returnMessage")[0].innerHTML.indexOf("연결이 원활하지 않습니다") !== -1) {
-                    cmnAlertLayer("", "항공사 시스템과의 연결이 원활하지 않습니다.<br>잠시 후 다시 시도해 주십시오.");
+                    common.cmnAlertLayer("", "항공사 시스템과의 연결이 원활하지 않습니다.<br>잠시 후 다시 시도해 주십시오.");
                     setNoSearchList();
                     $("#searchingImage").hide();
                     return;
@@ -2209,7 +2211,7 @@ function MyPage() {
             }
             , error:function(data) {
                 $("#searchingImage").hide();
-                cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+                common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
                 return;
             }
         });
@@ -2251,11 +2253,11 @@ function MyPage() {
         const countInfo = getCountList();
         const travelInfo = getTravelInfoList();
 
-        if (startCode == null || "" === startCode) {cmnAlertLayer("", "출발지를 선택해 주세요."); return true;}
-        if ((endCode == null || "" === endCode) && travelType !== "OW") {cmnAlertLayer("", "도착지를 선택해 주세요."); return true;}
-        if (startDate == null || "날짜 선택" === startDate) {cmnAlertLayer("", "가는날을 선택해 주세요."); return true;}
-        if ((endDate == null || "날짜 선택" === endDate) && travelType !== "OW") {cmnAlertLayer("", "오는날을 선택해 주세요."); return true;}
-        if (checkMultiTravel() && travelType == "MT") {cmnAlertLayer("", "모든 다구간 여정을 선택해 주세요."); return true;}
+        if (startCode == null || "" === startCode) {common.cmnAlertLayer("", "출발지를 선택해 주세요."); return true;}
+        if ((endCode == null || "" === endCode) && travelType !== "OW") {common.cmnAlertLayer("", "도착지를 선택해 주세요."); return true;}
+        if (startDate == null || "날짜 선택" === startDate) {common.cmnAlertLayer("", "가는날을 선택해 주세요."); return true;}
+        if ((endDate == null || "날짜 선택" === endDate) && travelType !== "OW") {common.cmnAlertLayer("", "오는날을 선택해 주세요."); return true;}
+        if (checkMultiTravel() && travelType == "MT") {common.cmnAlertLayer("", "모든 다구간 여정을 선택해 주세요."); return true;}
 
         let dataObject = {
             "startCityCode":startCode,
@@ -2323,16 +2325,16 @@ function MyPage() {
             success : function(data) {
                 if (data.session) {
                     localStorage.setItem("cookieValue", data.cookie);
-                    // controller.createForm(fmOption);
-                    // controller.setSerializedFormData(data);
-                    // controller.formSubmit();
+                    controller.createForm(fmOption);
+                    controller.setSerializedFormData(data);
+                    controller.formSubmit();
                 } else {
-                    cmnAlertLayer('','항공권 예약프로세스 요청 중 오류가 발생하였습니다. 잠시후에 다시 시도해 주십시오.');
+                    common.cmnAlertLayer('','항공권 예약프로세스 요청 중 오류가 발생하였습니다. 잠시후에 다시 시도해 주십시오.');
                     return;
                 }
             }
             , error:function(data) {
-                cmnAlertLayer('','항공권 예약프로세스 요청 중 오류가 발생하였습니다. 잠시후에 다시 시도해 주십시오.');
+                common.cmnAlertLayer('','항공권 예약프로세스 요청 중 오류가 발생하였습니다. 잠시후에 다시 시도해 주십시오.');
                 return;
             }
         });
@@ -2939,7 +2941,71 @@ function MyPage() {
         $("#content").hide();
         $("#footer").hide();
         $("#searchingDefaultImage").show();
-        // const data = type ? mappingList[index].getAttribute("RULEPARAM") : newMappingList[index].getAttribute("RULEPARAM");
+        const data = !type ? mappingList[index].getAttribute("RULEPARAM") : newMappingList[index].getAttribute("RULEPARAM");
+        controller.ajaxSend({
+            url : "/foreign/reserve/searchCostRule.json"
+            ,type : "post"
+            ,dataType : "json"
+            ,data : data
+            ,successCall : function(data) {
+                let parser = new DOMParser();
+                let xmlData = parser.parseFromString(data.costInfo.resultData, "text/xml");
+                let isSuccess = xmlData.getElementsByTagName("status")[0].innerHTML;
+                if (isSuccess === "FAILURE") {
+                    alert("조회 중 오류가 발생하였습니다.");
+                    $("#searchingImage").hide();
+                    return;
+                }
+
+                $("#ruleList").empty();
+                const dataTabTarget = document.getElementById("ruleList");
+                let costInfoList = xmlData.getElementsByTagName("fareRuleTextInfoGrp");
+                let ruleTabString = "";
+                for (var i = 0; i < costInfoList.length; i++) {
+                    ruleTabString += '<li class="' + (i === 0 ? 'current' : '') + '" data-tab="tab' + (i + 1) + '" onclick="changeCostTab(this)"><a>요금규정' + (i + 1) + '</a></li>';
+
+                    const tabId = "tab" + (i + 1);
+                    $("#" + tabId).empty();
+                    const targetDiv = document.getElementById(tabId);
+                    let ruleString = '<table class="fee-box">';
+                    ruleString += '<colgroup><col width="25%" /><col width="75%" /></colgroup>';
+                    ruleString += '<thead>';
+                    ruleString += '<tr>';
+                    ruleString += '<th>요금규정' + (i + 1) + '</th>';
+                    ruleString += '<th>내용</th>';
+                    ruleString += '</tr>';
+                    ruleString += '<tbody>';
+                    ruleString += '';
+                    ruleString += '';
+
+                    const costInfo = costInfoList[i].children;
+                    for (var j = 0; j < costInfo.length; j++) {
+                        const singleCostInfo = costInfo[j];
+                        if (singleCostInfo.nodeName === "fcartruleyn") continue;
+                        let tempPre = document.getElementById("htmlTempProcess");
+                        tempPre.innerHTML = singleCostInfo.getElementsByTagName("content")[0].innerHTML;
+                        ruleString += '<tr>';
+                        ruleString += '<th class="fb400 cGray1">' + singleCostInfo.getElementsByTagName("title")[0].innerHTML + '</th>';
+                        ruleString += '<td class="left">' + tempPre.innerText + '</td>';
+                        ruleString += '</tr>';
+                    }
+
+                    ruleString += '</tbody>';
+                    ruleString += '</table>';
+                    targetDiv.innerHTML = ruleString;
+                }
+
+                dataTabTarget.innerHTML = ruleTabString;
+                $("#B2_h").show();
+                $("#searchingImage").hide();
+            }
+            , error:function(data) {
+                $("#searchingImage").hide();
+                alert('시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+                return;
+            }
+        });
+
         // controller.ajaxSend({
         // $(document).ajaxSend({
         //     url : "/foreign/reserve/searchCostRule.json"
@@ -3031,69 +3097,6 @@ function MyPage() {
         $("#tab33").empty();
         $("#tab44").empty();
     }
-
-
-    const cmnAlertLayer = (targetId, msg, callback) => {
-        // var $open_btn = $("#" + targetId);
-        var $open_btn = targetId != "" ? $("#" + targetId) : "";
-
-        $("input").each(function() {
-            var $element = $(this);
-            if ($element.attr("readonly") != 'readonly') {
-                $element.attr("readonly", true);
-                $element.addClass("LAYER");
-            }
-        });
-
-        var html = [];
-
-        html.push("<div id='" + targetId + "_layer' class='alert-box'>");
-        html.push("<div class='popWrap'>");
-        html.push("<div class='alert-cont'>");
-        html.push(msg);
-        html.push("</div>");
-        html.push("<div class='btnArea mgt_20'>");
-        html.push("<a href='#none' class='lbtn btn-m filled alert-close' style='background: #466cc2; border:1px solid #466cc2'>확인</a>");
-        html.push("</div>");
-        html.push("</div>");
-        html.push("</div>");
-        $("body").append(html.join(""));
-
-        var $el = $("#" + targetId + "_layer");
-        $("body").append($("<div id='dimmd-layer'></div>"));
-        $el.attr("tabindex", "0").fadeIn().focus();
-
-        var $elWidth = $el.outerWidth(),
-            $elHeight = $el.outerHeight(),
-            docWidth = $(document).width(),
-            docHeight = $(document).height();
-
-        if ($elHeight < docHeight || $elWidth < docWidth) {
-            $el.css({
-                marginTop: -$elHeight /2,
-                marginLeft: -$elWidth/2
-            })
-        } else {
-            $el.css({top: 0, left: 0});
-        }
-
-        $el.find('.alert-close').click(function(){
-            $("#dimmd-layer").remove();
-            $(".alert-box").remove();
-            $(".LAYER").attr("readonly", false);
-            $(".LAYER").removeClass("LAYER");
-            $el.fadeOut().removeAttr("tabindex");
-            // $open_btn.focus();
-            if ($open_btn != "") {
-                $open_btn.focus();
-            }
-            if(typeof callback != 'undefined' && callback != null) {
-                callback();
-            }
-
-            return false;
-        });
-    };
 
     const [filter, setFilter] = useState({
         flightType: 0,

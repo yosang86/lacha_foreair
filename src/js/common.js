@@ -1695,7 +1695,7 @@ export var isCommonEvent = false;
 //     }
 // });
 
-export const controller = function() {
+export function controller() {
         var that = this;
         var $form = null;
         var $body = null;

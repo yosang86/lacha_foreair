@@ -14,6 +14,8 @@ function App() {
 
     const currentScroll = useRef();
 
+    const controller = new common.controller();
+
     const openPostcode = (e) => {
         var $open_btn = $(e.currentTarget);
         var $el = $("#addr-layer");
@@ -308,11 +310,12 @@ function App() {
             type : 'post',
             isBlock : true,
             isOverLap : true,
-            success : function(jsonObj) {
-                // var passYn = controller.nvl(jsonObj.passYn,"");
+            successCall:function(jsonObj) {
+            // success : function(jsonObj) {
+                var passYn = controller.nvl(jsonObj.passYn,"");
 
-                // if(passYn != "Y"){
-                if(jsonObj.passYn != "Y"){
+                if(passYn != "Y"){
+                // if(jsonObj.passYn != "Y"){
                     common.cmnAlertLayer('loginId','이미 사용중인 아이디입니다.');
 
                     $("#loginId").addClass("err-input");
@@ -707,8 +710,7 @@ function App() {
 
                                         <dd>
                                             <p className="input_inline">
-                                                <a
-                                                    // href="javascript:void(0);"
+                                                <a // href="javascript:void(0);"
                                                    className="mbtn mgt_10 lbtn filled btn-large mgr_5 search-zipcode"
                                                    style={{background: "#466cc2", border: "1px solid #466cc2"}}
                                                    data-post_id="postNo" data-addr1_id="postAddr" data-addr2_id="postAddrDtl"
