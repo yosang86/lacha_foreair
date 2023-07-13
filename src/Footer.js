@@ -3,6 +3,26 @@ import $ from 'jquery';
 import * as base from "./js/find";
 
 function App(props) {
+    {/*<script>*/}
+    {/*    window.__ht_wc = window.__ht_wc || {};*/}
+    {/*    window.__ht_wc.host = 'design.happytalkio.com';*/}
+    {/*    window.__ht_wc.site_id = '4000001875'; // site_id*/}
+    {/*    window.__ht_wc.site_name = '주식회사 라쿠카라차'; // 회사 이름*/}
+    {/*    window.__ht_wc.category_id = '134722'; // 대분류 id*/}
+    {/*    window.__ht_wc.division_id = '134723'; // 중분류 id*/}
+    {/*    // 고정 및 Custom 파라미터 추가영역. 파라미터가 여러개인 경우 ,(콤마)로 구분*/}
+    {/*    // window.__ht_wc.params = 'site_uid=abcd1234,parameter1=param1';*/}
+
+    {/*    (function() {*/}
+    {/*    var ht = document.createElement('script');*/}
+    {/*    ht.type = 'text/javascript';*/}
+    {/*    ht.async = true;*/}
+    {/*    ht.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + window.__ht_wc.host + '/web_chatting/tracking.js';*/}
+    {/*    var s = document.getElementsByTagName('script')[0];*/}
+    {/*    s.parentNode.insertBefore(ht, s);*/}
+    {/*})();*/}
+    {/*</script>*/}
+
     return(
         <>
             <div id="footer">

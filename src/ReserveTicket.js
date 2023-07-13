@@ -12,6 +12,8 @@ import Footer from "./Footer";
 function MyPage() {
     document.getElementsByTagName('body')[0].classList.add('sub');
 
+    const controller = new common.controller();
+
     // <script>
     function returnPage() {
         //localStorage.setItem("data", JSON.stringify(receivedData));
@@ -195,76 +197,74 @@ function MyPage() {
         let cityCodeList = "";
         if (localStorage.getItem("airLineCode")) cityCodeList = localStorage.getItem("airLineCode");
 
-        // // controller.ajaxSend({
-        // $.ajax({
-        //     url : "/foreign/reserve/covidInfo.json",
-        //     type : "post",
-        //     dataType : "json",
-        //     data : cityCodeList,
-        //     // successCall : function(data) {
-        //     success : function(data) {
-        //         const count = data.covidInfoList.length;
-        //         const brTag = document.createElement("br");
-        //         let checkData;
-        //         let parseData = new Array();
-        //         for (var i = 0; i < count; i++) {
-        //             checkData = JSON.parse(data.covidInfoList[i].resultData).currentCount;
-        //             if (checkData > 0) {
-        //                 parseData.push(JSON.parse(data.covidInfoList[i].resultData).data[0]);
-        //             }
-        //         }
-        //         const btnTarget = document.getElementById("tabBtnArea");
-        //         for (var i = 0; i < parseData.length; i++) {
-        //             const liEl = document.createElement("li");
-        //             if (i === 0) liEl.className = "current";
-        //
-        //             const tabId = "tab_covid_" + (i + 1);
-        //             liEl.dataset.tab = tabId;
-        //             liEl.setAttribute("onclick", "changeCovidTab(this)")
-        //             const aEl = document.createElement("a");
-        //             aEl.innerText = parseData[i].country_nm;
-        //             liEl.appendChild(aEl);
-        //             btnTarget.appendChild(liEl);
-        //
-        //             const targetDiv = document.getElementById(tabId);
-        //             const writeDateDiv = document.createElement("div");
-        //             writeDateDiv.className = "txtDate mgt_10";
-        //             {/* writeDateDiv.innerHTML = "작성일 : " + moment(parseData[i].wrt_dt.replaceAll("-", "")).format("YYYY. MM. DD(ddd)"); */}
-        //             writeDateDiv.innerHTML = "작성일 : " + parseData[i].wrt_dt.replaceAll("-", "");
-        //             targetDiv.appendChild(writeDateDiv);
-        //             const requestDiv = document.createElement("div");
-        //             requestDiv.innerHTML = parseData[i].html_origin_cn;
-        //             targetDiv.appendChild(requestDiv);
-        //
-        //             // const parseText = parseData.txt_origin_cn.split("○");
-        //             // const ulEl = document.createElement("el");
-        //             // ulEl.className = "txtList";
-        //             // for (var j = 0; j < parseText.length; j++) {
-        //             //     const liEl = document.createElement("li");
-        //             //     liEl.innerHTML = parseText[j];
-        //             //     ulEl.appendChild(liEl);
-        //             // }
-        //             // targetDiv.appendChild(ulEl);
-        //
-        //             targetDiv.appendChild(brTag);
-        //             const openAPIInfo = document.createElement("p");
-        //             openAPIInfo.className = "f13 gray mgb_20";
-        //             openAPIInfo.innerHTML = "※ 이 데이터는 외교부가 제공하는 공공데이터에서 가져온 정보입니다.";
-        //             targetDiv.appendChild(openAPIInfo);
-        //         }
-        //
-        //         if (document.getElementById("tabBtnArea").childElementCount === 1) {
-        //             document.getElementById("tabBtnArea").children[0].className = "on current";
-        //             document.getElementById("tab_covid_kr").className = "tabcontent current";
-        //         }
-        //
-        //         $("#covidArea").show();
-        //     },
-        //     error:function(data) {
-        //         common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
-        //         return;
-        //     }
-        // });
+        controller.ajaxSend({
+            url : "/foreign/reserve/covidInfo.json",
+            type : "post",
+            dataType : "json",
+            data : cityCodeList,
+            successCall : function(data) {
+                const count = data.covidInfoList.length;
+                const brTag = document.createElement("br");
+                let checkData;
+                let parseData = new Array();
+                for (var i = 0; i < count; i++) {
+                    checkData = JSON.parse(data.covidInfoList[i].resultData).currentCount;
+                    if (checkData > 0) {
+                        parseData.push(JSON.parse(data.covidInfoList[i].resultData).data[0]);
+                    }
+                }
+                const btnTarget = document.getElementById("tabBtnArea");
+                for (var i = 0; i < parseData.length; i++) {
+                    const liEl = document.createElement("li");
+                    if (i === 0) liEl.className = "current";
+
+                    const tabId = "tab_covid_" + (i + 1);
+                    liEl.dataset.tab = tabId;
+                    liEl.setAttribute("onclick", "changeCovidTab(this)")
+                    const aEl = document.createElement("a");
+                    aEl.innerText = parseData[i].country_nm;
+                    liEl.appendChild(aEl);
+                    btnTarget.appendChild(liEl);
+
+                    const targetDiv = document.getElementById(tabId);
+                    const writeDateDiv = document.createElement("div");
+                    writeDateDiv.className = "txtDate mgt_10";
+                    {/* writeDateDiv.innerHTML = "작성일 : " + moment(parseData[i].wrt_dt.replaceAll("-", "")).format("YYYY. MM. DD(ddd)"); */}
+                    writeDateDiv.innerHTML = "작성일 : " + parseData[i].wrt_dt.replaceAll("-", "");
+                    targetDiv.appendChild(writeDateDiv);
+                    const requestDiv = document.createElement("div");
+                    requestDiv.innerHTML = parseData[i].html_origin_cn;
+                    targetDiv.appendChild(requestDiv);
+
+                    // const parseText = parseData.txt_origin_cn.split("○");
+                    // const ulEl = document.createElement("el");
+                    // ulEl.className = "txtList";
+                    // for (var j = 0; j < parseText.length; j++) {
+                    //     const liEl = document.createElement("li");
+                    //     liEl.innerHTML = parseText[j];
+                    //     ulEl.appendChild(liEl);
+                    // }
+                    // targetDiv.appendChild(ulEl);
+
+                    targetDiv.appendChild(brTag);
+                    const openAPIInfo = document.createElement("p");
+                    openAPIInfo.className = "f13 gray mgb_20";
+                    openAPIInfo.innerHTML = "※ 이 데이터는 외교부가 제공하는 공공데이터에서 가져온 정보입니다.";
+                    targetDiv.appendChild(openAPIInfo);
+                }
+
+                if (document.getElementById("tabBtnArea").childElementCount === 1) {
+                    document.getElementById("tabBtnArea").children[0].className = "on current";
+                    document.getElementById("tab_covid_kr").className = "tabcontent current";
+                }
+
+                $("#covidArea").show();
+            },
+            error:function(data) {
+                common.cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');
+                return;
+            }
+        });
     }
     function changeCovidTab(element) {
         const id = element.dataset.tab;
@@ -1076,14 +1076,12 @@ function MyPage() {
 
     function getCostRule(type) {
         const data = mappingData.getElementsByTagName("MAPPING")[0].getAttribute("RULEPARAM");
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/reserve/searchCostRule.json",
             type : "post",
             dataType : "json",
             data : data,
-            // successCall : function(data) {
-            success : function(data) {
+            successCall : function(data) {
                 let parser = new DOMParser();
                 let xmlData = parser.parseFromString(data.costInfo.resultData, "text/xml");
                 let isSuccess = xmlData.getElementsByTagName("status")[0].innerHTML;
@@ -1416,13 +1414,11 @@ function MyPage() {
     }
 
     function getCompanionList(type) {
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/mypage/selectCompanionList.json",
             type : "post",
             dataType : "json",
-            // successCall : function(data) {
-            success : function(data) {
+            successCall : function(data) {
                 const count = data.companionCount;
                 if (count === 0) {
                     $("#companionListArea_list").hide();
@@ -1581,14 +1577,12 @@ function MyPage() {
                 "sn":sn
             }
 
-            // controller.ajaxSend({
-            $.ajax({
+            controller.ajaxSend({
                 url : "/foreign/mypage/postNewCompanion.json"
                 ,type : "post"
                 ,dataType : "json"
                 ,data : companionData
-                // ,successCall : function(data) {
-                ,success : function(data) {
+                ,successCall : function(data) {
                     let isSuccess = data.isSuccess;
                     if (isSuccess != true) {
                         common.cmnAlertLayer('','저장 중 오류가 발생하였습니다.<br>잠시후에 다시 시도해 주십시요.');
@@ -1614,14 +1608,12 @@ function MyPage() {
     let genderType = "";
     function updateMyCompanion(snValue) {
         let data = {"sn":snValue};
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/mypage/getCompanion.json"
             ,type : "post"
             ,dataType : "json"
             ,data : data
-            // ,successCall : function(data) {
-            ,success : function(data) {
+            ,successCall : function(data) {
                 let isSuccess = data.isSuccess;
                 if (isSuccess != true) {
                     common.cmnAlertLayer('','조회 중 오류가 발생하였습니다.<br>잠시후에 다시 시도해 주십시요.');
@@ -1669,14 +1661,12 @@ function MyPage() {
 
     function deleteMyCompanion(snValue) {
         let data = {"sn":snValue};
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/mypage/deleteCompanion.json"
             ,type : "post"
             ,dataType : "json"
             ,data : data
-            // ,successCall : function(data) {
-            ,success : function(data) {
+            ,successCall : function(data) {
                 let isSuccess = data.isSuccess;
                 if (isSuccess != true) {
                     common.cmnAlertLayer('','삭제 중 오류가 발생하였습니다.<br>잠시후에 다시 시도해 주십시요.');
@@ -1886,14 +1876,12 @@ function MyPage() {
         }
 
         $("#reservedProcessImage").show();
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/reserve/requestReserved.json"
             ,type : "post"
             ,dataType : "json"
             ,data : reservedData
-            // ,successCall : function(data) {
-            ,success : function(data) {
+            ,successCall : function(data) {
                 $("#reservedProcessImage").hide();
                 if (data.isSuccess) {
                     const keyData = {
@@ -1901,9 +1889,9 @@ function MyPage() {
                     }
 
                     localStorage.removeItem("cookieValue");
-                    // controller.createForm(fmOption);
-                    // controller.setSerializedFormData(keyData);
-                    // controller.formSubmit();
+                    controller.createForm(fmOption);
+                    controller.setSerializedFormData(keyData);
+                    controller.formSubmit();
                 } else {
                     common.cmnAlertLayer('','예약에 실패하였습니다. 잠시후에 다시 시도해 주십시오.');
                     return;
@@ -1930,14 +1918,12 @@ function MyPage() {
             }
         }
 
-        // controller.ajaxSend({
-        $.ajax({
+        controller.ajaxSend({
             url : "/foreign/reserve/visaInfo.json"
             ,type : "post"
             ,dataType : "json"
             ,data : visitCountry
-            // ,successCall : function(data) {
-            ,success : function(data) {
+            ,successCall : function(data) {
                 const count = data.visaInfo.length;
                 const visaInfoList = data.visaInfo;
                 const brTag = document.createElement("br");
@@ -2130,26 +2116,6 @@ function MyPage() {
 
     return (
         <>
-            {/*<script>*/}
-            {/*    window.__ht_wc = window.__ht_wc || {};*/}
-            {/*    window.__ht_wc.host = 'design.happytalkio.com';*/}
-            {/*    window.__ht_wc.site_id = '4000001875'; // site_id*/}
-            {/*    window.__ht_wc.site_name = '주식회사 라쿠카라차'; // 회사 이름*/}
-            {/*    window.__ht_wc.category_id = '134722'; // 대분류 id*/}
-            {/*    window.__ht_wc.division_id = '134723'; // 중분류 id*/}
-            {/*    // 고정 및 Custom 파라미터 추가영역. 파라미터가 여러개인 경우 ,(콤마)로 구분*/}
-            {/*    // window.__ht_wc.params = 'site_uid=abcd1234,parameter1=param1';*/}
-            
-            {/*    (function() {*/}
-            {/*    var ht = document.createElement('script');*/}
-            {/*    ht.type = 'text/javascript';*/}
-            {/*    ht.async = true;*/}
-            {/*    ht.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + window.__ht_wc.host + '/web_chatting/tracking.js';*/}
-            {/*    var s = document.getElementsByTagName('script')[0];*/}
-            {/*    s.parentNode.insertBefore(ht, s);*/}
-            {/*})();*/}
-            {/*</script>*/}
-            
             {/*<div id="header" className="center"></div>*/}
             
             {/*<div className="loadWrap-new" id="searchingDefaultImage" style={{display: none;">*/}
@@ -4396,405 +4362,7 @@ function MyPage() {
                     </div>
                 </div>
             </div>
-            {/*<script>*/}
-            {/*    function reservedStart() {*/}
-            {/*    $("#searchingImage").show();*/}
-            {/*    var fmOption = {*/}
-            {/*    "method" : "post",*/}
-            {/*    "target" : "_self",*/}
-            {/*    "action" : "/foreign/reserve/s_ReservedComplete.do"*/}
-            {/*};*/}
-            
-            {/*    const costDetailArray = document.querySelectorAll(".detailCost");*/}
-            {/*    let airAdtCostDtl = '', airChdCostDtl = '', airBabyCostDtl = '';*/}
-            {/*    for (var i = 0; i < costDetailArray.length; i++) {*/}
-            {/*    const targetList = costDetailArray[i].getElementsByClassName("section-e");*/}
-            {/*    let tempString = '';*/}
-            {/*    for (var j = 0; j < targetList.length; j++) {*/}
-            {/*    const target = targetList[j].getElementsByClassName("e_right")[0].innerHTML;*/}
-            {/*    tempString = tempString + target.replaceAll(",", "").replace("원", "");*/}
-            {/*    if (j !== targetList.length - 1) {*/}
-            {/*    tempString = tempString + ";";*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    switch (i) {*/}
-            {/*    case 0 : airAdtCostDtl = tempString; break;*/}
-            {/*    case 1 : airChdCostDtl = tempString; break;*/}
-            {/*    case 2 : airBabyCostDtl = tempString; break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    const passengerInfoList = document.querySelectorAll(".passenger .info_form");*/}
-            {/*    const passengerInfoArray = [];*/}
-            {/*    for (var i = 0; i < passengerInfoList.length; i++) {*/}
-            {/*    const ddList = passengerInfoList[i].getElementsByTagName("dd");*/}
-            {/*    const object = {*/}
-            {/*    "name":ddList[0].childNodes[0].value,*/}
-            {/*    "engLast":ddList[1].childNodes[0].value,*/}
-            {/*    "engFirst":ddList[2].childNodes[0].value,*/}
-            {/*    "birth":ddList[3].childNodes[0].value,*/}
-            {/*    "gender":ddList[4].querySelector(".on").getAttribute("data1") === 'M' ? 'true' : 'false',*/}
-            {/*    "type":ddList[0].getAttribute("data1"),*/}
-            {/*    "fare":"ADT" === ddList[0].getAttribute("data1") ? airAdtCostDtl.split(";")[0] : "CHD" === ddList[0].getAttribute("data1") ? airChdCostDtl.split(";")[0] : airBabyCostDtl.split(";")[0],*/}
-            {/*    "fuel":"ADT" === ddList[0].getAttribute("data1") ? airAdtCostDtl.split(";")[1] : "CHD" === ddList[0].getAttribute("data1") ? airChdCostDtl.split(";")[1] : airBabyCostDtl.split(";")[1],*/}
-            {/*    "tax":"ADT" === ddList[0].getAttribute("data1") ? airAdtCostDtl.split(";")[2] : "CHD" === ddList[0].getAttribute("data1") ? airChdCostDtl.split(";")[2] : airBabyCostDtl.split(";")[2],*/}
-            {/*    "tasf":"ADT" === ddList[0].getAttribute("data1") ? airAdtCostDtl.split(";")[3] : "CHD" === ddList[0].getAttribute("data1") ? airChdCostDtl.split(";")[3] : airBabyCostDtl.split(";")[3],*/}
-            {/*    "amount":"ADT" === ddList[0].getAttribute("data1") ? airAdtCostDtl.split(";")[4] : "CHD" === ddList[0].getAttribute("data1") ? airChdCostDtl.split(";")[4] : airBabyCostDtl.split(";")[4]*/}
-            {/*}*/}
-            
-            {/*    passengerInfoArray[i] = object;*/}
-            {/*}*/}
-            
-            {/*    const availInfoString = [];*/}
-            {/*    let count = 0;*/}
-            {/*    for (var i = 0; i < availList.length; i++) {*/}
-            {/*    const availObj = availList[i];*/}
-            {/*    const arrCnt = availObj.getElementsByTagName("SEG").length;*/}
-            {/*    for (var j = 0; j < arrCnt; j++) {*/}
-            {/*    const flightNumber = availObj.getElementsByTagName("FLIGHT_NO")[j].innerHTML;*/}
-            {/*    const airCd = availObj.getElementsByTagName("AIR_CD")[j].innerHTML;*/}
-            {/*    const deptTime = availObj.getElementsByTagName("DEP_DT")[j].innerHTML + availObj.getElementsByTagName("DEP_TM")[j].innerHTML;*/}
-            {/*    const arrvTime = availObj.getElementsByTagName("ARR_DT")[j].innerHTML + availObj.getElementsByTagName("ARR_TM")[j].innerHTML;*/}
-            {/*    const timeTarget = document.querySelectorAll(".time")[i];*/}
-            {/*    const flightTime = timeTarget.getElementsByClassName("hour")[0].innerHTML + ":" + timeTarget.getElementsByClassName("minute")[0].innerHTML;*/}
-            {/*    const deptName = availObj.getElementsByTagName("DEP_AP_NM")[j].innerHTML;*/}
-            {/*    const arrvName = availObj.getElementsByTagName("ARR_AP_NM")[j].innerHTML;*/}
-            {/*    const freebag = fareData.getElementsByTagName("BAG_INFO")[count].innerHTML;*/}
-            {/*    const delayTimeObj = availObj.getElementsByTagName("CON_TM")[j - 1];*/}
-            {/*    const delayTime = delayTimeObj === undefined ? "" : delayTimeObj.innerHTML.substring(0, 2) + ":" + delayTimeObj.innerHTML.substring(2, 4);*/}
-            {/*    const availObject = {*/}
-            {/*    "dprtInfo":deptName === '' ? availObj.getElementsByTagName("DEP_NM")[j].innerHTML : deptName,*/}
-            {/*    "dprtTime":moment(moment(deptTime, 'YYYYMMDDHHmm').toDate()).format("YYYY-MM-DD HH:mm:ss"),*/}
-            {/*    "dprtCode":availObj.getElementsByTagName("DEP_CT")[j].innerHTML,*/}
-            {/*    "arrvTime":moment(moment(arrvTime, 'YYYYMMDDHHmm').toDate()).format("YYYY-MM-DD HH:mm:ss"),*/}
-            {/*    "arrvInfo":arrvName === '' ? availObj.getElementsByTagName("ARR_NM")[j].innerHTML : arrvName,*/}
-            {/*    "arrvCode":availObj.getElementsByTagName("ARR_CT")[j].innerHTML,*/}
-            {/*    "aircoNm":availObj.getElementsByTagName("AIR_NM")[j].innerHTML,*/}
-            {/*    "aircoCd":airCd,*/}
-            {/*    "waypointCount":(arrCnt - 1) + "",*/}
-            {/*    "flightTime":flightTime,*/}
-            {/*    "airplaneTnm":airCd + flightNumber.padStart("0", 4),*/}
-            {/*    "airFreeBag":freebag,*/}
-            {/*    "in":availObj.getElementsByTagName("IN")[0].innerHTML,*/}
-            {/*    "airDelayTime":delayTime*/}
-            {/*}*/}
-            
-            {/*    const codeShare = availObj.getElementsByTagName("CD_SHARE_YN")[0].innerHTML;*/}
-            {/*    const codeShareAirLine = availObj.getElementsByTagName("CODE_SHARE_NM")[j].innerHTML;*/}
-            {/*    const codeShareAirLineCode = availObj.getElementsByTagName("CODE_SHARE")[j].innerHTML;*/}
-            {/*    const codeShareAirLineNumber = availObj.getElementsByTagName("FLIGHT_NO")[j].innerHTML;*/}
-            {/*    if ("Y" === codeShare && '' !== codeShareAirLine && '' !== codeShareAirLineCode) {*/}
-            {/*    availObject.codeshare = codeShare;*/}
-            {/*    availObject.codeshareAirline = codeShareAirLine;*/}
-            {/*    availObject.codeshareAirlineCode = codeShareAirLineCode;*/}
-            {/*    availObject.codeshareAirlineNumber = codeShareAirLineNumber;*/}
-            {/*}*/}
-            
-            {/*    availInfoString[count] = availObject;*/}
-            {/*    count++;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    let adtCnt = 0, chdCnt = 0, babyCnt = 0;*/}
-            {/*    for (var i = 0; i < receivedData.count.length; i++) {*/}
-            {/*    const countInfo = receivedData.count[i];*/}
-            {/*    switch (countInfo.ageClass) {*/}
-            {/*    case 'A' : adtCnt = countInfo.count; break;*/}
-            {/*    case 'C' : chdCnt = countInfo.count; break;*/}
-            {/*    case 'B' : babyCnt = countInfo.count; break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    let cabinType = "", cabinTypeName = "";*/}
-            {/*    for (var i = 0; i < rqInfo.getElementsByTagName("rqInfo")[0].childElementCount; i++) {*/}
-            {/*    const element = rqInfo.getElementsByTagName("rqInfo")[0].children[i];*/}
-            {/*    if (element.getAttribute("key") === 'cabinclass') {*/}
-            {/*    cabinType = element.innerHTML;*/}
-            {/*    break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    switch (cabinType) {*/}
-            {/*    case 'Y' : cabinTypeName = '일반석'; break;*/}
-            {/*    case 'W' : cabinTypeName = '프리미엄일반석'; break;*/}
-            {/*    case 'C' : cabinTypeName = '비즈니스석'; break;*/}
-            {/*    case 'F' : cabinTypeName = '일등석'; break;*/}
-            {/*    case 'V' : cabinTypeName = '할인석'; break;*/}
-            {/*}*/}
-            
-            {/*    var reservedData = {*/}
-            {/*    "queryString" : mappingData.getElementsByTagName("MAPPING")[0].getAttribute("LANDINGPARAM"),*/}
-            {/*    "korName":document.getElementById("reserv_name").value,*/}
-            {/*    "engFirst":document.getElementById("reserv_Eng_fir").value,*/}
-            {/*    "engLast":document.getElementById("reserv_Eng_Sec").value,*/}
-            {/*    "cellPhone":document.getElementById("reserv_cell").value,*/}
-            {/*    "email":document.getElementById("reserv_email").value,*/}
-            {/*    "gender":userGender,*/}
-            {/*    "adtCnt":adtCnt,*/}
-            {/*    "chdCnt":chdCnt,*/}
-            {/*    "babyCnt":babyCnt,*/}
-            {/*    "seatType":cabinTypeName,*/}
-            {/*    "cabinName":cabinTypeName,*/}
-            {/*    "availInfoString":JSON.stringify(availInfoString),*/}
-            {/*    "passengerInfoString":JSON.stringify(passengerInfoArray),*/}
-            {/*    "ruleParam":localStorage.getItem("ruleParam"),*/}
-            {/*    "cookieValue":localStorage.getItem("cookieValue"),*/}
-            {/*    "travelType":receivedData.travelType*/}
-            {/*}*/}
-            
-            {/*    $("#reservedProcessImage").show();*/}
-            {/*    controller.ajaxSend({*/}
-            {/*    url : "/foreign/reserve/requestReserved.json"*/}
-            {/*    ,type : "post"*/}
-            {/*    ,dataType : "json"*/}
-            {/*    ,data : reservedData*/}
-            {/*    ,successCall : function(data) {*/}
-            {/*    $("#reservedProcessImage").hide();*/}
-            {/*    if (data.isSuccess) {*/}
-            {/*    const keyData = {*/}
-            {/*    "ordNo": data.key*/}
-            {/*}*/}
-            
-            {/*    localStorage.removeItem("cookieValue");*/}
-            {/*    controller.createForm(fmOption);*/}
-            {/*    controller.setSerializedFormData(keyData);*/}
-            {/*    controller.formSubmit();*/}
-            {/*} else {*/}
-            {/*    cmnAlertLayer('','예약에 실패하였습니다. 잠시후에 다시 시도해 주십시오.');*/}
-            {/*    return;*/}
-            {/*}*/}
-            {/*}*/}
-            {/*    , error:function(data) {*/}
-            {/*    $("#reservedProcessImage").hide();*/}
-            {/*    cmnAlertLayer('','예약에 실패하였습니다. 잠시후에 다시 시도해 주십시오.');*/}
-            {/*    return;*/}
-            {/*}*/}
-            {/*});*/}
-            {/*}*/}
-            
-            {/*    function checkVisaInfo() {*/}
-            {/*    let visitCountry = "";*/}
-            {/*    for (var i = 0; i < availList.length; i++) {*/}
-            {/*    const availData = availList[i];*/}
-            {/*    const segCount = availData.getElementsByTagName("SEG").length;*/}
-            {/*    for (var j = 0; j < segCount; j++) {*/}
-            {/*    const segData = availData.getElementsByTagName("SEG")[j];*/}
-            {/*    const code = segData.getElementsByTagName("ARR_CT")[0].innerHTML;*/}
-            {/*    visitCountry += code;*/}
-            {/*    visitCountry += ";"*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    controller.ajaxSend({*/}
-            {/*    url : "/foreign/reserve/visaInfo.json"*/}
-            {/*    ,type : "post"*/}
-            {/*    ,dataType : "json"*/}
-            {/*    ,data : visitCountry*/}
-            {/*    ,successCall : function(data) {*/}
-            {/*    const count = data.visaInfo.length;*/}
-            {/*    const visaInfoList = data.visaInfo;*/}
-            {/*    const brTag = document.createElement("br");*/}
-            {/*    const appendTarget = document.getElementById("visaInfo");*/}
-            {/*    if (count > 0) {*/}
-            {/*    let checkVisa = false;*/}
-            {/*    for (var i = 0; i < count; i++) {*/}
-            {/*    const info = visaInfoList[i].visaInfo;*/}
-            {/*    const p = document.createElement("p");*/}
-            {/*    p.innerHTML = info;*/}
-            {/*    appendTarget.appendChild(p);*/}
-            {/*}*/}
-            
-            {/*    $("#codeShareInfo").hide();*/}
-            {/*    $("#checkVisaInfo").show();*/}
-            {/*} else {*/}
-            {/*    beforeReservationInfo();*/}
-            {/*}*/}
-            
-            {/*}*/}
-            {/*    , error:function(data) {*/}
-            {/*    cmnAlertLayer('btn1','시스템 장애입니다. 잠시후에 다시 시도해 주십시요.');*/}
-            {/*    $("#beforeReservationInfo").hide();*/}
-            {/*    return;*/}
-            {/*}*/}
-            {/*});*/}
-            {/*}*/}
-            
-            {/*    function beforeReservationInfo() {*/}
-            {/*    $("#checkVisaInfo").hide();*/}
-            {/*    $("#beforeReservationInfo").show();*/}
-            {/*}*/}
-            
-            {/*    let checkMessage = "";*/}
-            {/*    function checkInsertValue() {*/}
-            {/*    if ("" === document.getElementById("reserv_Eng_Sec").value) {*/}
-            {/*    document.getElementById("reserv_Eng_Sec").focus();*/}
-            {/*    checkMessage = "예약자 영문 성을 입력해주세요.";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("reserv_Eng_fir").value) {*/}
-            {/*    document.getElementById("reserv_Eng_fir").focus();*/}
-            {/*    checkMessage = "예약자 영문 이름을 입력해주세요.";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("reserv_cell").value) {*/}
-            {/*    document.getElementById("reserv_cell").focus();*/}
-            {/*    checkMessage = "휴대폰 번호를 입력해주세요.";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("reserv_email").value) {*/}
-            {/*    document.getElementById("reserv_email").focus();*/}
-            {/*    checkMessage = "이메일을 입력해주세요.";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    const checkList = document.querySelectorAll(".passenger");*/}
-            {/*    for (var i = 0; i < checkList.length; i++) {*/}
-            {/*    if ("" === document.getElementById("passenger_name_" + (i + 1)).value) {*/}
-            {/*    document.getElementById("passenger_name_" + (i + 1)).focus();*/}
-            {/*    checkMessage = "한글명을 입력해주세요";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("passenger_Eng_Sec_" + (i + 1)).value) {*/}
-            {/*    document.getElementById("passenger_Eng_Sec_" + (i + 1)).focus();*/}
-            {/*    checkMessage = "영문 성을 입력해주세요";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("passenger_Eng_fir_" + (i + 1)).value) {*/}
-            {/*    document.getElementById("passenger_Eng_fir_" + (i + 1)).focus();*/}
-            {/*    checkMessage = "영문 이름을 입력해주세요";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            
-            {/*    if ("" === document.getElementById("passenger_birth_" + (i + 1)).value) {*/}
-            {/*    document.getElementById("passenger_birth_" + (i + 1)).focus();*/}
-            {/*    checkMessage = "생년월일을 바르게 입력하세요.";*/}
-            {/*    return true;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    return false;*/}
-            {/*}*/}
-            
-            {/*    function showCodeShareInfo() {*/}
-            {/*    if (checkInsertValue()) {*/}
-            {/*    cmnAlertLayer('btn1', checkMessage);*/}
-            {/*    return;*/}
-            {/*}*/}
-            {/*    for (var i = 1; i < document.querySelector(".flightNoticeList").childElementCount + 1; i++) {*/}
-            {/*    const target = document.getElementById("check01" + i + "-a");*/}
-            {/*    if (!target.checked) {*/}
-            {/*    cmnAlertLayer('btn1','항공권 규정 및 유의사항을 읽고 체크하여주시기 바랍니다.');*/}
-            {/*    return;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    let isCodeShare = false;*/}
-            {/*    for (var i = 0; i < availList.length; i++) {*/}
-            {/*    const codeShareValue = availList[i].getElementsByTagName("CD_SHARE_YN")[0].innerHTML;*/}
-            {/*    isCodeShare = "Y" === codeShareValue;*/}
-            {/*    if (isCodeShare) break;*/}
-            {/*}*/}
-            {/*    if (isCodeShare) $("#codeShareInfo").show();*/}
-            {/*    else checkVisaInfo();*/}
-            {/*}*/}
-            
-            {/*    $(function(){*/}
-            {/*    const $noticeToggle = $('.flightNoticeToggle a');*/}
-            {/*    $noticeToggle.on('click', function(e){*/}
-            {/*    let $noticeCont = $(this).closest('li').find('.flightNoticeCont');*/}
-            {/*    $(this).toggleClass('active');*/}
-            {/*    $noticeCont.toggleClass('active');*/}
-            {/*    e.preventDefault();*/}
-            {/*});*/}
-            
-            {/*    var offsetFoot = $('#footer').outerHeight() + 100;*/}
-            {/*    var winHeight = $('#content').height() - 680;*/}
-            {/*    var calc_positon = winHeight - offsetFoot;*/}
-            {/*    $(window).scroll(function() {*/}
-            {/*    if ( $(window).scrollTop() < calc_positon) {*/}
-            {/*    $('.moveBtn .btn-reserve').removeClass('move');*/}
-            {/*} else {*/}
-            {/*    $('.moveBtn .btn-reserve').addClass('move');*/}
-            {/*}*/}
-            {/*});*/}
-            
-            {/*    $(".flightNoticeToggle a")[0].click();*/}
-            {/*    $("#check011-a").change(function(){*/}
-            {/*    if ($("#check011-a").is(":checked")){*/}
-            {/*    $(".flightNoticeToggle a")[0].click();*/}
-            {/*    if (!$("#check012-a").is(":checked")) $(".flightNoticeToggle a")[1].click();*/}
-            {/*} else {*/}
-            {/*    const count = $(".flightNoticeToggle a").length;*/}
-            {/*    for (var i = 0; i < count; i++) {*/}
-            {/*    const classNameValue = $(".flightNoticeToggle a")[i].className;*/}
-            {/*    if ("active" === classNameValue) {*/}
-            {/*    $(".flightNoticeToggle a")[i].click();*/}
-            {/*    break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    $("#check011-a").closest('li').find('a').addClass('active');*/}
-            {/*    $("#check011-a").closest('li').find('.flightNoticeCont').toggleClass('active');*/}
-            {/*}*/}
-            {/*});*/}
-            {/*    $("#check012-a").change(function(){*/}
-            {/*    if ($("#check012-a").is(":checked")){*/}
-            {/*    $(".flightNoticeToggle a")[1].click();*/}
-            {/*    if (!$("#check013-a").is(":checked")) $(".flightNoticeToggle a")[2].click();*/}
-            {/*} else {*/}
-            {/*    const count = $(".flightNoticeToggle a").length;*/}
-            {/*    for (var i = 0; i < count; i++) {*/}
-            {/*    const classNameValue = $(".flightNoticeToggle a")[i].className;*/}
-            {/*    if ("active" === classNameValue) {*/}
-            {/*    $(".flightNoticeToggle a")[i].click();*/}
-            {/*    break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    $("#check012-a").closest('li').find('a').addClass('active');*/}
-            {/*    $("#check012-a").closest('li').find('.flightNoticeCont').toggleClass('active');*/}
-            {/*}*/}
-            {/*});*/}
-            {/*    $("#check013-a").change(function(){*/}
-            {/*    if ($("#check013-a").is(":checked")){*/}
-            {/*    $(".flightNoticeToggle a")[2].click();*/}
-            {/*    if (!$("#check014-a").is(":checked")) $(".flightNoticeToggle a")[3].click();*/}
-            {/*} else {*/}
-            {/*    const count = $(".flightNoticeToggle a").length;*/}
-            {/*    for (var i = 0; i < count; i++) {*/}
-            {/*    const classNameValue = $(".flightNoticeToggle a")[i].className;*/}
-            {/*    if ("active" === classNameValue) {*/}
-            {/*    $(".flightNoticeToggle a")[i].click();*/}
-            {/*    break;*/}
-            {/*}*/}
-            {/*}*/}
-            
-            {/*    $("#check013-a").closest('li').find('a').addClass('active');*/}
-            {/*    $("#check013-a").closest('li').find('.flightNoticeCont').toggleClass('active');*/}
-            {/*}*/}
-            {/*});*/}
-            {/*});*/}
-            {/*</script>*/}
-            
-            {/*<script>*/}
-            {/*    function isMobile() {*/}
-            {/*    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);*/}
-            {/*}*/}
-            
-            {/*    function s_logout() {*/}
-            {/*    location.href = "/login/s_Logout.do";*/}
-            {/*}*/}
-            {/*    function scrollBottom(){*/}
-            {/*    $("html, body").animate({scrollTop: $(document).height()}, 500);*/}
-            {/*}*/}
-            {/*</script>*/}
-            
+
             <Footer/>
         </>
     );
