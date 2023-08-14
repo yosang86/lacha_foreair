@@ -6,8 +6,6 @@ import * as mypage from "./js/mypage";
 import UpdateTab from "./UpdateTab";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const newCompanionArea = () => {
         $("#footer").hide();
         $("#C4_b").show();
@@ -56,6 +54,7 @@ function App() {
 
     const dateReg = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 
+    // 여행자 등록
     const putNewCompanion = () => {
         let checkValue = false;
         let korNameLast = document.getElementById("kor_name_last").value;
@@ -122,6 +121,7 @@ function App() {
         });
     }
 
+    // 여행자 수정
     const updateMyCompanion = (snValue) => {
         let data = {"sn":snValue};
         $.ajax({
@@ -176,6 +176,7 @@ function App() {
         });
     }
 
+    // 여행자 삭제
     const deleteMyCompanion = (snValue) => {
         let data = {"sn":snValue};
         $.ajax({

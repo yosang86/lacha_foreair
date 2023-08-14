@@ -5,7 +5,7 @@ import * as common from "./js/common";
 import * as mypage from "./js/mypage";
 
 function App(props) {
-
+    // 개인정보 수정 탭
     return(
         <div className="tab02 slideTab">
             <ul className="swiper-wrapper tab">

@@ -10,8 +10,7 @@ import './css/swiper.css';
 import './css/ReactDatepicker.css';
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 해외항공 국가 및 도시
     const country = [
         {kor : "국내", eng : "KOR", list : [
             {kor: "인천", eng: "ICN"},
@@ -254,6 +253,7 @@ function App() {
         }
     };
 
+    // 출발지와 도착지 교환
     function swapArea() {
         // var depCity = $("#depCity").val();
         // var arrCity = $("#arrCity").val();
@@ -276,8 +276,7 @@ function App() {
         }
     }
 
-    // const [startDate, setStartDate] = useState(null);
-    // const [endDate, setEndDate] = useState(null);
+    // 날짜 선택(편도, 왕복 혹은 다구간)
     const [singleDate, setSingleDate] = useState({
         startDate: null,
         endDate: null,
@@ -289,12 +288,14 @@ function App() {
         date3: null,
     })
 
+    // 비행 타입
     const foreignAirWayTypeList = {
         0: {type: "RT", id: "AIR_FORE_TAB_1", kor: "왕복"},
         1: {type: "OW", id: "AIR_FORE_TAB_2", kor: "편도"},
         2: {type: "MT", id: "AIR_FORE_TAB_3", kor: "다구간"},
     };
 
+    // 비행 타입 선택 (편도, 왕복, 다구간)
     const foreignAirWayType = useRef(0);
     const setForeignAirWayTypeFunction = (element, ord) => {
         const targetId = element.nodeName === "LI" ? element.id : element.parentNode.id;
@@ -341,6 +342,7 @@ function App() {
         }
     }
 
+    // 여행지 검색
     function searchForeCityCode() {
         var inputWord = $("#searchForeWord").val();
         const dataObject = {
@@ -399,7 +401,7 @@ function App() {
 
     }
 
-    // const [popupOpenElement, setPopupOpenElement] = useState();
+    // 장소, 날짜, 인원수 선택 팝업 선택
     const popupOpenElement = useRef();
     const foreOpenAirStation = (element, txt) => {
         // popupOpenelement = element;
@@ -509,16 +511,7 @@ function App() {
         target.appendChild(spanEl);
     }
 
-    // const foreOpenAirStation = (element, txt) => {
-    //     $('#foreAirStationHeader').text(txt);
-    //     $('.foreAirStationArea').siblings().css('display', 'none');
-    //     $('.foreAirStationArea').css('display', 'block');
-    // }
-    // const closeForeAirStation = () => {
-    //     $('.foreAirStationArea').siblings('*:not(.modal)').css('display', '');
-    //     $('.foreAirStationArea').css('display', 'none');
-    // }
-
+    // 선택된 비행 날짜
     const selectCalendar = useRef({
         selectCalendarF: null,
         selectCalendarS: null,
@@ -535,11 +528,10 @@ function App() {
         const dateStr = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
         return date.getFullYear() + "." + month + "." + dateStr;
     }
+    // 캘린더에서 선택된 날짜를 변수로 세팅
     const onChange = (dates) => {
         const [start, end] = dates;
         if (foreignAirWayType.current == 1) {
-            // setStartDate(start);
-            // setEndDate(start);
             setSingleDate({
                 startDate: start,
                 endDate: start,
@@ -558,8 +550,6 @@ function App() {
             return;
         }
 
-        // setStartDate(start);
-        // setEndDate(end);
         setSingleDate({
             startDate: start,
             endDate: end,
@@ -588,6 +578,8 @@ function App() {
             $('#CAL_END + dd > a').text('날짜 선택');
         }
     };
+
+    // 기차, 숙박, 항공 구분하기 위한 설정값
     const calendarType = useRef();
     const calendarImgVal = useRef();
 
@@ -668,6 +660,7 @@ function App() {
         }
     };
 
+    // 달력 열기/닫기
     const openCalendar = (element, typeVal, imgVal) => {
         window.oriScroll = $(window).scrollTop();
 
@@ -800,6 +793,7 @@ function App() {
         eventControll('unbind', "", 3, 0);
     };
 
+    // 캘린더에서 선택된 날짜 변수로 셋팅(다구간)
     const onChangeMulti = (dates) => {
         const targetId = $(popupOpenElement.current).attr("id").split("_")[2];
 
@@ -897,11 +891,8 @@ function App() {
     //     }
     // }
 
-
+    // 탑승객 설정
     const [member, setMember] = useState({adult: 1, kid: 0, baby: 0});
-    // useEffect(() => {
-    //     console.log(member);
-    // }, [member]);
 
     const seatTypeList = ([
         {type: "Y", kor: "일반석"},
@@ -909,8 +900,10 @@ function App() {
         {type: "C", kor: "비즈니스석"},
         {type: "F", kor: "일등석"},
     ]);
+    // 좌석 타입 설정
     const [seat, setSeat] = useState("Y");
 
+    // 승객 및 좌석 설정 열기/닫기
     const openAirMemberAndSeat = (element) => {
         // popupOpenelement = element;
         popupOpenElement.current = element;
@@ -943,16 +936,7 @@ function App() {
         $(".foreAirMemberAndSeatArea").hide();
     }
 
-    // const openAirMemberAndSeat = () => {
-    //     $('.foreAirMemberAndSeatArea').siblings().css('display', 'none');
-    //     $('.foreAirMemberAndSeatArea').css('display', 'block');
-    // }
-    // const closeAirMemberAndSeat = () => {
-    //     $('.foreAirMemberAndSeatArea').siblings('*:not(.modal)').css('display', '');
-    //     $('.foreAirMemberAndSeatArea').css('display', 'none');
-    // }
-
-
+    // 탑승객 설정
     const updateCount = (element, type, countId) => {
         const targetId = element.parentNode.id;
         const target = element.parentNode.childNodes[1];
@@ -982,7 +966,6 @@ function App() {
             });
         }
     }
-
     const setSeatVal = (element, type) => {
         let $el = $(element);
         const target = document.getElementById("AIR_F_S");
@@ -994,12 +977,7 @@ function App() {
         // console.log(seatTypeList.filter(a => a.type == seat).map(a => a.kor)[0]);
     }
 
-    // 비동기인 setState가 처리되고 난 후 실행되는 함수
-    // 여기서는 seat 값이 변경되면 해당 함수가 실행된다
-    // useEffect(() => {
-    //     console.log("seat : " + seat);
-    // }, [seat]);
-
+    // 다구간 여정 개수 설정
     let multiGenId = useRef(1);
     const addForeTravel = () => {
         if (multiGenId.current >= 3) return;
@@ -1212,6 +1190,7 @@ function App() {
         return closeAEl;
     }
 
+    // 비행편 검색
     const openSearchSchedule = (element) => {
         // popupOpenelement = element;
         popupOpenElement.current = element;
@@ -1343,72 +1322,10 @@ function App() {
         return countList;
     }
 
-
-    // const controller = {};
+    // 공통 함수
     const controller = new common.controller;
 
-    // const cmnAlertLayer = (targetId, msg, callback) => {
-    //     // var $open_btn = $("#" + targetId);
-    //     var $open_btn = targetId != "" ? $("#" + targetId) : "";
-    //
-    //     $("input").each(function() {
-    //         var $element = $(this);
-    //         if ($element.attr("readonly") != 'readonly') {
-    //             $element.attr("readonly", true);
-    //             $element.addClass("LAYER");
-    //         }
-    //     });
-    //
-    //     var html = [];
-    //
-    //     html.push("<div id='" + targetId + "_layer' class='alert-box'>");
-    //     html.push("<div class='popWrap'>");
-    //     html.push("<div class='alert-cont'>");
-    //     html.push(msg);
-    //     html.push("</div>");
-    //     html.push("<div class='btnArea mgt_20'>");
-    //     html.push("<a href='#none' class='lbtn btn-m filled alert-close' style='background: #466cc2; border:1px solid #466cc2'>확인</a>");
-    //     html.push("</div>");
-    //     html.push("</div>");
-    //     html.push("</div>");
-    //     $("body").append(html.join(""));
-    //
-    //     var $el = $("#" + targetId + "_layer");
-    //     $("body").append($("<div id='dimmd-layer'></div>"));
-    //     $el.attr("tabindex", "0").fadeIn().focus();
-    //
-    //     var $elWidth = $el.outerWidth(),
-    //         $elHeight = $el.outerHeight(),
-    //         docWidth = $(document).width(),
-    //         docHeight = $(document).height();
-    //
-    //     if ($elHeight < docHeight || $elWidth < docWidth) {
-    //         $el.css({
-    //             marginTop: -$elHeight /2,
-    //             marginLeft: -$elWidth/2
-    //         })
-    //     } else {
-    //         $el.css({top: 0, left: 0});
-    //     }
-    //
-    //     $el.find('.alert-close').click(function(){
-    //         $("#dimmd-layer").remove();
-    //         $(".alert-box").remove();
-    //         $(".LAYER").attr("readonly", false);
-    //         $(".LAYER").removeClass("LAYER");
-    //         $el.fadeOut().removeAttr("tabindex");
-    //         // $open_btn.focus();
-    //         if ($open_btn != "") {
-    //             $open_btn.focus();
-    //         }
-    //         if(typeof callback != 'undefined' && callback != null) {
-    //             callback();
-    //         }
-    //
-    //         return false;
-    //     });
-    // };
-
+    // 최근 검색 여정 조회
     const getRecentForeAirList = () => {
         controller.ajaxSend({
         // $.ajax({
@@ -1447,6 +1364,7 @@ function App() {
             }
         });
     }
+    // 최근 검색 여정 불러오기
     const setRecentSearchData = (element) => {
         document.getElementById("tripPlan").checked = element.getAttribute("data2") !== "N";
         let targetId = "AIR_FORE_TAB_1";
@@ -1507,6 +1425,7 @@ function App() {
             baby: element.getAttribute("data14"),
         })
     }
+    // 최근 검색 여정 삭제
     const deleteRecentSearch = (element) => {
         const dataObject = {
             "sn":element.getAttribute("data1")
@@ -1655,6 +1574,7 @@ function App() {
         }
     };
 
+    // 검색 조건 확인
     function airValidate() {
         if ($("#AIR_whereDepCity1").text() == '출발') {
             common.cmnAlertLayer("", "출발지를 선택하세요.");
@@ -1677,7 +1597,7 @@ function App() {
     };
 
     return (
-    <div style={{width: "100%", height: "100vh", overflow: "scroll",}}
+    <div
         onScroll={(e) => onScroll(e)}>
 
         {/*<div id="header" className="center">*/}

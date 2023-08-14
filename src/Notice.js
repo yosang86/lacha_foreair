@@ -5,12 +5,11 @@ import * as base from "./js/find";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const getSearchNoticeData = () => {
         getNoticeData("srch");
     }
 
+    // 공지사항 불러오기
     const getNoticeData = (str) => {
         var pageNo = $("#pageNo").val();
         var srchType = $("#srchType").val();
@@ -43,6 +42,7 @@ function App() {
         });
     }
 
+    // 공지사항 내용 불러오기
     const getNoticeDetailData = (seq) => {
         var form = $("#formDetail");
         form.find("#bbSn").val(seq);
@@ -187,7 +187,7 @@ function App() {
                     <div className="pop-header">
                         <div className="pop-tit">
                             <h1>공지사항 상세</h1>
-                            <a // href="javascript:void(0);" 
+                            <a // href="javascript:void(0);"
                                className="btnClose full-pop-close"
                                 onClick={() => $("#noticeList01POP").css("display", "")}
                             >닫기</a>

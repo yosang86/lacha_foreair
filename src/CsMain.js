@@ -4,8 +4,6 @@ import * as common from "./js/find";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     return(
         <>
             <div id="header" className="center">

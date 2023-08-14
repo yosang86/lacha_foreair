@@ -8,8 +8,7 @@ import Footer from "./Footer";
 import {useRef, useState} from "react";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 탈퇴 상세사유 작성 토글
     const updateTitle = (element) => {
         // var cd = $(this).val();
         var cd = $(element).val();
@@ -21,6 +20,7 @@ function App() {
         }
     }
 
+    // 탈퇴 상세사유 글자 수 제한
     const updateLength = (element) => {
         // var txt = $(this).val();
         var txt = $(element).val();
@@ -39,6 +39,7 @@ function App() {
         $('#contCnt').text('0');
     }
 
+    // 탈퇴 신청 등록
     const questionInsert = () => {
         var sctCd = '';
         $('.cate').find('a').each(function() {
@@ -177,13 +178,14 @@ function App() {
                                     <option value="5" title="배송 불만족">배송 불만족</option>
                                     <option value="6" title="서비스 이용 불편">서비스 이용 불편</option>
                                     <option value="8" title="고객 서비스 불만">고객 서비스 불만</option>
-                                    <option value="9" title="기타">기타</option>
+                                    <option value="7" title="기타">기타</option>
                                 </select>
                                 {/*<!-- <input type="text" placeholder="제목을 입력해 주세요. (최대 40자)" maxlength="40" id="tit" > -->*/}
                             </dd>
                         </dl>
 
                         <dl id="resignPop_cont" style={{display: "none"}}>
+                        {/*<dl id="resignPop_cont" style={{display: "block"}}>*/}
                             <dt>
                                 내용<a // href="javascript:void(0);"
                                      className="sbtn border"

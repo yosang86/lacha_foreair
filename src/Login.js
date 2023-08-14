@@ -4,8 +4,6 @@ import * as common from './js/common';
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const controller = new common.controller();
 
     const scrollBottom = () => {
@@ -29,6 +27,7 @@ function App() {
         }
     }
 
+    // 아이디 및 비밀번호 빈칸 체크
     const tryLogin = () => {
         // if ($.trim($("#loginId").val()) == "" && $.trim($("#passwd").val()) == "") {
         //     cmnAlertLayer("loginId", "아이디 또는 비밀번호가 입력되지 않았습니다.");
@@ -51,6 +50,7 @@ function App() {
         loginProc();
     }
 
+    // 디바이스 체크
     var isMobile = {
         Android: function () {
             return navigator.userAgent.match(/Android/i) == null ? false : true;
@@ -65,6 +65,7 @@ function App() {
 
     var appCall = false;
 
+    // 로그인
     const loginProc = () => {
         var isClick = false;
         var loginId = $.trim($("#loginId").val());
@@ -213,6 +214,7 @@ function App() {
         });
     }
 
+    // 로그인 실패
     function checkConfirm(cdVal, obj) {
         if (cdVal == '0001') {
             var msgVal = "아이디 또는 비밀번호가 "+obj.pwdErrCnt+"회이상 실패했습니다. 비밀번호 찾기 화면으로 이동하시겠습니까?";
@@ -226,6 +228,7 @@ function App() {
         }
     };
 
+    // 알림 팝업
     const cmnAlertLayer = (targetId, msg, callback) => {
         // var $open_btn = $("#" + targetId);
         var $open_btn = targetId != "" ? $("#" + targetId) : "";

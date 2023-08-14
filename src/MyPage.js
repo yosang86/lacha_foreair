@@ -4,8 +4,7 @@ import './css/MyPage.css';
 import Footer from "./Footer";
 
 function MyPage() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 최근 주문내역 상세보기
     function goDetail(orderNo){
         $("#ordNo").val(orderNo);
 

@@ -13,8 +13,6 @@ import './css/ReactRangeSlider.css';
 import Footer from "./Footer";
 
 function MyPage() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const controller = new common.controller();
 
     const country = [
@@ -182,6 +180,7 @@ function MyPage() {
     let temp;
     let calendarType;
     let calendarImgVal;
+    // 출발지 및 도착지 변수
     // let selectCalendarF = null;
     // let selectCalendarS = null;
     const [selectCalendarF, setSelectCalendarF] = useState(null);
@@ -353,6 +352,7 @@ function MyPage() {
     // $("#min_arrive_time").val(time($("#arrive_time").slider("values", 0)));
     // $("#max_arrive_time").val(timeSlider($("#arrive_time").slider("values", timeArrvValue[1])));
 
+    // 출발일 및 도착일 설정
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const dateFormat = (date) => {
@@ -403,7 +403,7 @@ function MyPage() {
         // if (!selectsRange) closeCalendar();
     };
 
-
+    // 다구간 출발일 및 도착일 설정
     const [selectedMultiCalendar, setSelectedMultiCalendar] = useState(null);
     const [selectedMultiDate, setSelectedMultiDate] = useState(null);
     const [multiDate, setMultiDate] = useState({
@@ -427,6 +427,7 @@ function MyPage() {
         setMultiDateStr({...multiDateStr, [targetId]: targetStr});
     };
 
+    // 키워드 검색
     const searchForeCityCode = () => {
         var inputWord = $("#searchForeWord").val();
         const dataObject = {
@@ -599,6 +600,7 @@ function MyPage() {
         }
     }
 
+    // 비행 타입 선택 (편도, 왕복, 다구간)
     const foreignAirWayTypeList = {
         0: {type: "RT", id: "AIR_FORE_TAB_1", kor: "왕복"},
         1: {type: "OW", id: "AIR_FORE_TAB_2", kor: "편도"},
@@ -651,6 +653,7 @@ function MyPage() {
         evt.className += " active";
     }
 
+    // 출발지 및 도착지 설정하기
     const [popupOpenElement, setPopupOpenElement] = useState();
     const foreOpenAirStation = (element, txt) => {
         // popupOpenelement = element;
@@ -683,7 +686,6 @@ function MyPage() {
 
         $(".foreAirStationArea").hide();
     }
-
     const setForeList = (element) => {
         const currentType = $("#travelType").find(".current").attr("data");
         const code = element.childNodes[0].innerHTML;
@@ -1112,6 +1114,8 @@ function MyPage() {
             }
         }
     }
+
+    // 탑승객 설정
     const openAirMemberAndSeat = (element) => {
         // popupOpenelement = element;
         setPopupOpenElement(element);
@@ -1188,6 +1192,8 @@ function MyPage() {
         element.className = "on select";
         document.getElementById("AIR_F_Seat").innerText = element.innerText;
     }
+
+    // 다구간 여행지 추가 및 삭제
     const addForeTravel = () => {
         if (multiGenId >= 3) return;
         if ($("#closeTargetid")) {
@@ -1351,7 +1357,6 @@ function MyPage() {
         console.log(multiDate);
         console.log(multiDateStr);
     }
-
     const createDeleteIcon = (reValue) => {
         const closeAEl = document.createElement("a");
         closeAEl.className = "onway_close";
@@ -1553,6 +1558,7 @@ function MyPage() {
     let mappingList;
     let newMappingList;
 
+    // 항공권 정렬 기준
     let sortType = "priceLow";
     const setSortType = (element, type) => {
         sortType = type;

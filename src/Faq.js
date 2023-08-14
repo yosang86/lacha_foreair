@@ -6,8 +6,6 @@ import "./css/Faq.css";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
     // window.addEventListener("load", function() {
         $('.faqSearchList').on('click', 'dt', function(){
@@ -25,6 +23,7 @@ function App() {
     // })
     }, [])
 
+    // 키워드 검색
     const searchFaq = () => {
         $('#faqSearch').find('#uprSctNm').hide();
         $('#faqSearch').find('#sctNm').hide();
@@ -93,11 +92,13 @@ function App() {
         });
     }
 
+    // 페이지 번호로 불러오기
     const faqList = (page) => {
         $("#faqForm").find('#pageNo').val(page);
         getFaqList();
     }
 
+    // faq 불러오기
     const getFaqList = () => {
         // var param = $("#faqForm").serializeJson();
         var param = $("#faqForm").serialize();
@@ -173,6 +174,7 @@ function App() {
         });
     }
 
+    // 카테고리 설정
     const selSctCd = (e, sctCd, name) => {
         $(e).closest('ul').find('li').each(function () {
             $(this).removeClass('current');

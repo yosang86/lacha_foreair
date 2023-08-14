@@ -6,8 +6,7 @@ import * as mypage from "./js/mypage";
 import UpdateTab from "./UpdateTab";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 정보 수신 동의 여부 업데이트
     const updateConsent = () => {
         var formData = {};
         var formType = $('[data-dbtype="checkbox"]', $("#mypageConsentUpdateForm"));
@@ -47,6 +46,7 @@ function App() {
 
     }
 
+    // 유저 정보 수신 동의 여부 불러오기
     const getMbrInfo = () => {
         $.ajax( {
             url : '/mypage/s_MyPageMbrInfo.json',

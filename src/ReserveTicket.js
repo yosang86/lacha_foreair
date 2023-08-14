@@ -10,8 +10,6 @@ import './css/ReactRangeSlider.css';
 import Footer from "./Footer";
 
 function MyPage() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const controller = new common.controller();
 
     // <script>
@@ -331,14 +329,15 @@ function MyPage() {
             }
         }
 
-        covid19InfoArea();
-        inputDashByCellNumber(reservedCellNumber);
-        setTravelInfo();
-        setTicketInfo();
-        setScheduleInfo();
-        detailCostInfo();
-        setTravelPassengerInfo();
-        getCostRule(false);
+        // ajax 처리 후 주석 해제
+        // covid19InfoArea();
+        // inputDashByCellNumber(reservedCellNumber);
+        // setTravelInfo();
+        // setTicketInfo();
+        // setScheduleInfo();
+        // detailCostInfo();
+        // setTravelPassengerInfo();
+        // getCostRule(false);
 
         $(".passenger_birth").on("propertychange change paste input", function(element) {
             console.log(element);

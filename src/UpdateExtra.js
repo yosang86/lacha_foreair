@@ -8,8 +8,6 @@ import DatePicker from "react-datepicker";
 import {ko} from "date-fns/esm/locale";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const [isMarried, setIsMarried] = useState(false);
 
     $.fn.serializeObject = function() {
@@ -143,6 +141,7 @@ function App() {
     //     }
     // }
 
+    // 부가정보 업데이트
     const updateMerExtra = () => {
         // var formData = $("#mypageExtraUpdateForm").serializeJson();
         var formData = $("#mypageExtraUpdateForm").serializeObject();

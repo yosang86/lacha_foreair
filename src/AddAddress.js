@@ -8,10 +8,9 @@ import './css/Postcode.css';
 import Footer from "./Footer";
 
 function App(props) {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const currentScroll = useRef();
 
+    // 카카오 우편번호 검색창 열기
     const openPostcode = (e) => {
         var $open_btn = $(e.currentTarget);
         var $el = $("#addr-layer");
@@ -39,6 +38,7 @@ function App(props) {
         document.getElementById("addr-layer").style.display = 'block';
     }
 
+    // 주소 및 우편번호 입력 후 검색창 닫기
     const handleComplete = (data) => {
         var $open_btn = $(".search-zipcode");
         var $el = $("#addr-layer");
@@ -116,6 +116,7 @@ function App(props) {
         document.body.scrollTop = currentScroll.current;
     };
 
+    // 배송지 등록하기
     function insertAddress() {
         if(validation($("#mypageAddrInsertForm"))) {
             return;
@@ -166,6 +167,7 @@ function App(props) {
         });
     }
 
+    // 주소 유효성 체크
     function validation(form) {
         var flag = false;
 
@@ -188,6 +190,7 @@ function App(props) {
         return flag;
     }
 
+    // 배송지 수정일 경우 기존 정보 불러오기
     function detailAddr() {
         var dlvpSn = $('#dlvpSn').val();
 

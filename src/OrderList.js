@@ -8,8 +8,6 @@ import {ko} from "date-fns/esm/locale";
 import {full_layer_Pop} from "./js/common";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     let tabIndicator = true;
     let _tempAir = 1;
     let isFetchingAir = false;
@@ -77,6 +75,7 @@ function App() {
         getAirOrderList(0);
     }
 
+    // 해외항공 주문 내역 조회
     function getAirOrderList(page) {
         if (!tabIndicator) return;
 
@@ -152,6 +151,7 @@ function App() {
         }
     }
 
+    // 상세조회 기간설정
     const selectedInput = useRef(null);
     const create_calendar_layer_Pop = (inputId) => {
         selectedInput.current = inputId

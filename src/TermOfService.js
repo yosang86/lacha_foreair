@@ -5,8 +5,6 @@ import * as common from "./js/find";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     // var goTop = $('#go-top');
     // $(window).scroll(function() {
     //     if ($(window).scrollTop() > 800) {

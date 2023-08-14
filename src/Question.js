@@ -9,8 +9,6 @@ import "./css/Faq.css";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
         $('.term').on('click', '.date', function() {
             var style = $('.data-set').attr('style');

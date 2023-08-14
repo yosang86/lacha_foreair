@@ -7,14 +7,13 @@ import * as common from "./js/common";
 import * as calendar from "./js/calendar";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
         setSearchDate('50', 'strtDtm', 'endDtm'); // 3개월 날짜 세팅
         doList();
         setCalendarLayerPopup();
     }, [])
 
+    // 캘린더 팝업 열기
     function setCalendarLayerPopup() {
         $(document).on('click','.calendar-pop-layer', function(e) {
             var y = '';
@@ -50,6 +49,7 @@ function App() {
         });
     };
 
+    // 캘린더 날짜 세팅하기
     function setCalendar(y,m,d,inputName){
         // 현재 년(y)월(m)의 1일(1)의 요일을 구합니다.
         var theDate = new Date(y,m-1,1);
@@ -285,6 +285,7 @@ function App() {
         doList();
     }
 
+    // 쿠폰 조회하기
     function doSearch(cpnUseCd) {
         $("#pageNo").val(1);
         if(typeof(cpnUseCd) != "undefined"){
@@ -292,7 +293,6 @@ function App() {
         }
         doList();
     }
-
     function doList() {
         $(".result-term").html("<span>조회기간</span>"+$("#strtDtm").val()+" ~ "+$("#endDtm").val());
 
@@ -322,6 +322,7 @@ function App() {
         });
     }
 
+    // 쿠폰 등록하기
     function couponIssu(){
         var cpnNoInpt = $("#cpnNoInpt").val();
 

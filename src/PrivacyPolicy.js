@@ -5,8 +5,6 @@ import style from "./css/TermTable.module.css";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
         window.addEventListener("scroll", function() {
             const goTop = $('#go-top');

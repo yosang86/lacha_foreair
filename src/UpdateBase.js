@@ -7,8 +7,7 @@ import * as pcert from "./js/phoneCert";
 import UpdateTab from "./UpdateTab";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 개인정보 업데이트
     const saveBaseInfo = () => {
         var param = mypage.setData();
 
@@ -41,6 +40,7 @@ function App() {
         }
     }
 
+    // 직접 입력 시 select 숨김
     const updateEmailInput = (element) => {
         if ($(element).val() == "80") $("#emailInput").parent().css("display", "");
         else $("#emailInput").parent().css("display", "none");

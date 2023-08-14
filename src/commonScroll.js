@@ -5,8 +5,6 @@ import * as common from "./js/common";
 import * as mypage from "./js/mypage";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     return(
         <>
             <div className="scroll-element scroll-x scroll-scrolly_visible">

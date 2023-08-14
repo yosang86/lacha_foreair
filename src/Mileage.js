@@ -6,8 +6,6 @@ import DatePicker from "react-datepicker";
 import {ko} from "date-fns/esm/locale";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     common.full_layer_Pop();
 
     function toDateObject(time) { // parseTime(time)
@@ -133,6 +131,7 @@ function App() {
         doList();
     }
 
+    // 마일리지 조회
     function doList() {
         $.ajax({
             url : '/mypage/s_MyMileageList.do',
@@ -405,6 +404,7 @@ function App() {
         return strtDtm;
     }
 
+    // 적립금 조회 기간 설정
     const [selectedRange, setSelectedRange] = useState({
         startDate: null,
         endDate: null,
@@ -413,6 +413,7 @@ function App() {
         $(selectedInput.current).val(formatDate(date));
         $("#calendar-pop .pop-close").click();
     }
+
     return(
         <>
             <div id="header" className="center">

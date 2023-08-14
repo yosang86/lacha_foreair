@@ -6,8 +6,7 @@ import * as mypage from "./js/mypage";
 import UpdateTab from "./UpdateTab";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 배송지 조회
     function getAddressList() {
         $.ajax({
             url : '/mypage/s_MyPageAddressList.json',
@@ -24,6 +23,7 @@ function App() {
         });
     }
 
+    // 배송지 추가
     function createAddress(data) {
         $('.nodata').hide();
         $('.addr').hide();
@@ -81,6 +81,7 @@ function App() {
 
     }
 
+    // 배송지 업데이트
     function updateAddrMove(e) {
         // var url = "/mypage/s_MyPageAddrUpdate.do";
         var url = "/modifyAddress";
@@ -97,6 +98,7 @@ function App() {
         });
     }
 
+    // 배송지 삭제
     function deleteAddress(e) {
         var len = $('#addressBody').find('[data-id="item"]').length;
         var msg = '';

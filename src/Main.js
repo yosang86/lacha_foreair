@@ -9,8 +9,6 @@ import './css/common.css';
 import './css/ReactDatepicker.css';
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const country = [
         {kor : "국내", eng : "KOR", list : [
             {kor: "인천", eng: "ICN"},

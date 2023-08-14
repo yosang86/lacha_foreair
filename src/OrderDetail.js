@@ -7,8 +7,6 @@ import CommonScroll from "./commonScroll";
 import "./css/OrderDetail.css";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
     // window.addEventListener("load", function () {
         const $noticeToggle = $('.flightNoticeToggle a');
@@ -23,6 +21,7 @@ function App() {
         })
     // })
     }, [])
+
     function openCostRule() {
         // 요금규정 호출
         $("#header").hide();
@@ -97,18 +96,20 @@ function App() {
         });
     }
 
+    // 요금 정보 상세
     function openCostDetail() {
         $("#costDetailInformation").show();
     }
 
+    // 여행 일정 상세
     function openDetailTravelInfo() {
         $("#travelDetailInformation").show();
     }
-
     function hideDetailTravelInfo() {
         $("#travelDetailInformation").hide();
     }
 
+    // 여행 취소 팝업 열기
     let reloadFlag = false;
     function hideCancelPopup() {
         $("#C5_b").hide();
@@ -126,6 +127,7 @@ function App() {
         });
     }
 
+    // 취소 및 환불 설정하기
     function checkSelectBox(type) {
         let limit = 500;
         let textAreaId = "cancelReason";
@@ -151,6 +153,7 @@ function App() {
         cancelReasonCheck(type, limit);
     }
 
+    // 취소 이유 설정
     function cancelReasonCheck(type, limit) {
         let idValue = "cancelReason";
         if (!type) idValue = "refundReason";
@@ -169,6 +172,7 @@ function App() {
         }
     }
 
+    // 문의하기
     function openQuestion() {
         $("#C5_c").show();
     }

@@ -5,8 +5,6 @@ import * as common from "./js/common";
 // import * as common from "./js/find";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
         // 비밀번호 사용가능 여부
         $("#changePwdFst").on({
@@ -97,6 +95,7 @@ function App() {
         });
     }, [])
 
+    // 기존 비밀번호 및 새 비밀번호 확인
     function passwordChange() {
         var passwd = $("#passwd").val();
         var changePwdFst = $("#changePwdFst").val();
@@ -156,10 +155,12 @@ function App() {
         });
     }
 
+    // 비밀번호 변경
     function pageMove() {
         $('#passwordForm').submit();
     }
 
+    // 비밀번호 유효성 체크
     function regExpPwdCheck1(element) {
         var textVal = $(element).val();
         var textArray = textVal.split("");

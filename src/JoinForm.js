@@ -10,12 +10,11 @@ import Footer from "./Footer";
 export default App;
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     const currentScroll = useRef();
 
     const controller = new common.controller();
 
+    // 카카오 우편번호 검색창 열기
     const openPostcode = (e) => {
         var $open_btn = $(e.currentTarget);
         var $el = $("#addr-layer");
@@ -43,6 +42,7 @@ function App() {
         document.getElementById("addr-layer").style.display = 'block';
     }
 
+    // 주소 및 우편번호 입력 후 검색창 닫기
     const handleComplete = (data) => {
         var $open_btn = $(".search-zipcode");
         var $el = $("#addr-layer");
@@ -286,6 +286,7 @@ function App() {
     //     });
     // };
 
+    // 아이디 유효성 체크
     const checkId = () => {
         if($("#idChk").attr("disabled") == "disabled") {
             return;
@@ -344,6 +345,7 @@ function App() {
         $("#idChkYn").val("N");
     }
 
+    // 회원가입
     // var saveFlag = true;
     var saveFlag = useRef(true);
     const join = () => {

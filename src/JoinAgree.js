@@ -6,8 +6,6 @@ import * as pcert from "./js/phoneCert";
 import Footer from "./Footer";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
     useEffect(() => {
         $(document).on("click",".inforCheck.type2 a",function(){
             // console.log(this);
@@ -67,6 +65,7 @@ function App() {
         });
     }, [])
 
+    // 전체 동의
     const doCheckAll = () => {
         if($("#allCheck").prop("checked")) {
             $("input:checkbox").prop("checked",true);
@@ -78,6 +77,7 @@ function App() {
 
         doCheck();
     }
+
     // 동의 체크
     const doSelectCheckTerm = (obj) => {
         if($(obj).prop("checked")) {
@@ -111,6 +111,8 @@ function App() {
         0: false,
         1: false,
     });
+
+    // 수신동의 토글
     const doToggleReception = (obj, state) => {
         let newState = {...active};
         newState[state] = !active[state];
@@ -127,6 +129,7 @@ function App() {
         //     $(obj).closest("div").siblings(".reception").show();
         // }
     }
+    // 필수 약관 동의 확인
     const doCheck = () => {
         var checkflag = false;
         // <c:forEach var="row" items="${termList}" varStatus="i">
@@ -147,6 +150,7 @@ function App() {
             $("#agreeConfirm").removeClass("filled-g");
         }
     }
+    // 필수 약관 열기
     const doTermLayer = (obj, id) => {
         if($("#"+id).length == 0) {
             $("#content").append($(".full-layer").eq(0).clone().attr("id", id));
@@ -156,6 +160,7 @@ function App() {
 
         pcert.cmnFullLayerPopup(obj, id);
     }
+    // 선택 약관 동의
     const doCheckAgrYn = (obj) => {
         var $el = $(obj);
         if($el.closest("div").find('input:checkbox:checked').length == 0) {

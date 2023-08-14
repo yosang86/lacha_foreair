@@ -8,8 +8,7 @@ import Footer from "./Footer";
 import {useRef, useState} from "react";
 
 function App() {
-    document.getElementsByTagName('body')[0].classList.add('sub');
-
+    // 카테고리 설정
     const setCategory = (element) => {
         $('.cate').find('a').each(function() {
             $(this).removeClass('select');
@@ -24,6 +23,7 @@ function App() {
         }
     }
 
+    // 문의하기 내용 글자수 제한
     const updateLength = (element) => {
         // var txt = $(this).val();
         var txt = $(element).val();
@@ -37,11 +37,13 @@ function App() {
         }
     }
 
+    // 작성 내용 초기화
     const contInit = () => {
         $('#cont').val('');
         $('#contCnt').text('0');
     }
 
+    // 문의하기 등록
     const questionInsert = () => {
         var sctCd = '';
         $('.cate').find('a').each(function() {
